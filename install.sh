@@ -2,6 +2,7 @@
 
 cd "$(dirname "${BASH_SOURCE}")"
 git pull origin master
+git submodule update --init --recursive
 
 dir=~/dotfiles                    # dotfiles directory
 olddir=~/dotfiles_old             # old dotfiles backup directory
