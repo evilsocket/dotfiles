@@ -63,6 +63,7 @@ Bundle 'vim-tabber'
  " see :h vundle for more details or wiki for FAQ
 set number
 syntax on
+set mouse=a
 :set t_Co=256 " 256 colors
 " :set background=dark
 " :color grb256
