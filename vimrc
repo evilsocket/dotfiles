@@ -17,8 +17,6 @@ set switchbuf=useopen
 set numberwidth=5
 "set showtabline=2
 set winwidth=79
-" " This makes RVM work inside Vim. 
-set shell=bash
 set backspace=indent,eol,start
 " " display incomplete commands
 set showcmd
