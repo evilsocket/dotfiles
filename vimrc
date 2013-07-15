@@ -24,6 +24,7 @@ set backspace=indent,eol,start
 set showcmd
 set nocompatible               " be iMproved
 filetype off                   " required!
+set fileformats=unix,dos,mac   " support all three, in this order
 
 set foldmethod=syntax
 set foldlevel=7
