@@ -34,34 +34,10 @@ onoremap <F9> <C-C>za
 vnoremap <F9> zf
 
 set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
 
- Bundle 'gmarik/vundle'
+filetype plugin indent on     " required!
+filetype plugin on
 
- " My Bundles here:
- Bundle 'tpope/vim-fugitive'
- Bundle 'Lokaltog/vim-easymotion'
- Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
- Bundle 'tpope/vim-rails.git'
- " vim-scripts repos
- Bundle 'L9'
- Bundle 'FuzzyFinder'
- " non github repos
- Bundle 'git://git.wincent.com/command-t.git'
- " ...
- " Bundle 'YouCompleteMe'
-Bundle 'vim-tabber'
-
- filetype plugin indent on     " required!
- filetype plugin on
- "
- " Brief help
- " :BundleList          - list configured bundles
- " :BundleInstall(!)    - install(update) bundles
- " :BundleSearch(!) foo - search(or refresh cache first) for foo
- " :BundleClean(!)      - confirm(or auto-approve) removal of unused bundles
- "
- " see :h vundle for more details or wiki for FAQ
 set number
 syntax on
 set mouse=a
@@ -117,4 +93,5 @@ autocmd BufEnter * NERDTreeMirror
 set autochdir
 let NERDTreeChDirMode=2
 nnoremap <leader>n :NERDTree .<CR>
+nmap <silent> <C-D> :NERDTreeToggle<CR> " Ctrl+d to toggle NerdTree
 
