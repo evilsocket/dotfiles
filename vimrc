@@ -26,32 +26,25 @@ set fileformats=unix,dos,mac   " support all three, in this order
 
 set foldmethod=syntax
 set foldlevel=7
+
 inoremap <F9> <C-O>za
 nnoremap <F9> za
 onoremap <F9> <C-C>za
 vnoremap <F9> zf
 
-set rtp+=~/.vim/bundle/vundle/
-
-filetype plugin indent on     " required!
+filetype plugin indent on
 filetype plugin on
 
 set number
 syntax on
 set mouse=a
 :set t_Co=256 " 256 colors
-" :set background=dark
-" :color grb256
-:color codeschool
+:color mustang
 
 set guioptions-=r  " no scrollbar on the right
 set guioptions-=l  " no scrollbar on the left
 set guioptions-=m  " no menu
 set guioptions-=T  " no toolbar
-
-au BufEnter,BufNew *.py map <F5> :!python %<CR>
-
-command Tweet PosttoTwitter
 
 map <C-up> :tabr<cr>
 map <C-down> :tabl<cr>
