@@ -58,6 +58,8 @@ if has("gui_running")
         set guifont=Inconsolata\ 9
     elseif has("gui_win32")
         set guifont=Consolas:h11:cANSI
+    else
+        set guifont=Monaco
     endif
 endif
 
