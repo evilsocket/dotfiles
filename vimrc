@@ -39,7 +39,7 @@ set number
 syntax on
 set mouse=a
 :set t_Co=256 " 256 colors
-:color mustang
+:color codeschool 
 
 set guioptions-=r  " no scrollbar on the right
 set guioptions-=l  " no scrollbar on the left
