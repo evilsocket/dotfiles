@@ -4,6 +4,9 @@ cd "$(dirname "${BASH_SOURCE}")"
 git pull origin master
 git submodule update --init --recursive
 
+rm -rf ./vim/bundle/*
+git clone http://github.com/gmarik/vundle.git ./vim/bundle/vundle
+
 dir=~/dotfiles                    # dotfiles directory
 olddir=~/dotfiles_old             # old dotfiles backup directory
 files="vimrc vim zshrc oh-my-zsh"    # list of files/folders to symlink in homedir
@@ -25,3 +28,6 @@ for file in $files; do
     echo "Creating symlink to $file in home directory."
     ln -s $dir/$file ~/.$file
 done
+
+# install vim bundles
+vim +BundleInstall +qa
