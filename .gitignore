@@ -1,1 +1,4 @@
 .DS_*
+*.swp
+vim/bundle/*
+oh-my-zsh
