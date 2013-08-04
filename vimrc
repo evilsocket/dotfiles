@@ -46,7 +46,7 @@ Bundle 'scrooloose/nerdtree'
 " A much better statusline
 Bundle 'Lokaltog/vim-powerline'
     " Use unicode symbols in powerline
-    let g:Powerline_symbols = 'unicode'
+    let g:Powerline_symbols = 'fancy'
 
 " SyntaxComplete package
 Bundle 'vim-scripts/SyntaxComplete'
@@ -107,7 +107,7 @@ if has("gui_running")
     elseif has("gui_win32")
         set guifont=Consolas:h11:cANSI
     else
-        set guifont=Monaco
+        set guifont=Monaco_for_Powerline
     endif
 endif
 
