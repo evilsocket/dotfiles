@@ -9,24 +9,22 @@ set laststatus=2
 set showmatch
 set incsearch
 set hlsearch
-" make searches case-sensitive only if they contain upper-case characters
-set ignorecase smartcase
+set ignorecase smartcase       " make searches case-sensitive only if they contain upper-case characters
 set cursorline
 set switchbuf=useopen
 set numberwidth=5
-set winwidth=79
 set backspace=indent,eol,start
-" display incomplete commands
-set showcmd
+set showcmd                    " display incomplete commands
 set nocompatible               " be iMproved
-filetype off                   " required!
 set fileformats=unix,dos,mac   " support all three, in this order
 set foldmethod=syntax
 set foldlevel=7
 
+" Initialize vundle runtime
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
-" vundle package
+
+" Vundle package
 Bundle 'gmarik/vundle'
 
 " A file tree explorer
@@ -48,22 +46,8 @@ Bundle 'Lokaltog/vim-powerline'
     " Use unicode symbols in powerline
     let g:Powerline_symbols = 'fancy'
 
-" SyntaxComplete package
-Bundle 'vim-scripts/SyntaxComplete'
-    " omni completion with C-SPACE
-    if has("autocmd") && exists("+omnifunc") 
-    autocmd Filetype * 
-        \	if &omnifunc == "" | 
-        \	 setlocal omnifunc=syntaxcomplete#Complete | 
-        \	endif 
-        endif 
-
-    inoremap <expr> <C-Space> pumvisible() \|\| &omnifunc == '' ?
-    \ "\<lt>C-n>" :
-    \ "\<lt>C-x>\<lt>C-o><c-r>=pumvisible() ?" .
-    \ "\"\\<lt>c-n>\\<lt>c-p>\\<lt>c-n>\" :" .
-    \ "\" \\<lt>bs>\\<lt>C-n>\"\<CR>"
-    imap <C-@> <C-Space>
+" Great configs for Ruby
+Bundle 'vim-ruby/vim-ruby'
 
 " Use F9 to fold/unfold
 inoremap <F9> <C-O>za
@@ -77,7 +61,7 @@ vnoremap <F9> zf
 " ( by changing 'h' in the command above to other lower case letter ) that you don't use.
 vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
 
-filetype plugin indent on
+filetype indent on
 filetype plugin on
 
 set number
@@ -114,7 +98,7 @@ endif
 set tabline=%!tabber#TabLine()
 set tags=tags;
 
-
-
-
-    
+" force two spaces indentation for html, ruby and python files
+autocmd Filetype html setlocal ts=2 sts=2 sw=2
+autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
+autocmd Filetype python setlocal ts=2 sts=2 sw=2
