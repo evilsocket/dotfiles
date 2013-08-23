@@ -13,3 +13,6 @@ In order to install this archive to your system, you will need ruby installed an
 
     cd path-to/dotfiles && dotme
 
+### Updated on 2013-08-23 18:16:30 +0200
+
+    dotme add "Library/Application Support/Sublime Text 2"

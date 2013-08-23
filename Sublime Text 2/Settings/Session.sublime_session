@@ -1,0 +1,598 @@
+{
+	"folder_history":
+	[
+		"/Users/evilsocket/Desktop/emoticode-rails",
+		"/Users/evilsocket/Desktop/Dev/gibson/ruby-gibson",
+		"/Users/evilsocket/Desktop/Dev/puppy",
+		"/Users/evilsocket/Desktop/Dev/misc/dalli",
+		"/Users/evilsocket/Desktop/Dev",
+		"/Users/evilsocket/Desktop/Dev/gibson",
+		"/Users/evilsocket/Desktop/prova",
+		"/Users/evilsocket/Desktop/Dev/gibson/gibson"
+	],
+	"last_window_id": 16,
+	"settings":
+	{
+		"new_window_height": 1032.0,
+		"new_window_settings":
+		{
+			"auto_complete":
+			{
+				"selected_items":
+				[
+					[
+						"gbCon",
+						"gbConfigReadTime"
+					],
+					[
+						"is_",
+						"is_puppy_traced"
+					],
+					[
+						"Trace",
+						"TracedObject"
+					]
+				]
+			},
+			"build_system": "",
+			"command_palette":
+			{
+				"height": 127.0,
+				"selected_items":
+				[
+					[
+						"insta",
+						"Package Control: Install Package"
+					],
+					[
+						"ins",
+						"Package Control: Install Package"
+					],
+					[
+						"git",
+						"Package Control: Install Package"
+					]
+				],
+				"width": 449.0
+			},
+			"console":
+			{
+				"height": 125.0
+			},
+			"distraction_free":
+			{
+				"menu_visible": true,
+				"show_minimap": false,
+				"show_open_files": false,
+				"show_tabs": false,
+				"side_bar_visible": false,
+				"status_bar_visible": false
+			},
+			"file_history":
+			[
+				"/Users/evilsocket/Desktop/emoticode-rails/db/csv/sources.csv",
+				"/Users/evilsocket/Desktop/Dev/dotme/incubus/Dotfile",
+				"/Users/evilsocket/Desktop/Dev/gibson/ruby-gibson/lib/gibson/gibson.rb",
+				"/Users/evilsocket/Desktop/emoticode-rails/db/csv/prova.csv",
+				"/Users/evilsocket/Desktop/Dev/gibson/gibson/src/gibson.c",
+				"/Users/evilsocket/Desktop/Dev/gibson/gibson/src/endianness.c",
+				"/Users/evilsocket/Desktop/Dev/htmlgen.rb",
+				"/Users/evilsocket/Desktop/Dev/misc/btc.php",
+				"/Users/evilsocket/Desktop/Dev/misc/razorbot.php",
+				"/Users/evilsocket/Desktop/Dev/misc/webcam.py",
+				"/Users/evilsocket/Desktop/Dev/misc/haar.py",
+				"/Users/evilsocket/Desktop/Dev/SWG/swg/entities/item.py",
+				"/Users/evilsocket/Desktop/Dev/gibson/gibson/src/config.c",
+				"/Users/evilsocket/Desktop/Dev/gibson/phpgibson/gibson.c",
+				"/Users/evilsocket/Desktop/Dev/puppy/puppy.gemspec",
+				"/Users/evilsocket/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+				"/Users/evilsocket/Desktop/Dev/puppy/lib/puppy.rb",
+				"/Users/evilsocket/Desktop/Dev/puppy/lib/.puppy.rb.swp",
+				"/Users/evilsocket/Desktop/hubot.rb",
+				"/Users/evilsocket/Desktop/prova/app/controllers/user_controller.rb",
+				"/Users/evilsocket/Desktop/tracy.rb",
+				"/Users/evilsocket/Desktop/prova/config/routes.rb",
+				"/Users/evilsocket/Desktop/prova/app/controllers/source_controller.rb",
+				"/Users/evilsocket/Desktop/prova/config/application.rb",
+				"/Users/evilsocket/Library/Application Support/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
+				"/Users/evilsocket/Desktop/prova/app/controllers/home_controller.rb",
+				"/Users/evilsocket/Desktop/Dev/gibson/gibson/src/query.c",
+				"/Users/evilsocket/Desktop/Dev/dotme/dotme.rb",
+				"/Users/evilsocket/Desktop/Dev/dotme/folder.rb",
+				"/Users/evilsocket/Desktop/Dev/dotme/incubator.rb",
+				"/Users/evilsocket/Desktop/Dev/dotme/file.rb"
+			],
+			"find":
+			{
+				"height": 35.0
+			},
+			"find_in_files":
+			{
+				"height": 0.0,
+				"where_history":
+				[
+				]
+			},
+			"find_state":
+			{
+				"case_sensitive": false,
+				"find_history":
+				[
+					"\\\"",
+					"([^\\\\])\\\\\"",
+					"[^\\\\]\\\\\"",
+					"options",
+					"Protocol",
+					"gbConfigReadInt",
+					"memr",
+					"x",
+					"Capture",
+					"capture",
+					"Capture",
+					"capture",
+					"Capture",
+					"capture",
+					"Capture",
+					"SetCaptureProperty",
+					"make",
+					"end",
+					"def",
+					"setNoDelay",
+					"mul",
+					"  #   # Trace the object without reporting the caller and represent \n",
+					"something",
+					"#:nodoc:",
+					"=",
+					" =",
+					"= ",
+					"=",
+					"server",
+					"ll_reset",
+					"APPEND_LONG_STAT",
+					"8",
+					"stats",
+					"APPEND_LONG_STAT",
+					"\n    "
+				],
+				"highlight": true,
+				"in_selection": false,
+				"preserve_case": false,
+				"regex": false,
+				"replace_history":
+				[
+					"\\1\"\"",
+					"\"\""
+				],
+				"reverse": false,
+				"show_context": true,
+				"use_buffer2": true,
+				"whole_word": false,
+				"wrap": false
+			},
+			"incremental_find":
+			{
+				"height": 0.0
+			},
+			"input":
+			{
+				"height": 0.0
+			},
+			"layout":
+			{
+				"cells":
+				[
+					[
+						0,
+						0,
+						1,
+						1
+					]
+				],
+				"cols":
+				[
+					0.0,
+					1.0
+				],
+				"rows":
+				[
+					0.0,
+					1.0
+				]
+			},
+			"menu_visible": true,
+			"output.exec":
+			{
+				"height": 100.0
+			},
+			"replace":
+			{
+				"height": 64.0
+			},
+			"save_all_on_build": true,
+			"select_file":
+			{
+				"height": 0.0,
+				"selected_items":
+				[
+					[
+						"puppy.rb",
+						"lib/puppy.rb"
+					],
+					[
+						"sour",
+						"app/controllers/source_controller.rb"
+					],
+					[
+						"us",
+						"app/controllers/user_controller.rb"
+					],
+					[
+						"quer",
+						"src/query.c"
+					],
+					[
+						"fil",
+						"/Users/evilsocket/Desktop/Dev/dotme/file.rb"
+					]
+				],
+				"width": 0.0
+			},
+			"select_project":
+			{
+				"height": 0.0,
+				"selected_items":
+				[
+				],
+				"width": 0.0
+			},
+			"show_minimap": false,
+			"show_open_files": true,
+			"show_tabs": false,
+			"side_bar_visible": true,
+			"side_bar_width": 166.0,
+			"status_bar_visible": true
+		},
+		"new_window_width": 1920.0
+	},
+	"windows":
+	[
+		{
+			"auto_complete":
+			{
+				"selected_items":
+				[
+					[
+						"gbCon",
+						"gbConfigReadTime"
+					],
+					[
+						"is_",
+						"is_puppy_traced"
+					],
+					[
+						"Trace",
+						"TracedObject"
+					]
+				]
+			},
+			"buffers":
+			[
+				{
+					"contents": "class MyCoolModel < ActiveRecord::Base\n  scope :order => \"created_at DESC\"\nend\n",
+					"settings":
+					{
+						"buffer_size": 79,
+						"line_ending": "Unix",
+						"name": "class MyCoolModel < ActiveRecord::Base"
+					}
+				},
+				{
+					"file": "/Users/evilsocket/Library/Application Support/Sublime Text 2/Packages/User/Default (OSX).sublime-keymap",
+					"settings":
+					{
+						"buffer_size": 4,
+						"line_ending": "Unix"
+					}
+				}
+			],
+			"build_system": "",
+			"command_palette":
+			{
+				"height": 127.0,
+				"selected_items":
+				[
+					[
+						"insta",
+						"Package Control: Install Package"
+					],
+					[
+						"ins",
+						"Package Control: Install Package"
+					],
+					[
+						"git",
+						"Package Control: Install Package"
+					]
+				],
+				"width": 449.0
+			},
+			"console":
+			{
+				"height": 125.0
+			},
+			"distraction_free":
+			{
+				"menu_visible": true,
+				"show_minimap": false,
+				"show_open_files": false,
+				"show_tabs": false,
+				"side_bar_visible": false,
+				"status_bar_visible": false
+			},
+			"file_history":
+			[
+				"/Users/evilsocket/Desktop/emoticode-rails/app/controllers/page_controller.rb",
+				"/Users/evilsocket/Desktop/emoticode-rails/db/csv/sources.csv",
+				"/Users/evilsocket/Desktop/Dev/dotme/incubus/Dotfile",
+				"/Users/evilsocket/Desktop/Dev/gibson/ruby-gibson/lib/gibson/gibson.rb",
+				"/Users/evilsocket/Desktop/emoticode-rails/db/csv/prova.csv",
+				"/Users/evilsocket/Desktop/Dev/gibson/gibson/src/gibson.c",
+				"/Users/evilsocket/Desktop/Dev/gibson/gibson/src/endianness.c",
+				"/Users/evilsocket/Desktop/Dev/htmlgen.rb",
+				"/Users/evilsocket/Desktop/Dev/misc/btc.php",
+				"/Users/evilsocket/Desktop/Dev/misc/razorbot.php",
+				"/Users/evilsocket/Desktop/Dev/misc/webcam.py",
+				"/Users/evilsocket/Desktop/Dev/misc/haar.py",
+				"/Users/evilsocket/Desktop/Dev/SWG/swg/entities/item.py",
+				"/Users/evilsocket/Desktop/Dev/gibson/gibson/src/config.c",
+				"/Users/evilsocket/Desktop/Dev/gibson/phpgibson/gibson.c",
+				"/Users/evilsocket/Desktop/Dev/puppy/puppy.gemspec",
+				"/Users/evilsocket/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+				"/Users/evilsocket/Desktop/Dev/puppy/lib/puppy.rb",
+				"/Users/evilsocket/Desktop/Dev/puppy/lib/.puppy.rb.swp",
+				"/Users/evilsocket/Desktop/hubot.rb",
+				"/Users/evilsocket/Desktop/prova/app/controllers/user_controller.rb",
+				"/Users/evilsocket/Desktop/tracy.rb",
+				"/Users/evilsocket/Desktop/prova/config/routes.rb",
+				"/Users/evilsocket/Desktop/prova/app/controllers/source_controller.rb",
+				"/Users/evilsocket/Desktop/prova/config/application.rb",
+				"/Users/evilsocket/Library/Application Support/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
+				"/Users/evilsocket/Desktop/prova/app/controllers/home_controller.rb",
+				"/Users/evilsocket/Desktop/Dev/gibson/gibson/src/query.c",
+				"/Users/evilsocket/Desktop/Dev/dotme/dotme.rb",
+				"/Users/evilsocket/Desktop/Dev/dotme/folder.rb",
+				"/Users/evilsocket/Desktop/Dev/dotme/incubator.rb",
+				"/Users/evilsocket/Desktop/Dev/dotme/file.rb"
+			],
+			"find":
+			{
+				"height": 35.0
+			},
+			"find_in_files":
+			{
+				"height": 0.0,
+				"where_history":
+				[
+				]
+			},
+			"find_state":
+			{
+				"case_sensitive": false,
+				"find_history":
+				[
+					"\\\"",
+					"([^\\\\])\\\\\"",
+					"[^\\\\]\\\\\"",
+					"options",
+					"Protocol",
+					"gbConfigReadInt",
+					"memr",
+					"x",
+					"Capture",
+					"capture",
+					"Capture",
+					"capture",
+					"Capture",
+					"capture",
+					"Capture",
+					"SetCaptureProperty",
+					"make",
+					"end",
+					"def",
+					"setNoDelay",
+					"mul",
+					"  #   # Trace the object without reporting the caller and represent \n",
+					"something",
+					"#:nodoc:",
+					"=",
+					" =",
+					"= ",
+					"=",
+					"server",
+					"ll_reset",
+					"APPEND_LONG_STAT",
+					"8",
+					"stats",
+					"APPEND_LONG_STAT",
+					"\n    "
+				],
+				"highlight": true,
+				"in_selection": false,
+				"preserve_case": false,
+				"regex": false,
+				"replace_history":
+				[
+					"\\1\"\"",
+					"\"\""
+				],
+				"reverse": false,
+				"show_context": true,
+				"use_buffer2": true,
+				"whole_word": false,
+				"wrap": false
+			},
+			"folders":
+			[
+				{
+					"path": "/Users/evilsocket/Desktop/emoticode-rails"
+				}
+			],
+			"groups":
+			[
+				{
+					"selected": 1,
+					"sheets":
+					[
+						{
+							"buffer": 0,
+							"settings":
+							{
+								"buffer_size": 79,
+								"regions":
+								{
+								},
+								"selection":
+								[
+									[
+										78,
+										0
+									]
+								],
+								"settings":
+								{
+									"auto_name": "class MyCoolModel < ActiveRecord::Base",
+									"syntax": "Packages/Text/Plain text.tmLanguage"
+								},
+								"translation.x": 0.0,
+								"translation.y": 0.0,
+								"zoom_level": 1.0
+							},
+							"type": "text"
+						},
+						{
+							"buffer": 1,
+							"file": "/Users/evilsocket/Library/Application Support/Sublime Text 2/Packages/User/Default (OSX).sublime-keymap",
+							"settings":
+							{
+								"buffer_size": 4,
+								"regions":
+								{
+								},
+								"selection":
+								[
+									[
+										0,
+										0
+									]
+								],
+								"settings":
+								{
+									"syntax": "Packages/JavaScript/JSON.tmLanguage"
+								},
+								"translation.x": 0.0,
+								"translation.y": 0.0,
+								"zoom_level": 1.0
+							},
+							"type": "text"
+						}
+					]
+				}
+			],
+			"incremental_find":
+			{
+				"height": 0.0
+			},
+			"input":
+			{
+				"height": 0.0
+			},
+			"layout":
+			{
+				"cells":
+				[
+					[
+						0,
+						0,
+						1,
+						1
+					]
+				],
+				"cols":
+				[
+					0.0,
+					1.0
+				],
+				"rows":
+				[
+					0.0,
+					1.0
+				]
+			},
+			"menu_visible": true,
+			"output.exec":
+			{
+				"height": 100.0
+			},
+			"position": "0 4 1920 1054 0 0 1920 1058 ",
+			"replace":
+			{
+				"height": 64.0
+			},
+			"save_all_on_build": true,
+			"select_file":
+			{
+				"height": 0.0,
+				"selected_items":
+				[
+					[
+						"pagec",
+						"app/controllers/page_controller.rb"
+					],
+					[
+						"puppy.rb",
+						"lib/puppy.rb"
+					],
+					[
+						"sour",
+						"app/controllers/source_controller.rb"
+					],
+					[
+						"us",
+						"app/controllers/user_controller.rb"
+					],
+					[
+						"quer",
+						"src/query.c"
+					],
+					[
+						"fil",
+						"/Users/evilsocket/Desktop/Dev/dotme/file.rb"
+					]
+				],
+				"width": 0.0
+			},
+			"select_project":
+			{
+				"height": 0.0,
+				"selected_items":
+				[
+				],
+				"width": 0.0
+			},
+			"show_minimap": false,
+			"show_open_files": true,
+			"show_tabs": false,
+			"side_bar_visible": true,
+			"side_bar_width": 166.0,
+			"status_bar_visible": true,
+			"window_id": 16,
+			"workspace_name": ""
+		}
+	],
+	"workspaces":
+	{
+		"recent_workspaces":
+		[
+		]
+	}
+}
