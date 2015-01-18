@@ -115,3 +115,7 @@ fi
 
 alias cls=clear
 PS1='[\w] '
+
+export iOSOpenDevPath=/opt/iOSOpenDev
+export iOSOpenDevDevice=
+export PATH=/opt/iOSOpenDev/bin:$PATH
