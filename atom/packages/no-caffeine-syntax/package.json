@@ -1,0 +1,37 @@
+{
+  "name": "no-caffeine-syntax",
+  "theme": "syntax",
+  "version": "0.7.0",
+  "private": true,
+  "description": "A dark, crisp and clean Atom Editor syntax theme with no caffeine",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/thomaslindstrom/no-caffeine-syntax"
+  },
+  "license": "MIT",
+  "engines": {
+    "atom": ">0.50.0"
+  },
+  "readme": "# No Caffeine Syntax Theme\n\nA syntax theme for Atom that is [crisp and clean with no caffeine](http://www.youtube.com/watch?v=L-ZOB-NSPlU). Specialises in CoffeeScript, Sass (SCSS) and HTML, but also looks great with Markdown (GFM), Ruby, PHP, CSS, JavaScript and LESS (among others).\n\nBackground image stolen from [the CodeMirror Ambiance theme](http://codemirror.net/demo/theme.html).\n\n\n## Install:\n\n```\napm install no-caffeine-syntax\n```\n\n\n## Preview:\n\n### CoffeeScript:\n\n![Screenshot of the No Caffeine syntax theme](http://f.cl.ly/items/2M2E3Z2C0k3K1B1i2g2o/Screen%20Shot%202014-03-02%20at%2005.50.43.png)\n",
+  "readmeFilename": "README.md",
+  "bugs": {
+    "url": "https://github.com/thomaslindstrom/no-caffeine-syntax/issues"
+  },
+  "homepage": "https://github.com/thomaslindstrom/no-caffeine-syntax",
+  "_id": "no-caffeine-syntax@0.7.0",
+  "dist": {
+    "shasum": "da4619aadebd6fcc1f9054865782ce61c50466d9"
+  },
+  "_resolved": "/private/var/folders/8k/bqw_s48j54n97tf03lfg256h0000gn/T/d-115017-34380-bhlda3/package.tgz",
+  "_from": "/private/var/folders/8k/bqw_s48j54n97tf03lfg256h0000gn/T/d-115017-34380-bhlda3/package.tgz",
+  "_atomModuleCache": {
+    "version": 1,
+    "dependencies": [],
+    "extensions": {
+      ".json": [
+        "package.json"
+      ]
+    },
+    "folders": []
+  }
+}

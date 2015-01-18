@@ -1,0 +1,26 @@
+"*":
+  editor:
+    fontSize: 11
+    softWrap: true
+    invisibles: {}
+  core:
+    disabledPackages: [
+      "symbols-view"
+    ]
+    themes: [
+      "atom-dark-ui"
+      "monokai"
+    ]
+  "autocomplete-clang":
+    preCompiledHeaders: {}
+    std: {}
+  "exception-reporting":
+    userId: "5c0bee82-86eb-8e8b-b549-1767a1930439"
+  welcome:
+    showOnStartup: false
+  "atom-ctags":
+    buildTimeout: 120000
+    autoBuildTagsWhenActive: true
+  "file-icons": {}
+  "autocomplete-plus": {}
+  "terminal-panel": {}

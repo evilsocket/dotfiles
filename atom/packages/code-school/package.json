@@ -1,0 +1,37 @@
+{
+  "name": "code-school",
+  "theme": "syntax",
+  "version": "0.4.0",
+  "private": true,
+  "description": "Code School 2 theme for Atom",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/leejarvis/atom-code-school-theme"
+  },
+  "license": "MIT",
+  "engines": {
+    "atom": ">0.50.0"
+  },
+  "readme": "# Code School 2 theme\n\nCode School 2 TextMate theme for Atom\n\n![](http://f.cl.ly/items/2A3A0V2f31342N1R2V1z/Screen%20Shot%202014-02-27%20at%206.19.48%20PM.png)\n",
+  "readmeFilename": "README.md",
+  "bugs": {
+    "url": "https://github.com/leejarvis/atom-code-school-theme/issues"
+  },
+  "homepage": "https://github.com/leejarvis/atom-code-school-theme",
+  "_id": "code-school@0.4.0",
+  "dist": {
+    "shasum": "ae5e0fa56dc9c39b345ce32a37420af87cb79af2"
+  },
+  "_resolved": "/private/var/folders/8k/bqw_s48j54n97tf03lfg256h0000gn/T/d-115013-3833-kfuypa/package.tgz",
+  "_from": "/private/var/folders/8k/bqw_s48j54n97tf03lfg256h0000gn/T/d-115013-3833-kfuypa/package.tgz",
+  "_atomModuleCache": {
+    "version": 1,
+    "dependencies": [],
+    "extensions": {
+      ".json": [
+        "package.json"
+      ]
+    },
+    "folders": []
+  }
+}

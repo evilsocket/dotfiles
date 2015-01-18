@@ -1,0 +1,12 @@
+'.platform-darwin .editor':
+  'cmd-r': 'atom-ctags:toggle-file-symbols'
+  'cmd-alt-down': 'atom-ctags:go-to-declaration'
+  'cmd-alt-up': 'atom-ctags:return-from-declaration'
+
+'.platform-win32 .editor':
+  'ctrl-r': 'atom-ctags:toggle-file-symbols'
+
+'.platform-linux .editor':
+  'ctrl-r': 'atom-ctags:toggle-file-symbols'
+  'ctrl-alt-down': 'atom-ctags:go-to-declaration'
+  'ctrl-alt-up': 'atom-ctags:return-from-declaration'

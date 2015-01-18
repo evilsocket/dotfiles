@@ -1,0 +1,25 @@
+'.source.cmake':
+  'File(Glob …)':
+    'prefix': 'glob'
+    'body': 'FILE(GLOB${1:_RECURSE} ${2:VAR} ${3:src/*.cc})'
+  'Foreach … EndForeach':
+    'prefix': 'for'
+    'body': 'FOREACH(${1:VAR} ${2:items})\n\t$0\nENDFOREACH()'
+  'Function … EndFunction':
+    'prefix': 'fun'
+    'body': 'FUNCTION(${1:FUNCTION_NAME}${2/(.+)/(?1: )/}${2:arg1})\n\t$0\nENDFUNCTION()'
+  'If … Endif':
+    'prefix': 'if'
+    'body': 'IF(${1:condition})\n\t$0\nENDIF()'
+  'List(Append …)':
+    'prefix': 'append'
+    'body': 'LIST(APPEND ${1:LIST_VARIABLE} ${2:new_element})'
+  'Macro … EndMacro':
+    'prefix': 'mac'
+    'body': 'MACRO(${1:MACRO_NAME}${2/(.+)/(?1: )/}${2:arg1})\n\t$0\nENDMACRO()'
+  'Message(…)':
+    'prefix': 'msg'
+    'body': 'MESSAGE("$1")$0'
+  'Set(Variable …)':
+    'prefix': 'set'
+    'body': 'SET(${1:VAR} ${2:value})'

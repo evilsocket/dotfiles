@@ -1,0 +1,5 @@
+'.source.cmake':
+  'editor':
+    'increaseIndentPattern': '(?xi)\n\t    \\b (function|macro|if|foreach|while) \\b\n\t |  \\b else(if)? \\b\n\t |  \\( [^)]* $\n\t'
+    'decreaseIndentPattern': '(?xi)\n\t    \\b end(function|macro|if|foreach|while) \\b\n\t |  \\b else(if)? \\b\n\t |  ^ [^(]* \\) \\s* $\n\t'
+    'commentStart': '# '

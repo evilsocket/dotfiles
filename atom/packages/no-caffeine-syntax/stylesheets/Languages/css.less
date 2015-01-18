@@ -1,0 +1,33 @@
+// ---------------------------------------------------------------------------
+//  Languages: CSS
+// ---------------------------------------------------------------------------
+
+    .source.css {
+        .entity {
+            &.tag { color: @color-orange; }
+            &.class, &.id { color: @color-blue; }
+            &.pseudo-class, &.pseudo-element { color: @color-brown; }
+        }
+
+        // CSS: parentheses in :not()
+        .selector .punctuation.function { color: @color-brown; }
+
+        // CSS: what comes after the property name
+        .property-value { color: @color-beige; }
+
+        // CSS: colon
+        .punctuation.separator { color: @color-grey; }
+        // CSS: semicolon
+        .punctuation.terminator { color: @color-grey; }
+
+        // CSS: brackets
+        .punctuation.property-list { color: @color-grey; }
+
+        .keyword {
+            // CSS: eg. %, em, px
+            &.unit { color: @color-green_sea; }
+
+            // CSS: !important
+            &.important { color: @color-orange_dark; }
+        }
+    }

@@ -1,0 +1,48 @@
+{
+  "name": "file-icon-supplement",
+  "version": "0.7.2",
+  "description": "Additional file extension icons for all themes",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sscotth/file-icon-supplement"
+  },
+  "license": "MIT",
+  "engines": {
+    "atom": ">=0.130.0"
+  },
+  "activationEvents": [
+    "editor:display-updated"
+  ],
+  "main": "./lib/file-icon-supplement",
+  "devDependencies": {
+    "wrench": "^1.5",
+    "fs-plus": "^2.3",
+    "temp": "^0.7"
+  },
+  "readme": "# File Icon Supplement for the Atom Editor [![Build Status](https://travis-ci.org/sscotth/file-icon-supplement.svg?branch=master)](https://travis-ci.org/sscotth/file-icon-supplement)\n\nAdditional file icons for the [Atom Editor](http://atom.io). Optimized for atom-dark-ui/atom-light-ui based themes. Compatible with Unity, Seti, and others.\n\n![Screenshot](https://raw.githubusercontent.com/sscotth/file-icon-supplement/master/resources/screenshot.png \"Screenshot\")\n\n## Installation\n\nIn Atom, open Preferences > Packages, search for `file-icon-supplement` package. Once found, click the `Install` button to install this package.\n\nAlternately, you can install the package from console:\n\n```bash\napm install file-icon-supplement\n```\n\nYou may then need to restart the Atom editor.\n\n## Features\n\n* Icons visible in tree-view, tabs, fuzzy-finder, and find-and-replace, status-bar, grammar-status, and grammar-selector\n* Toggle for each of the above areas\n* Respects the \"Show Icons\" setting on tabs\n* TODO: Full color, single color, and no color icons\n* TODO: Toggle between icon options where available\n* TODO: Test the find-and-replace class event\n\n## Issues and Pull Requests :bug:\n\nSome of the features of this package rely on recent additions by myself and others to atom and may not be fully tested. Please report any problems or feature suggestions [here](https://github.com/sscotth/file-icon-supplement/issues). Pull requests are welcome.\n",
+  "readmeFilename": "README.md",
+  "bugs": {
+    "url": "https://github.com/sscotth/file-icon-supplement/issues"
+  },
+  "homepage": "https://github.com/sscotth/file-icon-supplement",
+  "_id": "file-icon-supplement@0.7.2",
+  "dist": {
+    "shasum": "ec8a3963beec78ecc1406ab4845f2eb08a9191c3"
+  },
+  "_resolved": "/private/var/folders/8k/bqw_s48j54n97tf03lfg256h0000gn/T/d-115017-34320-5sqerd/package.tgz",
+  "_from": "/private/var/folders/8k/bqw_s48j54n97tf03lfg256h0000gn/T/d-115017-34320-5sqerd/package.tgz",
+  "_atomModuleCache": {
+    "version": 1,
+    "dependencies": [],
+    "extensions": {
+      ".coffee": [
+        "lib/file-icon-supplement-view.coffee",
+        "lib/file-icon-supplement.coffee"
+      ],
+      ".json": [
+        "package.json"
+      ]
+    },
+    "folders": []
+  }
+}

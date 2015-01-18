@@ -1,0 +1,189 @@
+{
+  "name": "todo-show",
+  "main": "./lib/show-todo",
+  "version": "0.6.0",
+  "private": true,
+  "description": "Finds all the TODOs, FIXMEs, CHANGEDs in your project.",
+  "activationEvents": [
+    "todo-show:find-in-project"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jamischarles/atom-todo-show"
+  },
+  "license": "MIT",
+  "engines": {
+    "atom": ">0.50.0"
+  },
+  "dependencies": {
+    "fs-plus": "2.x",
+    "dust.js": "~0.1.0",
+    "underscore": "^1.6.0",
+    "q": "^1.0.1",
+    "loophole": "^1.0.0"
+  },
+  "readme": "# TODO-show package\n\nFetches TODO, FIXME, CHANGED comments from the project. Or anything else you want (settings).\n\nIgnores anything in your .gitignore.\n\n\n![](https://raw.github.com/jamischarles/atom-todo-show/master/screenshots/preview.png)\n\n## Coming features (PR's welcome)\n- ~~TODO, FIXME, CHANGED included in search~~\n- goto result should start at comment, NOT at todo symbol\n- don't open multiple search windows when we search multiple times\n- how do we handle file changes?\n- nicer styling\n- ignore TODOs outside of comment blocks\n- have nice message when no results are found\n- refactor and clean up code\n- fix / add keymap shortcut\n- add test cases\n\nInspired by the textmate TODO bundle.\n",
+  "readmeFilename": "README.md",
+  "bugs": {
+    "url": "https://github.com/jamischarles/atom-todo-show/issues"
+  },
+  "homepage": "https://github.com/jamischarles/atom-todo-show",
+  "_id": "todo-show@0.6.0",
+  "dist": {
+    "shasum": "bfc9a259b358b808158ebceeba7876cdfb72f214"
+  },
+  "_resolved": "/private/var/folders/8k/bqw_s48j54n97tf03lfg256h0000gn/T/d-115018-39314-1v3r2w2/package.tgz",
+  "_from": "/private/var/folders/8k/bqw_s48j54n97tf03lfg256h0000gn/T/d-115018-39314-1v3r2w2/package.tgz",
+  "_atomModuleCache": {
+    "version": 1,
+    "dependencies": [
+      {
+        "name": "dust.js",
+        "version": "0.1.0",
+        "path": "node_modules/dust.js/lib/dust.js"
+      },
+      {
+        "name": "fs-plus",
+        "version": "2.4.0",
+        "path": "node_modules/fs-plus/lib/fs-plus.js"
+      },
+      {
+        "name": "async",
+        "version": "0.2.10",
+        "path": "node_modules/fs-plus/node_modules/async/lib/async.js"
+      },
+      {
+        "name": "mkdirp",
+        "version": "0.3.5",
+        "path": "node_modules/fs-plus/node_modules/mkdirp/index.js"
+      },
+      {
+        "name": "rimraf",
+        "version": "2.2.8",
+        "path": "node_modules/fs-plus/node_modules/rimraf/rimraf.js"
+      },
+      {
+        "name": "underscore-plus",
+        "version": "1.6.6",
+        "path": "node_modules/fs-plus/node_modules/underscore-plus/lib/underscore-plus.js"
+      },
+      {
+        "name": "underscore",
+        "version": "1.6.0",
+        "path": "node_modules/fs-plus/node_modules/underscore-plus/node_modules/underscore/underscore.js"
+      },
+      {
+        "name": "loophole",
+        "version": "1.0.0",
+        "path": "node_modules/loophole/lib/loophole.js"
+      },
+      {
+        "name": "q",
+        "version": "1.1.2",
+        "path": "node_modules/q/q.js"
+      },
+      {
+        "name": "underscore",
+        "version": "1.7.0",
+        "path": "node_modules/underscore/underscore.js"
+      }
+    ],
+    "extensions": {
+      ".coffee": [
+        "lib/show-todo-view.coffee",
+        "lib/show-todo.coffee"
+      ],
+      ".js": [
+        "node_modules/dust.js/benchmark/server.js",
+        "node_modules/dust.js/benchmark/suites/dust_suite.js",
+        "node_modules/dust.js/benchmark/suites/handlebars_suite.js",
+        "node_modules/dust.js/benchmark/suites/jquery_suite.js",
+        "node_modules/dust.js/benchmark/suites/mustache_suite.js",
+        "node_modules/dust.js/benchmark/uubench.js",
+        "node_modules/dust.js/dist/dust-core-0.3.0.js",
+        "node_modules/dust.js/dist/dust-core-0.3.0.min.js",
+        "node_modules/dust.js/dist/dust-full-0.3.0.js",
+        "node_modules/dust.js/dist/dust-full-0.3.0.min.js",
+        "node_modules/dust.js/docs/build.js",
+        "node_modules/dust.js/docs/index.js",
+        "node_modules/dust.js/lib/compiler.js",
+        "node_modules/dust.js/lib/dust.js",
+        "node_modules/dust.js/lib/parser.js",
+        "node_modules/dust.js/lib/server.js",
+        "node_modules/dust.js/src/build.js",
+        "node_modules/dust.js/vendor/beautify.js",
+        "node_modules/dust.js/vendor/ecma.js",
+        "node_modules/dust.js/vendor/hijs.js",
+        "node_modules/dust.js/vendor/jquery.min.js",
+        "node_modules/dust.js/vendor/jsdump.js",
+        "node_modules/dust.js/vendor/showdown.js",
+        "node_modules/fs-plus/lib/fs-plus.js",
+        "node_modules/fs-plus/node_modules/async/lib/async.js",
+        "node_modules/fs-plus/node_modules/mkdirp/examples/pow.js",
+        "node_modules/fs-plus/node_modules/mkdirp/index.js",
+        "node_modules/fs-plus/node_modules/rimraf/bin.js",
+        "node_modules/fs-plus/node_modules/rimraf/rimraf.js",
+        "node_modules/fs-plus/node_modules/underscore-plus/lib/underscore-plus.js",
+        "node_modules/fs-plus/node_modules/underscore-plus/node_modules/underscore/underscore-min.js",
+        "node_modules/fs-plus/node_modules/underscore-plus/node_modules/underscore/underscore.js",
+        "node_modules/loophole/lib/loophole.js",
+        "node_modules/q/q.js",
+        "node_modules/q/queue.js",
+        "node_modules/underscore/underscore-min.js",
+        "node_modules/underscore/underscore.js"
+      ],
+      ".json": [
+        "node_modules/dust.js/package.json",
+        "node_modules/fs-plus/node_modules/async/component.json",
+        "node_modules/fs-plus/node_modules/async/package.json",
+        "node_modules/fs-plus/node_modules/mkdirp/package.json",
+        "node_modules/fs-plus/node_modules/rimraf/package.json",
+        "node_modules/fs-plus/node_modules/underscore-plus/node_modules/underscore/package.json",
+        "node_modules/fs-plus/node_modules/underscore-plus/package.json",
+        "node_modules/fs-plus/package.json",
+        "node_modules/loophole/package.json",
+        "node_modules/q/package.json",
+        "node_modules/underscore/package.json",
+        "package.json"
+      ]
+    },
+    "folders": [
+      {
+        "paths": [
+          "lib",
+          "",
+          "spec/fixtures",
+          "spec"
+        ],
+        "dependencies": {
+          "fs-plus": "2.x",
+          "dust.js": "~0.1.0",
+          "underscore": "^1.6.0",
+          "q": "^1.0.1",
+          "loophole": "^1.0.0"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/fs-plus/lib",
+          "node_modules/fs-plus"
+        ],
+        "dependencies": {
+          "underscore-plus": "1.x",
+          "mkdirp": "~0.3.5",
+          "rimraf": "~2.2.2",
+          "async": "~0.2.9"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/fs-plus/node_modules/underscore-plus/lib",
+          "node_modules/fs-plus/node_modules/underscore-plus"
+        ],
+        "dependencies": {
+          "underscore": "~1.6.0"
+        }
+      }
+    ]
+  }
+}

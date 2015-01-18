@@ -1,0 +1,16 @@
+'menu': [
+  {
+    'label': 'Packages'
+    'submenu': [
+      'label': 'Symbols'
+      'submenu': [
+        { 'label': 'File Symbols', 'command': 'atom-ctags:toggle-file-symbols' }
+      ]
+    ]
+  }
+]
+
+'context-menu':
+  'atom-text-editor':
+    'Go to Declaration': 'atom-ctags:go-to-declaration',
+    'Rebuild ctags': 'atom-ctags:rebuild'

@@ -1,0 +1,16 @@
+// ---------------------------------------------------------------------------
+//  Languages: Sass
+// ---------------------------------------------------------------------------
+
+    .source.scss {
+        .entity {
+            // Sass: %placeholder
+            &.placeholder { color: @color-blue_pale; }
+
+            // Sass: &something
+            &.entity.reference + .property-name .invalid { color: @color-blue_pale; }
+        }
+
+        // Sass: $something
+        .variable:not(.interpolation):not(.set) { color: @color-red_pale; }
+    }

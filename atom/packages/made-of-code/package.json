@@ -1,0 +1,37 @@
+{
+  "name": "made-of-code",
+  "theme": "syntax",
+  "version": "0.2.0",
+  "private": true,
+  "description": "A port of Made of Code theme from TextMate",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fusion94/MadeOfCode"
+  },
+  "license": "MIT",
+  "engines": {
+    "atom": ">0.50.0"
+  },
+  "readme": "# MadeOfCode theme\n\nA MadeOfCode syntax theme for Atom.\n\nOriginally converted from the [TextMate](http://mkdynamic.s3.amazonaws.com/downloads/Made%20of%20Code.tmTheme)\ntheme using the [TextMate bundle converter](http://atom.io/docs/latest/converting-a-text-mate-theme).\n\n![](https://s3.amazonaws.com/Atom-Assets/moc-shot.png)",
+  "readmeFilename": "README.md",
+  "bugs": {
+    "url": "https://github.com/fusion94/MadeOfCode/issues"
+  },
+  "homepage": "https://github.com/fusion94/MadeOfCode",
+  "_id": "made-of-code@0.2.0",
+  "dist": {
+    "shasum": "c186b97fee5c4be2963f19bd5e26788a28d456f7"
+  },
+  "_resolved": "/private/var/folders/8k/bqw_s48j54n97tf03lfg256h0000gn/T/d-115013-3942-17pgkun/package.tgz",
+  "_from": "/private/var/folders/8k/bqw_s48j54n97tf03lfg256h0000gn/T/d-115013-3942-17pgkun/package.tgz",
+  "_atomModuleCache": {
+    "version": 1,
+    "dependencies": [],
+    "extensions": {
+      ".json": [
+        "package.json"
+      ]
+    },
+    "folders": []
+  }
+}

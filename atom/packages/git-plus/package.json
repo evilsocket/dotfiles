@@ -1,0 +1,292 @@
+{
+  "name": "git-plus",
+  "main": "./lib/git-plus",
+  "version": "4.3.1",
+  "description": "Do git things without the terminal",
+  "activationEvents": [
+    "git-plus:menu",
+    "git-plus:add",
+    "git-plus:add-all",
+    "git-plus:add-all-and-commit",
+    "git-plus:add-and-commit",
+    "git-plus:diff-all",
+    "git-plus:diff",
+    "git-plus:log",
+    "git-plus:log-current-file",
+    "git-plus:status",
+    "git-plus:push",
+    "git-plus:pull",
+    "git-plus:remove",
+    "git-plus:remove-current-file",
+    "git-plus:checkout",
+    "git-plus:checkout-current-file",
+    "git-plus:checkout-all-files",
+    "git-plus:cherry-pick",
+    "git-plus:commit",
+    "git-plus:commit-amend",
+    "git-plus:fetch",
+    "git-plus:new-branch",
+    "git-plus:reset-head",
+    "git-plus:show",
+    "git-plus:stage-files",
+    "git-plus:stage-hunk",
+    "git-plus:stash-save",
+    "git-plus:stash-pop",
+    "git-plus:stash-keep",
+    "git-plus:stash-drop",
+    "git-plus:tags",
+    "git-plus:unstage-files",
+    "git-plus:init",
+    "git-plus:run",
+    "git-plus:merge"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/akonwi/git-plus"
+  },
+  "license": "MIT",
+  "engines": {
+    "atom": ">0.50.0"
+  },
+  "dependencies": {
+    "fs-plus": "^2.2.0",
+    "fuzzaldrin": "^1.2.0",
+    "underscore-plus": "1.x",
+    "emissary": "~1.2.1"
+  },
+  "readme": "# git-plus package\n\n# ATTENTION!\n  Development on this package is done. I no longer use atom and don't have time to maintain this project. If anyone is willing\n  to pick it up or make pull requests, I'm fine with that but I won't be developing new features any longer.\n\n[![endorse](https://api.coderwall.com/akonwi/endorsecount.png)](https://coderwall.com/akonwi)\n\nvim-fugitive like package for atom. make commits and other git things without the terminal\n\n![A screenshot of your spankin' package](https://raw.githubusercontent.com/akonwi/git-plus/master/commit.gif)\n\n## Usage\n\n### Git-Plus Palette\n>- `Cmd-Shift-H` on MacOS\n>- `Ctrl-Shift-H` on Windows + Linux\n>- `Git Plus: Menu` on the atom command palette.\n\n### Commands\n1. `Git add [all]`\n\n  Git add will add the current file and 'add all' will add all changed files\n  Default key binding: `Cmd-Shift-A`\n\n2. `Git commit`\n\n  Will pull up a commit message file. The commit will be made when the file is saved NOT when the pane is closed. You can just cancel by closing the tab.\n  Default key binding: `Cmd-Shift-C`(*`Ctrl-Shift-X`* on Windows + Linux)\n\n3. `Git commit amend`\n\n  Will amend the changes to previous commit.\n\n4. `Git checkout current file`\n\n  Undo changes and checkout current file.\n\n5. `Git [checkout]`\n\n  Change branches\n\n6. `Git Diff [All]`\n\n  Shows diff for current file or All the files. Diff can either be with staged or unstaged as selected in options.\n\n7. `Git new branch`\n\n  Create a new branch\n\n8. `Git [push|pull]`\n\n  When Pushing, if you have multiple remote repos, you can choose which to push to.\n9. `Git Add and Commit`\n\n  Add the current file and pull up the commit message file. Similar to `Git add` and `Git commit` in succession.\n  Default key binding: `Cmd-Shift-A c`\n\n10. `Git Add All and Commit`\n\n  Add all changed files and pull up the commit message file. Similar to `Git add all` and `Git commit` in succession.\n  Default key binding: `Cmd-Shift-A a`\n\n11. `Git rm [current file]`\n\n  Git rm the current file or open an selector to select the files to remove. You can select multiple files at once.\n\n12. `Git Log [Current File]`\n\n  Show the commit history [for the current file] and show display the selected commit.\n\n13. `Git Show`\n\n  Show the specified object, for example `HEAD`, `HEAD~2`, `3925a0d`, `origin/master` or `v2.7.3`.\n\n## Contributing\n\n1. Fork it\n2. Create your feature branch (`git checkout -b my-new-feature`)\n3. Commit your changes (`git commit -am 'Add some feature'`)\n4. Push to the branch (`git push origin my-new-feature`)\n5. Create new Pull Request\n",
+  "readmeFilename": "README.md",
+  "bugs": {
+    "url": "https://github.com/akonwi/git-plus/issues"
+  },
+  "homepage": "https://github.com/akonwi/git-plus",
+  "_id": "git-plus@4.3.1",
+  "dist": {
+    "shasum": "d226ef6c1f2ed69eac204d875330097137154eab"
+  },
+  "_resolved": "/private/var/folders/8k/bqw_s48j54n97tf03lfg256h0000gn/T/d-115018-39256-ful5uw/package.tgz",
+  "_from": "/private/var/folders/8k/bqw_s48j54n97tf03lfg256h0000gn/T/d-115018-39256-ful5uw/package.tgz",
+  "_atomModuleCache": {
+    "version": 1,
+    "dependencies": [
+      {
+        "name": "emissary",
+        "version": "1.2.2",
+        "path": "node_modules/emissary/lib/emissary.js"
+      },
+      {
+        "name": "harmony-collections",
+        "version": "0.3.7",
+        "path": "node_modules/emissary/node_modules/harmony-collections/harmony-collections.js"
+      },
+      {
+        "name": "mixto",
+        "version": "1.0.0",
+        "path": "node_modules/emissary/node_modules/mixto/lib/mixin.js"
+      },
+      {
+        "name": "property-accessors",
+        "version": "1.1.0",
+        "path": "node_modules/emissary/node_modules/property-accessors/lib/property-accessors.js"
+      },
+      {
+        "name": "harmony-collections",
+        "version": "0.3.7",
+        "path": "node_modules/emissary/node_modules/property-accessors/node_modules/harmony-collections/harmony-collections.js"
+      },
+      {
+        "name": "fs-plus",
+        "version": "2.4.0",
+        "path": "node_modules/fs-plus/lib/fs-plus.js"
+      },
+      {
+        "name": "async",
+        "version": "0.2.10",
+        "path": "node_modules/fs-plus/node_modules/async/lib/async.js"
+      },
+      {
+        "name": "mkdirp",
+        "version": "0.3.5",
+        "path": "node_modules/fs-plus/node_modules/mkdirp/index.js"
+      },
+      {
+        "name": "rimraf",
+        "version": "2.2.8",
+        "path": "node_modules/fs-plus/node_modules/rimraf/rimraf.js"
+      },
+      {
+        "name": "fuzzaldrin",
+        "version": "1.2.0",
+        "path": "node_modules/fuzzaldrin/lib/fuzzaldrin.js"
+      },
+      {
+        "name": "underscore-plus",
+        "version": "1.6.6",
+        "path": "node_modules/underscore-plus/lib/underscore-plus.js"
+      },
+      {
+        "name": "underscore",
+        "version": "1.6.0",
+        "path": "node_modules/underscore-plus/node_modules/underscore/underscore.js"
+      }
+    ],
+    "extensions": {
+      ".coffee": [
+        "lib/git-plus-commands.coffee",
+        "lib/git-plus.coffee",
+        "lib/git.coffee",
+        "lib/models/fuzzy.coffee",
+        "lib/models/git-add-all-and-commit.coffee",
+        "lib/models/git-add-and-commit.coffee",
+        "lib/models/git-add.coffee",
+        "lib/models/git-branch.coffee",
+        "lib/models/git-checkout-all-files.coffee",
+        "lib/models/git-checkout-current-file.coffee",
+        "lib/models/git-cherry-pick.coffee",
+        "lib/models/git-commit-amend.coffee",
+        "lib/models/git-commit.coffee",
+        "lib/models/git-diff-all.coffee",
+        "lib/models/git-diff.coffee",
+        "lib/models/git-fetch.coffee",
+        "lib/models/git-init.coffee",
+        "lib/models/git-log.coffee",
+        "lib/models/git-merge.coffee",
+        "lib/models/git-pull.coffee",
+        "lib/models/git-push.coffee",
+        "lib/models/git-remove.coffee",
+        "lib/models/git-run.coffee",
+        "lib/models/git-show.coffee",
+        "lib/models/git-stage-files.coffee",
+        "lib/models/git-stage-hunk.coffee",
+        "lib/models/git-stash-apply.coffee",
+        "lib/models/git-stash-drop.coffee",
+        "lib/models/git-stash-pop.coffee",
+        "lib/models/git-stash-save.coffee",
+        "lib/models/git-status.coffee",
+        "lib/models/git-tags.coffee",
+        "lib/models/git-unstage-files.coffee",
+        "lib/views/branch-list-view.coffee",
+        "lib/views/cherry-pick-select-branch-view.coffee",
+        "lib/views/cherry-pick-select-commits-view.coffee",
+        "lib/views/git-palette-view.coffee",
+        "lib/views/log-list-view.coffee",
+        "lib/views/merge-list-view.coffee",
+        "lib/views/output-view.coffee",
+        "lib/views/pull-branch-list-view.coffee",
+        "lib/views/remote-list-view.coffee",
+        "lib/views/remove-list-view.coffee",
+        "lib/views/select-list-multiple-view.coffee",
+        "lib/views/select-stage-files-view.coffee",
+        "lib/views/select-stage-hunk-file-view.coffee",
+        "lib/views/select-stage-hunks-view.coffee",
+        "lib/views/select-unstage-files-view.coffee",
+        "lib/views/status-list-view.coffee",
+        "lib/views/status-view.coffee",
+        "lib/views/tag-create-view.coffee",
+        "lib/views/tag-list-view.coffee",
+        "lib/views/tag-view.coffee"
+      ],
+      ".js": [
+        "node_modules/emissary/lib/behavior.js",
+        "node_modules/emissary/lib/emissary.js",
+        "node_modules/emissary/lib/emitter.js",
+        "node_modules/emissary/lib/helpers.js",
+        "node_modules/emissary/lib/signal.js",
+        "node_modules/emissary/lib/subscriber.js",
+        "node_modules/emissary/lib/subscription.js",
+        "node_modules/emissary/node_modules/harmony-collections/harmony-collections.js",
+        "node_modules/emissary/node_modules/harmony-collections/harmony-collections.min.js",
+        "node_modules/emissary/node_modules/mixto/lib/mixin.js",
+        "node_modules/emissary/node_modules/property-accessors/lib/property-accessors.js",
+        "node_modules/emissary/node_modules/property-accessors/node_modules/harmony-collections/harmony-collections.js",
+        "node_modules/emissary/node_modules/property-accessors/node_modules/harmony-collections/harmony-collections.min.js",
+        "node_modules/fs-plus/lib/fs-plus.js",
+        "node_modules/fs-plus/node_modules/async/lib/async.js",
+        "node_modules/fs-plus/node_modules/mkdirp/examples/pow.js",
+        "node_modules/fs-plus/node_modules/mkdirp/index.js",
+        "node_modules/fs-plus/node_modules/rimraf/bin.js",
+        "node_modules/fs-plus/node_modules/rimraf/rimraf.js",
+        "node_modules/fuzzaldrin/lib/filter.js",
+        "node_modules/fuzzaldrin/lib/fuzzaldrin.js",
+        "node_modules/fuzzaldrin/lib/matcher.js",
+        "node_modules/fuzzaldrin/lib/scorer.js",
+        "node_modules/underscore-plus/lib/underscore-plus.js",
+        "node_modules/underscore-plus/node_modules/underscore/underscore-min.js",
+        "node_modules/underscore-plus/node_modules/underscore/underscore.js"
+      ],
+      ".json": [
+        "node_modules/emissary/node_modules/harmony-collections/package.json",
+        "node_modules/emissary/node_modules/mixto/package.json",
+        "node_modules/emissary/node_modules/property-accessors/node_modules/harmony-collections/package.json",
+        "node_modules/emissary/node_modules/property-accessors/package.json",
+        "node_modules/emissary/package.json",
+        "node_modules/fs-plus/node_modules/async/component.json",
+        "node_modules/fs-plus/node_modules/async/package.json",
+        "node_modules/fs-plus/node_modules/mkdirp/package.json",
+        "node_modules/fs-plus/node_modules/rimraf/package.json",
+        "node_modules/fs-plus/package.json",
+        "node_modules/fuzzaldrin/package.json",
+        "node_modules/underscore-plus/node_modules/underscore/package.json",
+        "node_modules/underscore-plus/package.json",
+        "package.json"
+      ]
+    },
+    "folders": [
+      {
+        "paths": [
+          "lib",
+          "lib/models",
+          "lib/views",
+          ""
+        ],
+        "dependencies": {
+          "fs-plus": "^2.2.0",
+          "fuzzaldrin": "^1.2.0",
+          "underscore-plus": "1.x",
+          "emissary": "~1.2.1"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/emissary/lib",
+          "node_modules/emissary"
+        ],
+        "dependencies": {
+          "underscore-plus": "1.x",
+          "mixto": "1.x",
+          "property-accessors": "^1.1"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/emissary/node_modules/property-accessors/lib",
+          "node_modules/emissary/node_modules/property-accessors"
+        ],
+        "dependencies": {
+          "mixto": "1.x"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/fs-plus/lib",
+          "node_modules/fs-plus"
+        ],
+        "dependencies": {
+          "underscore-plus": "1.x",
+          "mkdirp": "~0.3.5",
+          "rimraf": "~2.2.2",
+          "async": "~0.2.9"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/underscore-plus/lib",
+          "node_modules/underscore-plus"
+        ],
+        "dependencies": {
+          "underscore": "~1.6.0"
+        }
+      }
+    ]
+  }
+}

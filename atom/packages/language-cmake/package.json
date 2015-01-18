@@ -1,0 +1,36 @@
+{
+  "name": "language-cmake",
+  "version": "0.1.1",
+  "description": "Syntax highlighting for CMake for Atom",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lucas-clemente/language-cmake"
+  },
+  "license": "MIT",
+  "engines": {
+    "atom": ">0.50.0"
+  },
+  "dependencies": {},
+  "readmeFilename": "README.md",
+  "bugs": {
+    "url": "https://github.com/lucas-clemente/language-cmake/issues"
+  },
+  "homepage": "https://github.com/lucas-clemente/language-cmake",
+  "readme": "# language-cmake package\n\nSyntax highlighting for CMake in atom. Converted from the\n[Textmate bundle](https://github.com/textmate/cmake.tmbundle)\n",
+  "_id": "language-cmake@0.1.1",
+  "dist": {
+    "shasum": "1782d4a3959062a34e3f336f5d9ad775e23d1ea6"
+  },
+  "_resolved": "/private/var/folders/8k/bqw_s48j54n97tf03lfg256h0000gn/T/d-115013-3720-1l3p4bq/package.tgz",
+  "_from": "/private/var/folders/8k/bqw_s48j54n97tf03lfg256h0000gn/T/d-115013-3720-1l3p4bq/package.tgz",
+  "_atomModuleCache": {
+    "version": 1,
+    "dependencies": [],
+    "extensions": {
+      ".json": [
+        "package.json"
+      ]
+    },
+    "folders": []
+  }
+}

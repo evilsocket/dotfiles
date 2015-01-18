@@ -1,0 +1,297 @@
+@import "colors.less";
+@import "fonts.less";
+@import "icons.less";
+@import "items.less";
+
+@import "ui-variables";
+
+// Defaults
+.icon-file-text, .icon-file-directory, .icon-file-media, .icon-book {
+  &:before { text-align: center; }
+}
+
+// Git icon
+.icon-file-directory[data-name=".git"]:before { .git-icon; }
+
+// Package icon
+.icon-file-directory[data-name=".bundle"]:before { .package-icon; }
+
+// Default icon: image
+.icon-file-media[data-name$=".png"]:before { .medium-orange; }
+.icon-file-media[data-name$=".gif"]:before { .medium-yellow; }
+.icon-file-media[data-name$=".jpg"]:before { .medium-green;  }
+
+// Default icon: book
+.icon-book[data-name="README.md"]:before,
+.icon-book[data-name="Readme.md"]:before,
+.icon-book[data-name="readme.md"]:before { .medium-blue; }
+
+@{pane-tab-selector}, .icon-file-text {
+
+  &:before { .text-icon; }
+
+  // Checklist icon
+  &[data-name$="TODO"]:before { .checklist-icon; .medium-yellow; }
+
+  // Clojure
+  &[data-name$=".clj"]:before,
+  &[data-name$=".cljs"]:before { .clojure-icon; .medium-blue; }
+
+  // Code icon
+  &[data-name$=".xml"]:before { .code-icon; .medium-blue;   }
+  &[data-name$=".jl"]:before { .code-icon; .medium-purple;   }
+  &[data-name$=".cfc"]:before { .code-icon; .light-cyan; }
+  &[data-name$=".cfm"]:before { .code-icon; .medium-cyan; }
+  &[data-name$=".cfml"]:before { .code-icon; .medium-cyan; }
+
+  // CSS3 icon
+  &[data-name$=".less"]:before { .css3-icon; .dark-blue; }
+  &[data-name$=".css"]:before  { .css3-icon; .medium-blue; }
+  &[data-name$=".styl"]:before { .css3-icon; .medium-green; }
+
+  // Dashboard icon
+  &[data-name$=".slim"]:before { .dashboard-icon; .medium-orange; }
+  &[data-name$=".skim"]:before { .dashboard-icon; .medium-orange; }
+
+  // Database icon
+  &[data-name$=".json"]:before { .database-icon; .medium-yellow; }
+  &[data-name$=".cson"]:before { .database-icon; .medium-maroon; }
+  &[data-name$=".yml"]:before,
+  &[data-name$=".yaml"]:before { .database-icon; .light-red; }
+
+  // Elixir icon
+  &[data-name$=".ex"]:before        { .elixir-icon;   .dark-purple; }
+  &[data-name$=".exs"]:before       { .elixir-icon; .medium-purple; }
+  &[data-name$="mix.exs"]:before    { .elixir-icon;  .light-purple; }
+  &[data-name$="mix.ex"]:before     { .elixir-icon;  .light-purple; }
+
+  // Erlang icon
+  &[data-name$=".erl"]:before        { .erlang-icon;   .medium-red; }
+  &[data-name$=".beam"]:before       { .erlang-icon;     .dark-red; }
+
+  // HTML5 icon
+  &[data-name$=".html"]:before { .html5-icon; .medium-orange; }
+  &[data-name$=".shtml"]:before { .html5-icon; .medium-cyan; }
+  &[data-name$=".haml"]:before { .html5-icon; .light-red;     }
+  &[data-name$=".jade"]:before { .html5-icon; .medium-green;  }
+  &[data-name$=".jsp"]:before  { .html5-icon; .medium-purple; }
+  &[data-name$=".ctp"]:before  { .html5-icon; .medium-blue;   }
+  &[data-name$=".ejs"]:before  { .html5-icon; .medium-green; }
+
+  // Mustache icon
+  &[data-name$=".hbs"]:before,
+  &[data-name$=".handlebars"]:before,
+  &[data-name$=".mustache"]:before { .hbs-mustache-icon; .medium-orange; }
+  // Emblem
+  &[data-name$=".emblem"]:before,
+  &[data-name$=".em"]:before { .hbs-mustache-icon; .medium-blue; }
+
+  // Smarty icon
+  &[data-name$=".tpl"]:before { .smarty-icon; .medium-yellow; }
+
+  // Gear icon
+  &[data-name$=".gitignore"]:before     { .gear-icon;                 }
+  &[data-name$=".gitattributes"]:before { .gear-icon;                 }
+  &[data-name=".gitmodules"]:before     { .gear-icon;                 }
+  &[data-name=".mailmap"]:before        { .gear-icon;                 }
+  &[data-name$=".editorconfig"]:before  { .gear-icon; .medium-orange; }
+  &[data-name$=".jshintrc"]:before      { .gear-icon; .medium-yellow; }
+  &[data-name$=".jscsrc"]:before        { .gear-icon; .medium-yellow; }
+  &[data-name$=".module"]:before        { .gear-icon; .medium-blue;   }
+  &[data-name$=".htaccess"]:before      { .gear-icon; .medium-red;    }
+
+  // Npm icon
+  &[data-name=".npmrc"]:before           { .node-icon; }
+  &[data-name=".npmignore"]:before       { .node-icon; }
+  &[data-name="npm-debug.log"]:before    { .node-icon; .medium-red; }
+
+  // Bower icon
+  &[data-name=".bowerrc"]:before     { .bower-icon; }
+  &[data-name="bower.json"]:before   { .bower-icon; .medium-yellow; }
+
+  // Sass icon
+  &[data-name$=".sass"]:before { .sass-icon; .light-purple; }
+  &[data-name$=".scss"]:before { .sass-icon; .dark-purple; }
+
+  // PHP icon
+  &[data-name$=".php"]:before  { .php-icon; .dark-blue; }
+  &[data-name$=".blade.php"]:before  { .laravel-icon; .dark-purple; }
+
+
+  // Python icon
+  &[data-name$=".py"]:before { .python-icon; .dark-yellow; }
+
+  // Ruby icon
+  &[data-name="Capfile"]:before,
+  &[data-name$="Gemfile"]:before,
+  &[data-name$="Gemfile.lock"]:before,
+  &[data-name="Guardfile"]:before,
+  &[data-name$="Rakefile"]:before,
+  &[data-name$=".gemspec"]:before,
+  &[data-name=".ruby-gemset"]:before,
+  &[data-name=".ruby-version"]:before,
+  &[data-name=".rspec"]:before { .ruby-icon; }
+
+  &[data-name$=".rb"]:before,
+  &[data-name$=".ru"]:before,
+  &[data-name$=".erb"]:before,
+  &[data-name$=".opal"]:before   { .ruby-icon; .medium-red; }
+
+  &[data-name$="_spec.rb"]:before   { .ruby-icon; .light-green; }
+
+  &[data-name="rails"]:before { .rails-icon; .medium-red; }
+
+  &[data-name$=".pp"]:before { .puppet-icon; .medium-purple }
+
+  // Cucumber (Gherkin) icon
+  &[data-name$=".feature"]:before { .comment-icon; .medium-green; }
+
+  // JavaScript icon
+  &[data-name$=".js"]:before  { .js-icon; .medium-yellow; }
+  &[data-name$=".jsx"]:before { .js-icon; .medium-green; }
+  &[data-name$=".ts"]:before  { .js-icon; .medium-purple; }
+
+  // Coffee icon
+  &[data-name$=".coffee"]:before    { .coffee-icon; .medium-maroon; }
+  &[data-name$=".litcoffee"]:before { .coffee-icon; .light-maroon;  }
+
+
+  // ERB combinations
+  &[data-name$=".js.erb"]:before     { .js-icon;     .medium-red; }
+  &[data-name$=".coffee.erb"]:before { .coffee-icon; .medium-red; }
+  &[data-name$=".html.erb"]:before   { .html5-icon;  .medium-red; }
+
+  // Perl icon
+  &[data-name$=".pl"]:before { .perl-icon; .medium-blue; }
+  &[data-name$=".pm"]:before { .perl-icon; .medium-blue; }
+  &[data-name$=".t"]:before { .perl-icon; .medium-blue; }
+
+  // Java icon
+  &[data-name$=".java"]:before { .java-icon; .medium-purple; }
+
+  // Go
+  .set-go-bg-color(@c) when (lightness(@c) >= 50%) {
+    background-color: lighten(@mc, 55%);
+  }
+  .set-go-bg-color(@c) when (lightness(@c) <  50%) {
+    background-color:  darken(@mc, 55%);
+  }
+  &[data-name$=".go"]:before {
+    .go-icon;
+    .set-go-bg-color(@tree-view-background-color);
+    color: @mb;
+  }
+  .selected > &[data-name$=".go"]:before {
+    -webkit-text-stroke-width: 0px !important;
+  }
+
+  // Scala
+  &[data-name$=".scala"]:before { .scala-icon; .medium-green; }
+
+  // Haskell
+  &[data-name$=".hs"]:before { .haskell-icon; .medium-purple; }
+
+  // Rust
+  &[data-name$=".rs"]:before   { .rust-icon; .medium-maroon; }
+  &[data-name$=".rlib"]:before { .rust-icon; .light-maroon; }
+
+  // Objective-C, C++, C
+  &[data-name$=".c"]:before       { .c-icon; .medium-blue; }
+  &[data-name$=".h"]:before       { .c-icon; .medium-purple; }
+  &[data-name$=".cpp"]:before     { .cpp-icon; .medium-blue; }
+  &[data-name$=".hpp"]:before     { .cpp-icon; .medium-purple; }
+  &[data-name$=".cxx"]:before     { .cpp-icon; .medium-blue; }
+  &[data-name$=".cc"]:before     { .cpp-icon; .medium-blue; }
+  &[data-name$=".hxx"]:before     { .cpp-icon; .medium-purple; }
+  &[data-name$=".ipp"]:before     { .cpp-icon; .medium-orange; }
+  &[data-name$=".m"]:before       { .objc-icon; .medium-blue; }
+  &[data-name$=".mm"]:before      { .objc-icon; .medium-blue; }
+  &[data-name$=".swift"]:before   { .swift-icon; .medium-green; }
+
+  &[data-name$=".cs"]:before   { .csharp-icon; .medium-blue; }
+  &[data-name$=".vb"]:before   { .code-icon; .medium-blue;   }
+
+  // Sourcepwn
+  &[data-name$=".sp"]:before,  { .clojure-icon; .medium-yellow; }
+  &[data-name$=".inc"]:before  { .clojure-icon; .medium-green;  }
+
+  // Secret icon
+  &[data-name$=".secret"]:before { .secret-icon; }
+
+  // Markdown (except readme.md)
+  &[data-name$=".mdown"]:before,
+  &[data-name$=".markdown"]:before,
+  &[data-name$=".mkd"]:before,
+  &[data-name$=".mkdown"]:before,
+  &[data-name$=".rmd"]:before,
+  &[data-name$=".ron"]:before,
+  &[data-name$=".md"]:before  { .markdown-icon; .medium-blue;   }
+
+  // txt
+  &[data-name$=".txt"]:before { .medium-cyan;   }
+
+  // shell
+  &[data-name$=".sh"]:before,
+  &[data-name$=".bash"]:before,
+  &[data-name=".bashrc"]:before { .terminal-icon; .medium-purple; }
+  &[data-name$=".zsh"]:before,
+  &[data-name=".zshrc"]:before { .terminal-icon; .medium-blue; }
+  &[data-name$=".fish"]:before,
+  &[data-name=".fishrc"]:before  { .terminal-icon; .medium-green; }
+
+  // Composer icon
+  &[data-name="composer.json"]:before { .composer-icon; .medium-yellow; }
+
+  // Grunt icon
+  &[data-name="GRUNTFILE.js"]:before,
+  &[data-name="Gruntfile.js"]:before,
+  &[data-name="gruntfile.js"]:before { .grunt-icon; .medium-yellow; }
+  &[data-name="GRUNTFILE.coffee"]:before,
+  &[data-name="Gruntfile.coffee"]:before,
+  &[data-name="gruntfile.coffee"]:before { .grunt-icon; .medium-maroon; }
+
+  // Gulp icon
+  &[data-name="GULPFILE.js"]:before,
+  &[data-name="Gulpfile.js"]:before,
+  &[data-name="gulpfile.js"]:before  { .gulp-icon; .medium-red; }
+  &[data-name="GULPFILE.coffee"]:before,
+  &[data-name="Gulpfile.coffee"]:before,
+  &[data-name="gulpfile.coffee"]:before { .gulp-icon; .medium-maroon; }
+
+  // Travis icon
+  &[data-name^=".travis"]:before { .travis-icon; .medium-red; }
+
+  // Dockerfile icon
+  &[data-name="Dockerfile"]:before { .docker-icon; .dark-blue; }
+
+  // XAML icon
+  &[data-name$=".xaml"]:before { .code-icon; .medium-blue;   }
+
+  // Lua icon
+  &[data-name$=".lua"]:before { .lua-icon; .medium-blue;   }
+
+  // PowerShell icon
+  &[data-name$=".ps1"]:before { .terminal-icon; .medium-blue; }
+
+  // Readme
+  &[data-name="README.md"]:before,
+  &[data-name="Readme.md"]:before,
+  &[data-name="readme.md"]:before { .book-icon; .medium-blue; }
+
+  // Images
+  &[data-name$=".png"]:before { .image-icon; .medium-orange; }
+  &[data-name$=".gif"]:before { .image-icon; .medium-yellow; }
+  &[data-name$=".jpg"]:before { .image-icon; .medium-green;  }
+}
+
+body.file-icons-colourless {
+  .icon-file-text, .icon-file-directory, .icon-file-media, .icon-book, atom-pane ul.tab-bar li.tab .title {
+    &:before { color: inherit !important; }
+  }
+}
+
+body.file-icons-force-show-icons {
+  .tree-view .entry > .header > .name:before, .tree-view .entry > .name:before {
+    display: inherit;
+  }
+}
