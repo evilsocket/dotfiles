@@ -40,6 +40,9 @@ Bundle 'scrooloose/nerdtree'
     nmap <silent> <C-D> :NERDTreeToggle<CR> 
     " Close nerdtree when it's the only buffer left open
     autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+    " Go to previous (last accessed) window ( move focus to file buffer
+    " instead of the tree itself).
+    autocmd VimEnter * wincmd p
 
 " A much better statusline
 Bundle 'Lokaltog/vim-powerline'
@@ -104,4 +107,3 @@ autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
 autocmd Filetype eruby setlocal ts=2 sts=2 sw=2
 autocmd Filetype python setlocal ts=2 sts=2 sw=2
 
-:cd /Users/evilsocket/Desktop/Work
