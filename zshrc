@@ -45,12 +45,10 @@ plugins=(git)
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
-export ANDROID_SDK=/Users/evilsocket/android/adt/sdk
-export ANDROID_NDK=/Users/evilsocket/android/ndk
+export ANDROID_SDK=$HOME/android/sdk
+export ANDROID_NDK=$HOME/android/ndk
 
-export PATH="$PATH:$ANDROID_SDK/tools:$ANDROID_SDK/platform-tools:$ANDROID_NDK:$ANDROID_NDK/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/bin"
+export PATH="$PATH:$ANDROID_SDK/tools:$ANDROID_SDK/platform-tools:$ANDROID_NDK:$ANDROID_NDK/toolchains/arm-linux-androideabi-4.9/prebuilt/linux-x86_64/bin"
 
 export ANDROID_SYSROOT=$ANDROID_NDK/platforms/android-18/arch-arm/
 export ANDROID_DIETLIBC=" "
-
-export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_11.jdk/Contents/Home"

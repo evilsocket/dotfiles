@@ -4,7 +4,7 @@ set expandtab
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
-set smarttab 
+set smarttab
 set autoindent
 set laststatus=2
 set showmatch
@@ -38,9 +38,12 @@ Bundle 'scrooloose/nerdtree'
     set autochdir
     let NERDTreeChDirMode=2
     " Ctrl+d to toggle NerdTree
-    nmap <silent> <C-D> :NERDTreeToggle<CR> 
+    nmap <silent> <C-D> :NERDTreeToggle<CR>
     " Close nerdtree when it's the only buffer left open
     autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+    " Go to previous (last accessed) window ( move focus to file buffer
+    " instead of the tree itself).
+    autocmd VimEnter * wincmd p
 
 " A much better statusline
 Bundle 'Lokaltog/vim-powerline'
@@ -56,9 +59,9 @@ nnoremap <F9> za
 onoremap <F9> <C-C>za
 vnoremap <F9> zf
 
-" By pressing Ctrl + R in the visual mode you will be prompted to enter text to replace with. 
+" By pressing Ctrl + R in the visual mode you will be prompted to enter text to replace with.
 " Press enter and then confirm each change you agree with 'y' or decline with 'n'.
-" This command will override your register 'h' so you can choose other one 
+" This command will override your register 'h' so you can choose other one
 " ( by changing 'h' in the command above to other lower case letter ) that you don't use.
 vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
 
@@ -70,7 +73,7 @@ syntax on
 set mouse=a
 " Force terminal to 256 colors
 set t_Co=256
-color codeschool 
+color codeschool
 " Use tabs with Ctrl and arrow keys, Ctrl+n to open a new tab, and Ctrl+w to
 " close it
 map <C-up> :tabr<cr>
