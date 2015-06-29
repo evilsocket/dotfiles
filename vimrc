@@ -4,6 +4,7 @@ set expandtab
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
+set smarttab 
 set autoindent
 set laststatus=2
 set showmatch
@@ -84,6 +85,7 @@ set guioptions-=r  " no scrollbar on the right
 set guioptions-=l  " no scrollbar on the left
 set guioptions-=m  " no menu
 set guioptions-=T  " no toolbar
+set guioptions-=L
 
 if has("gui_running")
     if has("gui_gtk2")
@@ -100,8 +102,8 @@ set tags=tags;
 
 " force two spaces indentation for html, ruby and python files
 autocmd Filetype html setlocal ts=2 sts=2 sw=2
-autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
-autocmd Filetype eruby setlocal ts=2 sts=2 sw=2
-autocmd Filetype python setlocal ts=2 sts=2 sw=2
+" autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
+" autocmd Filetype eruby setlocal ts=2 sts=2 sw=2
+" autocmd Filetype python setlocal ts=2 sts=2 sw=2
 
-:cd /Users/evilsocket/Desktop/Work
+:cd $HOME/Desktop/Work
