@@ -1,5 +1,38 @@
 # Changelog
 
+## 0.9.1
+- Forgot to update Changelog like a jerk
+
+## 0.9.0
+- Allow packages to disable theme icons
+
+## 0.8.1
+- Fix tree-view background color
+- Add apm installation steps to README
+- Fix issues with tab bar
+
+## 0.8.0
+- Update settings view
+- Limit CPU usage of <progress> elements
+- Add .yaml as extension for YAML file icon
+- Alias .es and .es6 to js
+
+## 0.7.1
+- Fix broken icons
+
+## 0.7.0
+- Store package style sheets in the styles/ directory instead of stylesheets/ in the color-picker package
+
+## 0.6.3
+- Make tab updates backwards compatible
+
+## 0.6.2
+- Adjust line number padding
+- Fix deprecation errors
+- Add icon support for coffee-react files
+- Enhance appearance of checkboxes in settings view
+- Add checkbox background color & checkbox tick color
+
 ## 0.6.1
 - Update changelog
 

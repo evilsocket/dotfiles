@@ -1,3 +1,70 @@
+## 0.8.9
+* Add check for autocomplete-plus minimumWordLength
+* Add current directory to include path
+
+## 0.8.8
+* Add support for showing brief documentation comments
+* Fix loading std config
+
+## 0.8.7
+* Remove the word 'returns' from right label
+* Improve completions to include completions without patterns
+
+## 0.8.6
+* Add -code-completion-macros argument to enable macro completion
+
+## 0.8.5
+* Relax the limit of clang outputs
+
+## 0.8.4
+* Reintroduce config settings
+
+## 0.8.3
+* Improve behavior with semicolon
+
+## 0.8.2
+* Reintroduce "symbol position" with better symbol regex
+* Use rightLabel instead of label
+
+## 0.8.1
+* Stop using symbol position to better completions
+
+## 0.8.0
+* Start working with [autocomplete-plus](https://github.com/atom/autocomplete-plus)!
+  Most of provider code from https://github.com/benogle/autocomplete-clang
+  Copyright (c) 2015 Ben Ogle under MIT license.
+
+## 0.7.0
+* Stop using deprecated transaction API (inline preview feature was disabled)
+
+## 0.6.9
+* Update menu cson
+* Update package.json
+
+## 0.6.8
+* Update config settings / solve #44
+
+## 0.6.7
+* Fix emitPch command
+
+## 0.6.6
+* Fix crash with insertion of punctuation / solve #39
+
+## 0.6.5
+* Replace old API (scopesForBufferPosition)
+
+## 0.6.4
+* Fix undefined function in emit-pch
+
+## 0.6.3
+* Update package.json (again) to point out specific version of clang-flags
+
+## 0.6.2
+* Update package.json to fix the installation problem / solve #35, #34
+
+## 0.6.1
+* Merge pull-request #29 to Use tag instead of deprecated class in keymap
+
 ## 0.6
 * Update APIs (except APIs for transaction)
 

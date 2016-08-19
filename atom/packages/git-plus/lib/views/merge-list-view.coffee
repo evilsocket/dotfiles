@@ -1,13 +1,14 @@
 fs = require 'fs-plus'
-{$$, SelectListView} = require 'atom'
+{$$, SelectListView} = require 'atom-space-pen-views'
 git = require '../git'
-StatusView = require './status-view'
+OutputViewManager = require '../output-view-manager'
+notifier = require '../notifier'
 
 module.exports =
 class ListView extends SelectListView
-  initialize: (@data) ->
+  initialize: (@repo, @data) ->
     super
-    @addClass 'overlay from-top'
+    @show()
     @parseData()
 
   parseData: ->
@@ -18,10 +19,19 @@ class ListView extends SelectListView
       unless item is ''
         branches.push {name: item}
     @setItems branches
-    atom.workspaceView.append this
     @focusFilterEditor()
 
   getFilterKey: -> 'name'
+
+  show: ->
+    @panel ?= atom.workspace.addModalPanel(item: this)
+    @panel.show()
+    @storeFocusedElement()
+
+  cancelled: -> @hide()
+
+  hide: ->
+    @panel?.destroy()
 
   viewForItem: ({name}) ->
     current = false
@@ -33,16 +43,16 @@ class ListView extends SelectListView
         @div class: 'pull-right', =>
           @span('Current') if current
 
-
   confirmed: ({name}) ->
-    @checkout name.match(/\*?(.*)/)[1]
+    @merge name.match(/\*?(.*)/)[1]
     @cancel()
 
-  checkout: (branch) ->
-    git.cmd
-      args: ['merge', branch],
-      stdout: (data) ->
-        new StatusView(type: 'success', message: data.toString())
-        atom.workspace.eachEditor (editor) ->
-          fs.exists editor.getPath(), (exist) -> editor.destroy() if not exist
-        atom.project.getRepo()?.refreshStatus()
+  merge: (branch) ->
+    git.cmd(['merge', branch], cwd: @repo.getWorkingDirectory())
+    .then (data) ->
+      OutputViewManager.new().addLine(data).finish()
+      atom.workspace.getTextEditors().forEach (editor) ->
+        fs.exists editor.getPath(), (exist) -> editor.destroy() if not exist
+      git.refresh()
+    .catch (msg) ->
+      notifier.addError msg

@@ -1,0 +1,43 @@
+// ---------------------------------------------------------------------------
+//  Syntax variables
+// ---------------------------------------------------------------------------
+
+    @import "colors";
+
+    // -------------------------------------
+    //  General colors
+    // -------------------------------------
+        @syntax-text-color: @color-white_dark;
+        @syntax-cursor-color: #fff;
+        @syntax-selection-color: @color-charcoal_light;
+        @syntax-selection-flash-color: lighten(@color-charcoal_light, 15%);
+        @syntax-background-color: @color-charcoal;
+
+    // -------------------------------------
+    //  Guide colors
+    // -------------------------------------
+        @syntax-wrap-guide-color: @color-charcoal_light;
+        @syntax-indent-guide-color: rgba(255, 255, 255, .1);
+        @syntax-invisible-character-color: @color-brown_dark;
+
+    // -------------------------------------
+    //  For find and replace markers
+    // -------------------------------------
+        @syntax-result-marker-color: @color-white_dark;
+        @syntax-result-marker-color-selected: #fff;
+
+    // -------------------------------------
+    //  Gutter colors
+    // -------------------------------------
+        @syntax-gutter-text-color: @color-grey;
+        @syntax-gutter-text-color-selected: @color-grey;
+        @syntax-gutter-background-color: @color-midnight;
+        @syntax-gutter-background-color-selected: rgba(255, 255, 255, .04);
+
+    // -------------------------------------
+    //  For git diff info. i.e. in the gutter
+    // -------------------------------------
+        @syntax-color-renamed:  hsl(208, 100%, 60%);
+        @syntax-color-added:    hsl(150,  60%, 54%);
+        @syntax-color-modified: hsl(40,   60%, 70%);
+        @syntax-color-removed:  hsl(0,    70%, 60%);

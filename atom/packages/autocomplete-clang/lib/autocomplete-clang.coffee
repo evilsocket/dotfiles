@@ -1,142 +1,66 @@
-AutocompleteClangView = require './autocomplete-clang-view'
 util = require './util'
 {spawn} = require 'child_process'
 path = require 'path'
-_ = require 'underscore-plus'
 {CompositeDisposable,Disposable} = require 'atom'
+ClangProvider = null
+defaultPrecompiled = require './defaultPrecompiled'
 
 module.exports =
-  configDefaults:
-    clangCommand: "clang"
-    includePaths: ["."]
-    pchFilePrefix: ".stdafx"
-    enableAutoToggle: true
-    autoToggleKeys: [".","#","::","->"]
-    ignoreClangErrors: false
-    std:
-      "c++": "c++03"
-      "c": "c99"
-    preCompiledHeaders: {
-      "c++":[
-        "cassert",
-        "cctype",
-        "cerrno",
-        "cfloat",
-        "ciso646",
-        "climits",
-        "clocale",
-        "cmath",
-        "csetjmp",
-        "csignal",
-        "cstdarg",
-        "cstddef",
-        "cstdio",
-        "cstdlib",
-        "cstring",
-        "ctime",
-        "cwchar",
-        "cwctype",
-        "deque",
-        "list",
-        "map",
-        "queue",
-        "set",
-        "stack",
-        "vector",
-        "fstream",
-        "iomanip",
-        "ios",
-        "iosfwd",
-        "iostream",
-        "istream",
-        "ostream",
-        "sstream",
-        "streambuf",
-        "algorithm",
-        "bitset",
-        "complex",
-        "exception",
-        "functional",
-        "iterator",
-        "limits",
-        "locale",
-        "memory",
-        "new",
-        "numeric",
-        "stdexcept",
-        "string",
-        "typeinfo",
-        "utility",
-        "valarray",
-      ],
-      "c": [
-        "assert.h",
-        "complex.h",
-        "ctype.h",
-        "errno.h",
-        "fenv.h",
-        "float.h",
-        "inttypes.h",
-        "iso646.h",
-        "limits.h",
-        "locale.h",
-        "math.h",
-        "setjmp.h",
-        "signal.h",
-        "stdalign.h",
-        "stdarg.h",
-        "stdatomic.h",
-        "stdbool.h",
-        "stddef.h",
-        "stdint.h",
-        "stdio.h",
-        "stdlib.h",
-        "stdnoreturn.h",
-        "string.h",
-        "tgmath.h",
-        "threads.h",
-        "time.h",
-        "uchar.h",
-        "wchar.h",
-        "wctype.h",
-      ],
-      "objective-c": [],
-      "objective-c++": [],
-    }
+  config:
+    clangCommand:
+      type: 'string'
+      default: 'clang'
+    includePaths:
+      type: 'array'
+      default: ['.']
+      items:
+        type: 'string'
+    pchFilePrefix:
+      type: 'string'
+      default: '.stdafx'
+    ignoreClangErrors:
+      type: 'boolean'
+      default: true
+    includeDocumentation:
+      type: 'boolean'
+      default: true
+    includeNonDoxygenCommentsAsDocumentation:
+      type: 'boolean'
+      default: false
+    "std c++":
+      type: 'string'
+      default: "c++11"
+    "std c":
+      type: 'string'
+      default: "c99"
+    "preCompiledHeaders c++":
+      type: 'array'
+      default: defaultPrecompiled.cpp
+      item:
+        type: 'string'
+    "preCompiledHeaders c":
+      type: 'array'
+      default: defaultPrecompiled.c
+      items:
+        type: 'string'
+    "preCompiledHeaders objective-c":
+      type: 'array'
+      default: defaultPrecompiled.objc
+      items:
+        type: 'string'
+    "preCompiledHeaders objective-c++":
+      type: 'array'
+      default: defaultPrecompiled.objcpp
+      items:
+        type: 'string'
 
-  autocompleteClangViewsByEditor: null
   deactivationDisposables: null
 
   activate: (state) ->
-    @autocompleteClangViewsByEditor = new WeakMap
-    getAutocompleteClangView = (editorElement) =>
-      @autocompleteClangViewsByEditor.get(editorElement.getModel())
-
     @deactivationDisposables = new CompositeDisposable
-
-    @deactivationDisposables.add atom.workspace.observeTextEditors (editor) =>
-      return if editor.mini
-
-      autocompleteClangView = new AutocompleteClangView(editor)
-      @autocompleteClangViewsByEditor.set(editor, autocompleteClangView)
-
-      disposable = new Disposable -> autocompleteClangView.remove()
-      @deactivationDisposables.add editor.onDidDestroy -> disposable.dispose()
-      @deactivationDisposables.add disposable
-
-      @deactivationDisposables.add editor.onDidInsertText (e) ->
-        if atom.config.get 'autocomplete-clang.enableAutoToggle'
-          autocompleteClangView?.handleTextInsertion(e)
-
     @deactivationDisposables.add atom.commands.add 'atom-text-editor:not([mini])',
-      'autocomplete-clang:toggle': ->
-        getAutocompleteClangView(this)?.toggle()
-      'autocomplete:next': =>
-        getAutocompleteClangView(this)?.selectNextItemView()
-      'autocomplete:previous': =>
-        getAutocompleteClangView(this)?.selectPreviousItemView()
       'autocomplete-clang:emit-pch': =>
-        @emitPch this
+        @emitPch atom.workspace.getActiveTextEditor()
 
   emitPch: (editor)->
     lang = util.getFirstCursorSourceScopeLang editor
@@ -149,7 +73,7 @@ module.exports =
     emit_process.on "exit", (code) => @handleEmitPchResult code
     emit_process.stdout.on 'data', (data)-> console.log "out:\n"+data.toString()
     emit_process.stderr.on 'data', (data)-> console.log "err:\n"+data.toString()
-    headers = atom.config.get "autocomplete-clang.preCompiledHeaders.#{lang}"
+    headers = atom.config.get "autocomplete-clang.preCompiledHeaders #{lang}"
     headersInput = ("#include <#{h}>" for h in headers).join "\n"
     emit_process.stdin.write headersInput
     emit_process.stdin.end()
@@ -159,7 +83,7 @@ module.exports =
     pch_file_prefix = atom.config.get "autocomplete-clang.pchFilePrefix"
     file = [pch_file_prefix, lang, "pch"].join '.'
     pch = path.join dir,file
-    std = atom.config.get "autocomplete-clang.std.#{lang}"
+    std = atom.config.get "autocomplete-clang.std #{lang}"
     args = ["-x#{lang}-header", "-Xclang", '-emit-pch', '-o', pch]
     args = args.concat ["-std=#{std}"] if std
     include_paths = atom.config.get "autocomplete-clang.includePaths"
@@ -177,3 +101,7 @@ module.exports =
   deactivate: ->
     @deactivationDisposables.dispose()
     console.log "autocomplete-clang deactivated"
+
+  provide: ->
+    ClangProvider ?= require('./clang-provider')
+    new ClangProvider()

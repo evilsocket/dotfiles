@@ -1,19 +1,16 @@
-{$, $$, EditorView} = require 'atom'
+{$, $$, EditorView} = require 'atom-space-pen-views'
 
 git = require '../git'
-OutputView = require './output-view'
-StatusView = require './status-view'
+notifier = require '../notifier'
 SelectListMultipleView = require './select-list-multiple-view'
 
 module.exports =
 class SelectStageFilesView extends SelectListMultipleView
 
-  initialize: (items) ->
+  initialize: (@repo, items) ->
     super
-    @addClass('overlay from-top')
-
+    @show()
     @setItems items
-    atom.workspaceView.append(this)
     @focusFilterEditor()
 
   addButtons: ->
@@ -30,6 +27,17 @@ class SelectStageFilesView extends SelectListMultipleView
         @complete() if window.confirm 'Are you sure?'
       @cancel() if $(target).hasClass('btn-cancel-button')
 
+  show: ->
+    @panel ?= atom.workspace.addModalPanel(item: this)
+    @panel.show()
+    @storeFocusedElement()
+
+  cancelled: ->
+    @hide()
+
+  hide: ->
+    @panel?.destroy()
+
   viewForItem: (item, matchedStr) ->
     $$ ->
       @li =>
@@ -38,15 +46,13 @@ class SelectStageFilesView extends SelectListMultipleView
   completed: (items) ->
     files = (item for item in items when item isnt '')
     @cancel()
+    currentFile = @repo.relativize atom.workspace.getActiveTextEditor()?.getPath()
 
-    currentFile = git.relativize atom.workspace.getActiveEditor()?.getPath()
+    editor = atom.workspace.getActiveTextEditor()
+    atom.views.getView(editor).remove() if currentFile in files
+    git.cmd(['rm', '-f'].concat(files), cwd: @repo.getWorkingDirectory())
+    .then (data) -> notifier.addSuccess "Removed #{prettify data}"
 
-    atom.workspaceView.getActiveView().remove() if currentFile in files
-    git.cmd
-      args: ['rm', '-f'].concat(files),
-      stdout: (data) ->  new StatusView(type: 'success', message: "Removed #{prettify data}")
-
-  # cut off rm '' around the filenames.
   prettify = (data) ->
     data = data.match(/rm ('.*')/g)
     if data?.length >= 1

@@ -1,0 +1,25 @@
+'.source.protobuf':
+  'extend ...':
+    'prefix': 'extend'
+    'body': 'extend ${1:MessageToExtend} {\n\t$2\n}'
+  'service ...':
+    'prefix': 'service'
+    'body': 'service ${1:ServiceName} {\n\t$2\n}'
+  'enum ...':
+    'prefix': 'enum'
+    'body': 'enum ${1:EnumName} {\n\t$2\n}'
+  'option ...':
+    'prefix': 'opt'
+    'body': 'option ${1:option_name} = ${2:value};'
+'.meta.message-declaration.protobuf':
+  'field':
+    'prefix': 'field'
+    'body': '${1:optional} ${2:type} ${3:field_name} = ${4:0};$5'
+'.meta.service-declaration.protobuf':
+  'rpc ... (...) returns (...);':
+    'prefix': 'rpc'
+    'body': 'rpc ${1:MethodName} (${2:RequestType}) returns (${3:ResponseType});'
+'.meta.method-mofification.protobuf':
+  'method option ...':
+    'prefix': 'opt'
+    'body': 'option ${1:option_name}.${2:option_field} = ${3:value};'

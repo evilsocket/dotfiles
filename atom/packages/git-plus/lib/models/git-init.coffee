@@ -1,11 +1,16 @@
 git = require '../git'
-StatusView = require '../views/status-view'
+ProjectsListView = require '../views/projects-list-view'
+notifier = require '../notifier'
 
-gitInit = ->
-  git.cmd
-    args: ['init'],
-    stdout: (data) ->
-      new StatusView(type: 'success', message: data)
-      atom.project.setPath(atom.project.getPath())
+init = (path) ->
+  git.cmd(['init'], cwd: path)
+  .then (data) ->
+    notifier.addSuccess data
+    atom.project.setPaths(atom.project.getPaths())
 
-module.exports = gitInit
+module.exports = ->
+  currentFile = atom.workspace.getActiveTextEditor()?.getPath()
+  if not currentFile and atom.project.getPaths().length > 1
+    new ProjectsListView().result.then (path) -> init(path)
+  else
+    init(atom.project.getPaths()[0])

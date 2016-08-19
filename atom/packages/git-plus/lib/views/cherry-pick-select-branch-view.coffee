@@ -1,19 +1,29 @@
-{$$, BufferedProcess, SelectListView} = require 'atom'
+{BufferedProcess} = require 'atom'
+{$$, SelectListView} = require 'atom-space-pen-views'
 
 git = require '../git'
-StatusView = require './status-view'
+notifier = require '../notifier'
 CherryPickSelectCommits = require './cherry-pick-select-commits-view'
 
 module.exports =
 class CherryPickSelectBranch extends SelectListView
 
-  initialize: (items, @currentHead) ->
+  initialize: (@repo, items, @currentHead) ->
     super
-    @addClass 'overlay from-top'
+    @show()
     @setItems items
-
-    atom.workspaceView.append this
     @focusFilterEditor()
+
+  show: ->
+    @panel ?= atom.workspace.addModalPanel(item: this)
+    @panel.show()
+
+    @storeFocusedElement()
+
+  cancelled: -> @hide()
+
+  hide: ->
+    @panel?.destroy()
 
   viewForItem: (item) ->
     $$ ->
@@ -29,14 +39,9 @@ class CherryPickSelectBranch extends SelectListView
       "#{@currentHead}...#{item}"
     ]
 
-    git.cmd
-      args: args
-      stdout: (data) ->
-        @save ?= ''
-        @save += data
-      exit: (exit) ->
-        if exit is 0 and @save?
-          new CherryPickSelectCommits(@save.split('\0')[...-1])
-          @save = null
-        else
-          new StatusView(type: 'warning', message: "No commits available to cherry-pick.")
+    git.cmd(args, cwd: @repo.getWorkingDirectory())
+    .then (save) =>
+      if save.length > 0
+        new CherryPickSelectCommits(@repo, save.split('\0')[...-1])
+      else
+        notifier.addInfo "No commits available to cherry-pick."

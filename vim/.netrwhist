@@ -1,3 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =1
+let g:netrw_dirhist_cnt =4
 let g:netrw_dirhist_1='/Users/evilsocket/Desktop/Work/zARMOR'
+let g:netrw_dirhist_2='/Users/evilsocket/Desktop/Lab/ilium'
+let g:netrw_dirhist_3='/Users/evilsocket/Desktop/Work/zSignature'
+let g:netrw_dirhist_4='/Users/evilsocket/Desktop/Lab/bettercap/bettercap'

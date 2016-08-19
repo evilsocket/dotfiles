@@ -1,0 +1,53 @@
+@font-face {
+  font-family: 'FontAwesome';
+  font-weight: normal;
+  font-style: normal;
+  src: url(atom://file-icons/resources/fonts/fontawesome-webfont.woff) format('woff');
+}
+
+@font-face {
+  font-family: "FontMfizz";
+  src: url(atom://file-icons/resources/fonts/font-mfizz.woff) format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "icomoon";
+  src: url(atom://file-icons/resources/fonts/icomoon.woff) format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "devicons";
+  src: url(atom://file-icons/resources/fonts/devicons.woff) format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+// Package-specific font for custom icon additions
+@custom-font-path: 'atom://file-icons/resources/fonts/file-icons.woff2';
+
+@font-face {
+  font-family: "file-icons";
+  src: url(@custom-font-path) format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+// Kept for backwards compatibility only
+@font-face {
+  font-family: "iconsxd";
+  src: url(@custom-font-path) format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "tex";
+  src: url(@custom-font-path) format("woff");
+  font-weight: normal;
+  font-style: normal;
+}

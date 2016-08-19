@@ -1,33 +1,45 @@
+{CompositeDisposable} = require 'atom'
 Os = require 'os'
 Path = require 'path'
 fs = require 'fs-plus'
 
 git = require '../git'
-StatusView = require '../views/status-view'
-diffFilePath = Path.join Os.tmpDir(), "atom_git_plus.diff"
+notifier = require '../notifier'
 
-gitDiff = ({diffStat, file}={}) ->
-  file ?= git.relativize(atom.workspace.getActiveEditor()?.getPath())
-  diffStat ?= ''
-  args = ['diff']
+nothingToShow = 'Nothing to show.'
+
+disposables = new CompositeDisposable
+
+showFile = (filePath) ->
+  if atom.config.get('git-plus.openInPane')
+    splitDirection = atom.config.get('git-plus.splitPane')
+    atom.workspace.getActivePane()["split#{splitDirection}"]()
+  atom.workspace.open(filePath)
+
+prepFile = (text, filePath) ->
+  new Promise (resolve, reject) ->
+    if text?.length is 0
+      reject nothingToShow
+    else
+      fs.writeFile filePath, text, flag: 'w+', (err) ->
+        if err then reject err else resolve true
+
+module.exports = (repo, {diffStat, file}={}) ->
+  diffFilePath = Path.join(repo.getPath(), "atom_git_plus.diff")
+  file ?= repo.relativize(atom.workspace.getActiveTextEditor()?.getPath())
+  if not file
+    return notifier.addError "No open file. Select 'Diff All'."
+  args = ['diff', '--color=never']
   args.push 'HEAD' if atom.config.get 'git-plus.includeStagedDiff'
   args.push '--word-diff' if atom.config.get 'git-plus.wordDiff'
-  args.push file if diffStat is ''
-  git.cmd
-    args: args,
-    stdout: (data) -> diffStat += data
-    exit: (code) -> prepFile diffStat if code is 0
-
-prepFile = (text) ->
-  if text?.length > 0
-    fs.writeFileSync diffFilePath, text, flag: 'w+'
-    showFile()
-  else
-    new StatusView(type: 'error', message: 'Nothing to show.')
-
-showFile = ->
-  split = if atom.config.get('git-plus.openInPane') then atom.config.get('git-plus.splitPane')
-  atom.workspace
-    .open(diffFilePath, split: split, activatePane: true)
-
-module.exports = gitDiff
+  args.push file unless diffStat
+  git.cmd(args, cwd: repo.getWorkingDirectory())
+  .then (data) -> prepFile((diffStat ? '') + data, diffFilePath)
+  .then -> showFile diffFilePath
+  .then (textEditor) ->
+    disposables.add textEditor.onDidDestroy -> fs.unlink diffFilePath
+  .catch (err) ->
+    if err is nothingToShow
+      notifier.addInfo err
+    else
+      notifier.addError err

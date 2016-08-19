@@ -1,26 +1,27 @@
-{$$, SelectListView} = require 'atom'
+{$$, SelectListView} = require 'atom-space-pen-views'
+{Point} = require 'atom'
 fs = null
 
 module.exports =
 class SymbolsView extends SelectListView
+  @activate: ->
+    new SymbolsView
 
   initialize: (@stack) ->
     super
-    @addClass('atom-ctags overlay from-top')
+    @panel = atom.workspace.addModalPanel(item: this, visible: false)
+    @addClass('atom-ctags')
 
   destroy: ->
     @cancel()
-    @remove()
+    @panel.destroy()
 
   getFilterKey: -> 'name'
 
-  viewForItem: ({position, name, file}) ->
+  viewForItem: ({lineNumber, name, file, directory}) ->
     $$ ->
       @li class: 'two-lines', =>
-        if position?
-          @div "#{name}:#{position.row + 1}", class: 'primary-line'
-        else
-          @div name, class: 'primary-line'
+        @div "#{name}:#{lineNumber}", class: 'primary-line'
         @div file, class: 'secondary-line'
 
   getEmptyMessage: (itemCount) ->
@@ -29,33 +30,39 @@ class SymbolsView extends SelectListView
     else
       super
 
+  cancelled: ->
+    @panel.hide()
+
   confirmed : (tag) ->
     @cancelPosition = null
     @cancel()
     @openTag(tag)
 
+  getTagPosition: (tag) ->
+    if not tag.position and tag.lineNumber and tag.pattern
+      tag.position = new Point(tag.lineNumber-1, tag.pattern.indexOf(tag.name)-2)
+    if not tag.position
+      console.error "Atom Ctags: please create a new issue: " + JSON.stringify(tag)
+    return tag.position
+
   openTag: (tag) ->
-    if editor = atom.workspace.getActiveEditor()
+    if editor = atom.workspace.getActiveTextEditor()
       previous =
         position: editor.getCursorBufferPosition()
-        file: editor.getUri()
+        file: editor.getURI()
 
-    {position} = tag
-
-
-    atom.workspaceView.open(tag.file).done =>
-      @moveToPosition(position) if position
+    if tag.file
+      atom.workspace.open(tag.file).then =>
+        @moveToPosition(tag.position) if @getTagPosition(tag)
 
     @stack.push(previous)
 
   moveToPosition: (position) ->
-    editorView = atom.workspaceView.getActiveView()
-    if editor = editorView.getEditor?()
-      editorView.scrollToBufferPosition(position, center: true)
+    if editor = atom.workspace.getActiveTextEditor()
+      editor.scrollToBufferPosition(position, center: true)
       editor.setCursorBufferPosition(position)
 
   attach: ->
-    return if this.parent().length > 0
     @storeFocusedElement()
-    atom.workspaceView.appendToTop(this)
+    @panel.show()
     @focusFilterEditor()

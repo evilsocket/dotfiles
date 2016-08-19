@@ -1,21 +1,16 @@
-{Subscriber} = require 'emissary'
-{$, View} = require 'atom'
+{$, View} = require 'atom-space-pen-views'
 
 module.exports =
   class StatusView extends View
-    Subscriber.includeInto(this)
-
     @content = (params) ->
-      @div class: 'git-plus overlay from-bottom', =>
+      @div class: 'git-plus', =>
         @div class: "#{params.type} message", params.message
 
     initialize: ->
-      @subscribe $(window), 'core:cancel', => @detach()
-      atom.workspaceView.append(this)
+      @panel ?= atom.workspace.addBottomPanel(item: this)
       setTimeout =>
-        @detach()
+        @destroy()
       , atom.config.get('git-plus.messageTimeout') * 1000
 
-    detach: ->
-      super
-      @unsubscribe()
+    destroy: ->
+      @panel?.destroy()

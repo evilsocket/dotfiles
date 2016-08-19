@@ -119,3 +119,5 @@ PS1='[\w] '
 export iOSOpenDevPath=/opt/iOSOpenDev
 export iOSOpenDevDevice=
 export PATH=/opt/iOSOpenDev/bin:$PATH
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting

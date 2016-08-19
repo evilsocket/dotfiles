@@ -1,10 +1,46 @@
+$ = null
+{CompositeDisposable} = require 'atom'
+
+MouseEventWhichDict = {"left click": 1, "middle click": 2, "right click": 3}
 module.exports =
-  configDefaults:
-    autoBuildTagsWhenActive: false
-    buildTimeout: 5000
-    cmd:""
-    cmdArgs: ""
-    extraTagFiles: ""
+  disposable: null
+
+  config:
+    disableComplete:
+      title: 'Disable auto complete'
+      type: 'boolean'
+      default: false
+    autoBuildTagsWhenActive:
+      title: 'Automatically rebuild tags'
+      description: 'Rebuild tags file each time a project path changes'
+      type: 'boolean'
+      default: false
+    buildTimeout:
+      title: 'Build timeout'
+      description: 'Time (in milliseconds) to wait for a tags rebuild to finish'
+      type: 'integer'
+      default: 10000
+    cmd:
+      type: 'string'
+      default: ""
+    cmdArgs:
+      description: 'Add specified ctag command args like: --exclude=lib --exclude=*.js'
+      type: 'string'
+      default: ""
+    extraTagFiles:
+      description: 'Add specified tagFiles. (Make sure you tag file generate with --fields=+KSn)'
+      type: 'string'
+      default: ""
+    GotoSymbolKey:
+      description: 'combine bindings: alt, ctrl, meta, shift'
+      type: 'array'
+      default: ["alt"]
+    GotoSymbolClick:
+      type: 'string'
+      default: "left click"
+      enum: ["left click", "middle click", "right click"]
+
+  provider: null
 
   activate: ->
     @stack = []
@@ -13,43 +49,45 @@ module.exports =
 
     @ctagsCache.activate()
 
-    @ctagsComplete = require "./ctags-complete"
-    setTimeout((=> @ctagsComplete.activate(@ctagsCache)), 2000)
+    @ctagsCache.initTags(atom.project.getPaths(), atom.config.get('atom-ctags.autoBuildTagsWhenActive'))
+    @disposable = atom.project.onDidChangePaths (paths)=>
+      @ctagsCache.initTags(paths, atom.config.get('atom-ctags.autoBuildTagsWhenActive'))
 
-    if atom.config.get('atom-ctags.autoBuildTagsWhenActive')
-      @createFileView().rebuild() if atom.project.getPath()
-      atom.project.on 'path-changed', (paths)=>
-        @createFileView().rebuild()
-
-    atom.workspaceView.command 'atom-ctags:rebuild', (e, cmdArgs)=>
+    atom.commands.add 'atom-workspace', 'atom-ctags:rebuild', (e, cmdArgs)=>
+      console.error "rebuild: ", e
       @ctagsCache.cmdArgs = cmdArgs if Array.isArray(cmdArgs)
-      @createFileView().rebuild()
+      @createFileView().rebuild(true)
       if t
         clearTimeout(t)
         t = null
 
-    atom.workspaceView.command 'atom-ctags:toggle-file-symbols', =>
-      @createFileView().toggle()
-
-    atom.workspaceView.command 'atom-ctags:toggle-project-symbols', =>
+    atom.commands.add 'atom-workspace', 'atom-ctags:toggle-project-symbols', =>
       @createFileView().toggleAll()
 
-    atom.workspaceView.command 'atom-ctags:go-to-declaration', =>
-      @createFileView().goto()
+    atom.commands.add 'atom-text-editor',
+      'atom-ctags:toggle-file-symbols': => @createFileView().toggle()
+      'atom-ctags:go-to-declaration': => @createFileView().goto()
+      'atom-ctags:return-from-declaration': => @createGoBackView().toggle()
 
-    atom.workspaceView.command 'atom-ctags:return-from-declaration', =>
-      @createGoBackView().toggle()
-
-    atom.workspaceView.eachEditorView (editorView)->
-      editorView.on 'mousedown', (event) ->
-        return unless event.altKey and event.which is 1
-        atom.workspaceView.trigger 'atom-ctags:go-to-declaration'
+    atom.workspace.observeTextEditors (editor) =>
+      editorView = atom.views.getView(editor)
+      {$} = require 'atom-space-pen-views' unless $
+      $(editorView).on 'mousedown', (event) =>
+        which = atom.config.get('atom-ctags.GotoSymbolClick')
+        return unless MouseEventWhichDict[which] == event.which
+        for keyName in atom.config.get('atom-ctags.GotoSymbolKey')
+          return if not event[keyName+"Key"]
+        @createFileView().goto()
 
     if not atom.packages.isPackageDisabled("symbols-view")
       atom.packages.disablePackage("symbols-view")
       alert "Warning from atom-ctags:
-              atom-ctags is for replace and enhance symbols-view package.
+              atom-ctags replaces and enhances the symbols-view package.
               Therefore, symbols-view has been disabled."
+
+    atom.config.observe 'atom-ctags.disableComplete', =>
+      return unless @provider
+      @provider.disabled = atom.config.get('atom-ctags.disableComplete')
 
     initExtraTagsTime = null
     atom.config.observe 'atom-ctags.extraTagFiles', =>
@@ -59,9 +97,11 @@ module.exports =
         initExtraTagsTime = null
       ), 1000)
 
-
-
   deactivate: ->
+    if @disposable?
+      @disposable.dispose()
+      @disposable = null
+
     if @fileView?
       @fileView.destroy()
       @fileView = null
@@ -78,7 +118,6 @@ module.exports =
       @goBackView.destroy()
       @goBackView = null
 
-    @ctagsComplete.deactivate()
     @ctagsCache.deactivate()
 
   createFileView: ->
@@ -93,3 +132,11 @@ module.exports =
       GoBackView = require './go-back-view'
       @goBackView = new GoBackView(@stack)
     @goBackView
+
+  provide: ->
+    unless @provider?
+      CtagsProvider = require './ctags-provider'
+      @provider = new CtagsProvider()
+      @provider.ctagsCache = @ctagsCache
+      @provider.disabled = atom.config.get('atom-ctags.disableComplete')
+    @provider

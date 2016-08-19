@@ -1,33 +1,31 @@
-{Subscriber} = require 'emissary'
-{$, ScrollView} = require 'atom'
+{$, ScrollView} = require 'atom-space-pen-views'
 
+defaultMessage = 'Nothing new to show'
 module.exports =
   class OutputView extends ScrollView
-    Subscriber.includeInto (this)
-
     message: ''
 
     @content: ->
       @div class: 'git-plus info-view', =>
-        @pre class: 'output'
+        @pre class: 'output', defaultMessage
 
     initialize: ->
       super
-      atom.workspaceView.appendToBottom(this)
-      @subscribe $(window), 'core:cancel', => @detach()
 
     addLine: (line) ->
+      @message = '' if @message is defaultMessage
       @message += line
+      this
 
-    reset: ->
-      @message = ''
+    reset: -> @message = defaultMessage
 
     finish: ->
-      @find(".output").append(@message)
-      setTimeout =>
-        @detach()
+      @find(".output").text(@message)
+      @show()
+      @timeout = setTimeout =>
+        @hide()
       , atom.config.get('git-plus.messageTimeout') * 1000
 
-    detach: ->
-      super
-      @unsubscribe()
+    toggle: ->
+      clearTimeout @timeout if @timeout
+      $.fn.toggle.call(this)

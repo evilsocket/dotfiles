@@ -1,18 +1,16 @@
-{$$, SelectListView} = require 'atom'
-
+{$$, SelectListView} = require 'atom-space-pen-views'
+fs = require 'fs-plus'
+Path = require 'path'
 git = require '../git'
 GitDiff = require '../models/git-diff'
+notifier = require '../notifier'
 
 module.exports =
 class StatusListView extends SelectListView
-
-  initialize: (@data, @onlyCurrentFile) ->
+  initialize: (@repo, @data) ->
     super
-    @addClass 'overlay from-top'
-    @branch = @data[0]
+    @show()
     @setItems @parseData @data[...-1]
-
-    atom.workspaceView.append this
     @focusFilterEditor()
 
   parseData: (files) ->
@@ -21,6 +19,15 @@ class StatusListView extends SelectListView
       {type: line[1], path: line[2]}
 
   getFilterKey: -> 'path'
+
+  show: ->
+    @panel ?= atom.workspace.addModalPanel(item: this)
+    @panel.show()
+    @storeFocusedElement()
+
+  cancelled: -> @hide()
+
+  hide: -> @panel?.destroy()
 
   viewForItem: ({type, path}) ->
     getIcon = (s) ->
@@ -42,7 +49,20 @@ class StatusListView extends SelectListView
   confirmed: ({type, path}) ->
     @cancel()
     if type is '??'
-      git.add file: path
+      git.add @repo, file: path
     else
       openFile = confirm("Open #{path}?")
-      if openFile then atom.workspace.open(path) else GitDiff(file: path)
+      fullPath = Path.join(@repo.getWorkingDirectory(), path)
+
+      fs.stat fullPath, (err, stat) =>
+        if err
+          notifier.addError(err.message)
+        else
+          isDirectory = stat?.isDirectory()
+          if openFile
+            if isDirectory
+              atom.open(pathsToOpen: fullPath, newWindow: true)
+            else
+              atom.workspace.open(fullPath)
+          else
+            GitDiff(@repo, file: path)

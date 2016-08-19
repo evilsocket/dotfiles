@@ -1,10 +1,6 @@
 git = require '../git'
 SelectStageFiles = require '../views/select-stage-files-view'
 
-gitStageFiles = ->
-  git.unstagedFiles(
-    (data) -> new SelectStageFiles(data),
-    true
-  )
-
-module.exports = gitStageFiles
+module.exports = (repo) ->
+  git.unstagedFiles(repo, showUntracked: true)
+  .then (data) -> new SelectStageFiles(repo, data)

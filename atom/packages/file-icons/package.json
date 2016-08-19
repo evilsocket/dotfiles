@@ -1,16 +1,16 @@
 {
   "name": "file-icons",
   "main": "index",
-  "version": "1.4.7",
+  "version": "1.6.18",
   "private": true,
   "description": "Assign file extension icons and colours for improved visual grepping",
   "repository": {
     "type": "git",
-    "url": "https://github.com/DanBrooker/file-icons"
+    "url": "git+https://github.com/DanBrooker/file-icons.git"
   },
   "license": "MIT",
   "engines": {
-    "atom": ">0.171.0"
+    "atom": ">0.181.0"
   },
   "dependencies": {},
   "readme": "# file-icons\n\nAdds file specific icons to atom for improved visual grepping\n\n![Screenshot](https://raw.githubusercontent.com/DanBrooker/file-icons/master/file-icons.png)\n\n# Customisation\n\nCSS classes can be used to customise the file icon or the filename\n\n    // This is the ruby default css\n    // Sets the icon to octicon-ruby and colours it red\n    .filetype-icon-rb:before\n    {\n      content: \"\\f047\";\n      color: red;\n    }\n\nClasses are generated based on file extension or file name in absence of extension.\ne.g.\n* .rb      -> file-icon-rb\n* .erb     -> file-icon-erb\n* .html    -> file-icon-html\n* Procfile -> file-icon-Procfile\n\n```\n// You could also colour the entire filename and icon if you so desired\n// Sets the icon to octicon-ruby and colours both the icon and filename text\n.filetype-icon-rb\n{\n  color: red;\n}\n.filetype-icon-rb:before\n{\n  content: \"\\f047\";\n}\n```\n\n# Acknowledgments\nWouldn't have even tried to make this if it weren't for [sommerper/filetype-color](https://github.com/sommerper/filetype-color)\n",
@@ -19,12 +19,13 @@
     "url": "https://github.com/DanBrooker/file-icons/issues"
   },
   "homepage": "https://github.com/DanBrooker/file-icons",
-  "_id": "file-icons@1.4.7",
+  "_id": "file-icons@1.6.18",
   "dist": {
-    "shasum": "77aaf88ed0aab9b4a456180441e13c2fa2a21f3d"
+    "shasum": "a0af88e3c747d4d551db8963c46c11a128ecd970"
   },
-  "_resolved": "/private/var/folders/8k/bqw_s48j54n97tf03lfg256h0000gn/T/d-115018-48435-82my9o/package.tgz",
-  "_from": "/private/var/folders/8k/bqw_s48j54n97tf03lfg256h0000gn/T/d-115018-48435-82my9o/package.tgz",
+  "_resolved": "file:../d-116210-1677-1nwc4dt/package.tgz",
+  "_from": "../d-116210-1677-1nwc4dt/package.tgz",
+  "_shasum": "7a357212ee21f924561be2b3a356b21b070b0c60",
   "_atomModuleCache": {
     "version": 1,
     "dependencies": [],
@@ -33,7 +34,8 @@
         "index.coffee"
       ],
       ".json": [
-        "package.json"
+        "package.json",
+        "selection.json"
       ]
     },
     "folders": []

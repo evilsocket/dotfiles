@@ -1,9 +1,7 @@
 git = require '../git'
 RemoteListView = require '../views/remote-list-view'
 
-gitPull = ->
-  git.cmd
-    args: ['remote']
-    stdout: (data) -> new RemoteListView(data, 'pull')
-
-module.exports = gitPull
+module.exports = (repo, {rebase}={}) ->
+  extraArgs = ['--rebase'] if rebase
+  git.cmd(['remote'], cwd: repo.getWorkingDirectory())
+  .then (data) -> new RemoteListView(repo, data, mode: 'pull', extraArgs: extraArgs).result

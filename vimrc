@@ -53,6 +53,9 @@ Bundle 'Lokaltog/vim-powerline'
 " Great configs for Ruby
 Bundle 'vim-ruby/vim-ruby'
 
+" Autocomplete
+" Bundle "Valloric/YouCompleteMe"
+
 " Use F9 to fold/unfold
 inoremap <F9> <C-O>za
 nnoremap <F9> za
@@ -96,7 +99,7 @@ if has("gui_running")
     elseif has("gui_win32")
         set guifont=Consolas:h11:cANSI
     else
-        set guifont=Monaco_for_Powerline
+        set guifont=Monaco_for_Powerline\ 9
     endif
 endif
 
@@ -105,8 +108,8 @@ set tags=tags;
 
 " force two spaces indentation for html, ruby and python files
 autocmd Filetype html setlocal ts=2 sts=2 sw=2
-" autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
-" autocmd Filetype eruby setlocal ts=2 sts=2 sw=2
+autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
+autocmd Filetype eruby setlocal ts=2 sts=2 sw=2
 " autocmd Filetype python setlocal ts=2 sts=2 sw=2
 
-:cd $HOME/Desktop/Work
+" :cd $HOME/Desktop/Work

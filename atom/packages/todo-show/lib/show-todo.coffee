@@ -1,79 +1,109 @@
-# All this file really does is handle the following
-# 1) Defines Regex defaults
-# 2) Instantiates the commands, the panes, and then calls showTodoView.renderTodos()
+{CompositeDisposable} = require 'atom'
 
-# Deps
-querystring = require 'querystring'
-url = require 'url'
-fs = require 'fs-plus'
-
-# Local files
-ShowTodoView = require './show-todo-view'
-
+ShowTodoView = require './todo-view'
+TodoCollection = require './todo-collection'
 
 module.exports =
-  showTodoView: null
-  configDefaults:
-    findTheseRegexes: [
-      'FIXMEs'
-      '/FIXME:?(.+$)/g'
-      'TODOs' #title
-      '/TODO:?(.+$)/g'
-      'CHANGEDs'
-      '/CHANGED:?(.+$)/g'
-      'XXXs'
-      '/XXX:?(.+$)/g'
-    ],
-    ignoreThesePaths: [
-      '/node_modules/'
-      '/vendor/'
-    ]
+  config:
+    findTheseTodos:
+      type: 'array'
+      default: [
+        'FIXME'
+        'TODO'
+        'CHANGED'
+        'XXX'
+        'IDEA'
+        'HACK'
+        'NOTE'
+        'REVIEW'
+      ]
+      items:
+        type: 'string'
+    findUsingRegex:
+      description: 'Single regex used to find all todos. ${TODOS} is replaced with the findTheseTodos array.'
+      type: 'string'
+      default: '/\\b(${TODOS}):?\\d*($|\\s.*$)/g'
+    ignoreThesePaths:
+      type: 'array'
+      default: [
+        '**/node_modules/'
+        '**/vendor/'
+        '**/bower_components/'
+      ]
+      items:
+        type: 'string'
+    showInTable:
+      type: 'array'
+      default: [
+        'Text',
+        'Type',
+        'File'
+      ]
+    sortBy:
+      type: 'string'
+      default: 'Text'
+      enum: ['All', 'Text', 'Type', 'Range', 'Line', 'Regex', 'File', 'Tags']
+    sortAscending:
+      type: 'boolean'
+      default: true
+    openListInDirection:
+      type: 'string'
+      default: 'right'
+      enum: ['up', 'right', 'down', 'left', 'ontop']
+    rememberViewSize:
+      type: 'boolean'
+      default: true
+    saveOutputAs:
+      type: 'string'
+      default: 'List'
+      enum: ['List', 'Table']
 
-  activate: (state) ->
-    atom.workspaceView.command 'todo-show:find-in-project', => #this one is tied to the one in package.json
-      @show()
-    # @show()
-    # @showTodoView = new ShowTodoView(state.showTodoViewState)
+  URI:
+    full: 'atom://todo-show/todos'
+    open: 'atom://todo-show/open-todos'
+    active: 'atom://todo-show/active-todos'
 
-    # register the todolist URI. Which will then open our custom view
-    atom.workspace.registerOpener (uriToOpen) ->
-      # console.log('REGISTER OPENER CALLED222', uriToOpen)
-      {protocol, pathname} = url.parse(uriToOpen)
-      pathname = querystring.unescape(pathname) if pathname
-      return unless protocol is 'todolist-preview:'
-      # console.log('REGISTER OPENER CALLED444', uriToOpen)
-      new ShowTodoView(pathname)
+  activate: ->
+    collection = new TodoCollection
+    collection.setAvailableTableItems(@config.sortBy.enum)
 
+    @disposables = new CompositeDisposable
+    @disposables.add atom.commands.add 'atom-workspace',
+      'todo-show:find-in-project': => @show(@URI.full)
+      'todo-show:find-in-open-files': => @show(@URI.open)
 
-  # findTodos: ->
-  #   atom.project.scan /todo/, (e) ->
-  #     console.log(e)
+    # Register the todolist URI, which will then open our custom view
+    @disposables.add atom.workspace.addOpener (uriToOpen) =>
+      scope = switch uriToOpen
+        when @URI.full then 'full'
+        when @URI.open then 'open'
+        when @URI.active then 'active'
+      if scope
+        collection.setSearchScope(scope)
+        new ShowTodoView(collection, uriToOpen)
 
   deactivate: ->
-    @showTodoView.destroy()
-    #CHANGED
-    #NOTE:
-  serialize: ->
-    showTodoViewState: @showTodoView.serialize()
+    @disposables?.dispose()
 
-  show: (todoContent )->
-    # editor = atom.workspace.getActiveEditor()
-    # return unless editor?
+  destroyPaneItem: ->
+    pane = atom.workspace.paneForItem(@showTodoView)
+    return false unless pane
 
-    # unless editor.getGrammar().scopeName is "source.gfm"
-    #   console.warn("Cannot render markdown for '#{editor.getUri() ? 'untitled'}'")
-    #   return
-    #
-    # unless fs.isFileSync(editor.getPath())
-    #   console.warn("Cannot render markdown for '#{editor.getPath() ? 'untitled'}'")
-    #   return
+    pane.destroyItem(@showTodoView)
+    # Ignore core.destroyEmptyPanes and close empty pane
+    pane.destroy() if pane.getItems().length is 0
+    return true
 
-    previousActivePane = atom.workspace.getActivePane()
-    uri = "todolist-preview://TODOs"
-    atom.workspace.open(uri, split: 'right', searchAllPanes: true).done (showTodoView) ->
-      # TODO: we could require it in, and use a similar pattern as the other one...
-      # console.log(arguments)
-      arguments[0].innerHTML = "WE HAVE LIFTOFF"
-      if showTodoView instanceof ShowTodoView
-        showTodoView.renderTodos() #do the initial render
-      previousActivePane.activate()
+  show: (uri) ->
+    prevPane = atom.workspace.getActivePane()
+    direction = atom.config.get('todo-show.openListInDirection')
+
+    return if @destroyPaneItem()
+
+    if direction is 'down'
+      prevPane.splitDown() if prevPane.parent.orientation isnt 'vertical'
+    else if direction is 'up'
+      prevPane.splitUp() if prevPane.parent.orientation isnt 'vertical'
+
+    atom.workspace.open(uri, split: direction).then (@showTodoView) =>
+      prevPane.activate()

@@ -1,9 +1,11 @@
 git = require '../git'
-StatusView = require '../views/status-view'
+notifier = require '../notifier'
+OutputViewManager = require '../output-view-manager'
 
-gitStashDrop = ->
-  git.cmd
-    args: ['stash', 'drop'],
-    stdout: (data) -> new StatusView(type: 'success', message: data)
-
-module.exports = gitStashDrop
+module.exports = (repo) ->
+  cwd = repo.getWorkingDirectory()
+  git.cmd(['stash', 'drop'], {cwd})
+  .then (msg) ->
+    OutputViewManager.new().addLine(msg).finish() if msg isnt ''
+  .catch (msg) ->
+    notifier.addInfo msg

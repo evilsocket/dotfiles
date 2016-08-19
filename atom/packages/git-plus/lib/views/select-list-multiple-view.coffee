@@ -1,5 +1,5 @@
-fuzzyFilter = require('../models/fuzzy').filter
-{$, $$, View, SelectListView} = require 'atom'
+fuzzyFilter = require('fuzzaldrin').filter
+{$, $$, View, SelectListView} = require 'atom-space-pen-views'
 
 # Public: Provides a view that renders a list of items with an editor that
 # filters the items. Enables you to select multiple items at once.
@@ -35,19 +35,16 @@ fuzzyFilter = require('../models/fuzzy').filter
 module.exports =
 class SelectListMultipleView extends SelectListView
 
-  selectedItems = []
-
-  #
   # This method can be overridden by subclasses but `super` should always
   # be called.
   initialize: ->
     super
-    selectedItems = []
+    @selectedItems = []
     @list.addClass('mark-active')
 
     @on 'mousedown', ({target}) =>
       false if target is @list[0] or $(target).hasClass('btn')
-
+    @on 'keypress', ({keyCode}) => @complete() if keyCode is 13
     @addButtons()
 
   # Public: Function to add buttons to the SelectListMultipleView.
@@ -59,7 +56,7 @@ class SelectListMultipleView extends SelectListView
   # confirm the selections!
   #
   # #### Example (Default)
-  # ```coffeee
+  # ```coffee
   # addButtons: ->
   #   viewButton = $$ ->
   #     @div class: 'buttons', =>
@@ -95,16 +92,16 @@ class SelectListMultipleView extends SelectListView
       @cancel()
 
   confirmed: (item, viewItem) ->
-    if item in selectedItems
-      selectedItems = selectedItems.filter (i) -> i isnt item
+    if item in @selectedItems
+      @selectedItems = @selectedItems.filter (i) -> i isnt item
       viewItem.removeClass('active')
     else
-      selectedItems.push item
+      @selectedItems.push item
       viewItem.addClass('active')
 
   complete: ->
-    if selectedItems.length > 0
-      @completed(selectedItems)
+    if @selectedItems.length > 0
+      @completed(@selectedItems)
     else
       @cancel()
 
@@ -118,10 +115,8 @@ class SelectListMultipleView extends SelectListView
     filterQuery = @getFilterQuery()
     if filterQuery.length
       options =
-        pre: '<span class="text-warning" style="font-weight:bold">'
-        post: "</span>"
-        extract: (el) => if @getFilterKey()? then el[@getFilterKey()] else el
-      filteredItems = fuzzyFilter(filterQuery, @items, options)
+        key: @getFilterKey()
+      filteredItems = fuzzyFilter(@items, filterQuery, options)
     else
       filteredItems = @items
 
@@ -132,7 +127,7 @@ class SelectListMultipleView extends SelectListView
         item = filteredItems[i].original ? filteredItems[i]
         itemView = $(@viewForItem(item, filteredItems[i].string ? null))
         itemView.data('select-list-item', item)
-        itemView.addClass 'active' if item in selectedItems
+        itemView.addClass 'active' if item in @selectedItems
         @list.append(itemView)
 
       @selectItemView(@list.find('li:first'))

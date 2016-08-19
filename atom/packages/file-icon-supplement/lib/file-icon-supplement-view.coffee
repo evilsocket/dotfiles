@@ -1,4 +1,6 @@
-{View} = require 'atom'
+{CompositeDisposable, Directory} = require 'atom'
+{$, View} = require 'atom-space-pen-views'
+_ = require 'underscore-plus'
 
 module.exports =
 class FileIconSupplementView extends View
@@ -7,92 +9,73 @@ class FileIconSupplementView extends View
     @div class: 'fis'
 
   initialize: (serializeState) ->
-    atom.workspaceView.command 'file-icon-supplement:addTabClass',
-      => @addTabClass()
-    atom.workspaceView.command 'file-icon-supplement:removeTabClass',
-      => @removeTabClass()
-    atom.workspaceView.command 'file-icon-supplement:toggleTabClass',
-      => @toggleClass 'tabIcons'
-    atom.workspaceView.command 'file-icon-supplement:addTreeViewClass',
-      => @addTreeViewClass()
-    atom.workspaceView.command 'file-icon-supplement:removeTreeViewClass',
-      => @removeTreeViewClass()
-    atom.workspaceView.command 'file-icon-supplement:toggleTreeViewClass',
-      => @toggleClass 'treeViewIcons'
-    atom.workspaceView.command 'file-icon-supplement:addFuzzyFinderClass',
-      => @addFuzzyFinderClass()
-    atom.workspaceView.command 'file-icon-supplement:removeFuzzyFinderClass',
-      => @removeFuzzyFinderClass()
-    atom.workspaceView.command 'file-icon-supplement:toggleFuzzyFinderClass',
-      => @toggleClass 'fuzzyFinderIcons'
-    atom.workspaceView.command 'file-icon-supplement:addFindAndReplaceClass',
-      => @addFindAndReplaceClass()
-    atom.workspaceView.command 'file-icon-supplement:removeFindAndReplaceClass',
-      => @removeFindAndReplaceClass()
-    atom.workspaceView.command 'file-icon-supplement:toggleFindAndReplaceClass',
-      => @toggleClass 'findAndReplaceIcons'
-    atom.workspaceView.command 'file-icon-supplement:addGrammarStatusClass',
-      => @addGrammarStatusClass()
-    atom.workspaceView.command 'file-icon-supplement:removeGrammarStatusClass',
-      => @removeGrammarStatusClass()
-    atom.workspaceView.command 'file-icon-supplement:toggleGrammarStatusClass',
-      => @toggleClass 'grammarStatusIcons'
-    atom.workspaceView.command 'file-icon-supplement:addGrammarSelectorClass',
-      => @addGrammarSelectorClass()
-    atom.workspaceView.command 'file-icon-supplement:removeGrammarSelectorClass',
-      => @removeGrammarSelectorClass()
-    atom.workspaceView.command 'file-icon-supplement:toggleGrammarSelectorClass',
-      => @toggleClass 'grammarSelectorIcons'
-    atom.workspaceView.command 'file-icon-supplement:removeAllClass',
-      => @removeAllClass()
-    atom.workspaceView.command 'file-icon-supplement:toggleAllClass',
-      => @toggleClass()
+    @subscriptions = new CompositeDisposable
 
-    @subscribe atom.config.observe 'file-icon-supplement.tabIcons',
-      => @loadTabSettings()
-    @subscribe atom.config.observe 'file-icon-supplement.treeViewIcons',
-      => @loadTreeViewSettings()
-    @subscribe atom.config.observe 'file-icon-supplement.fuzzyFinderIcons',
-      => @loadFuzzyFinderSettings()
-    @subscribe atom.config.observe 'file-icon-supplement.findAndReplaceIcons',
-      => @loadFindAndReplaceSettings()
-    @subscribe atom.config.observe 'file-icon-supplement.grammarStatusIcons',
-      => @loadGrammarStatusSettings()
-
-    @subscribe atom.config.observe 'tabs.showIcons',
-      => @loadTabSettings()
-    @subscribe atom.config.observe 'tree-view.hideVcsIgnoredFiles',
-      => @loadTreeViewSettings()
-    @subscribe atom.config.observe 'tree-view.hideIgnoredNames',
-      => @loadTreeViewSettings()
-
-    @subscribe atom.workspaceView, 'project-find:show',
-      => @addFindAndReplaceEvent()
-    @subscribe atom.workspaceView, 'fuzzy-finder:toggle-file-finder',
-      => @loadFuzzyFinderSettings()
-    @subscribe atom.workspaceView, 'grammar-selector:show',
-      => @loadGrammarSelectorSettings()
-    @subscribe atom.workspace.paneContainer.emitter, 'did-change-active-pane-item',
-      => @addTabClass()
-
-    treeView = atom.packages.loadedPackages['tree-view'] or
-      atom.packages.loadedPackages['sublime-tabs']
-
-    @subscribe treeView.mainModule.treeView, 'tree-view:directory-modified',
-      => @addTreeViewClass()
+    process.nextTick =>
+      @handleEvents()
+      @loadAllSettings()
 
   serialize: ->
+
+  handleEvents: ->
+    @subscriptions.add atom.commands.add 'atom-workspace',
+      'file-icon-supplement:addTabClass': => @addTabClass()
+      'file-icon-supplement:removeTabClass': => @removeTabClass()
+      'file-icon-supplement:toggleTabClass': => @toggleClass 'tabIcons'
+      'file-icon-supplement:addTreeViewClass': => @addTreeViewClass()
+      'file-icon-supplement:removeTreeViewClass': => @removeTreeViewClass()
+      'file-icon-supplement:toggleTreeViewClass': => @toggleClass 'treeViewIcons'
+      'file-icon-supplement:addFuzzyFinderClass': => @addFuzzyFinderClass()
+      'file-icon-supplement:removeFuzzyFinderClass': => @removeFuzzyFinderClass()
+      'file-icon-supplement:toggleFuzzyFinderClass': => @toggleClass 'fuzzyFinderIcons'
+      'file-icon-supplement:addFindAndReplaceClass': => @addFindAndReplaceClass()
+      'file-icon-supplement:removeFindAndReplaceClass': => @removeFindAndReplaceClass()
+      'file-icon-supplement:toggleFindAndReplaceClass': => @toggleClass 'findAndReplaceIcons'
+      'file-icon-supplement:addGrammarStatusClass': => @addGrammarStatusClass()
+      'file-icon-supplement:removeGrammarStatusClass': => @removeGrammarStatusClass()
+      'file-icon-supplement:toggleGrammarStatusClass': => @toggleClass 'grammarStatusIcons'
+      'file-icon-supplement:addGrammarSelectorClass': => @addGrammarSelectorClass()
+      'file-icon-supplement:removeGrammarSelectorClass': => @removeGrammarSelectorClass()
+      'file-icon-supplement:toggleGrammarSelectorClass': => @toggleClass 'grammarSelectorIcons'
+      'file-icon-supplement:removeAllClass': => @removeAllClass()
+      'file-icon-supplement:toggleAllClass': => @toggleClass()
+
+      'project-find:show': => @addFindAndReplaceEvent()
+      'fuzzy-finder:toggle-file-finder': => @loadFuzzyFinderSettings()
+      'grammar-selector:show': => @loadGrammarSelectorSettings()
+      'tree-view:recursive-expand-directory': => @loadTreeViewSettings()
+
+    @subscriptions.add atom.config.onDidChange 'file-icon-supplement.tabIcons', => @loadTabSettings()
+    @subscriptions.add atom.config.onDidChange 'file-icon-supplement.treeViewIcons', => @loadTreeViewSettings()
+    @subscriptions.add atom.config.onDidChange 'file-icon-supplement.fuzzyFinderIcons', => @loadFuzzyFinderSettings()
+    @subscriptions.add atom.config.onDidChange 'file-icon-supplement.findAndReplaceIcons', => @loadFindAndReplaceSettings()
+    @subscriptions.add atom.config.onDidChange 'file-icon-supplement.grammarStatusIcons', => @loadGrammarStatusSettings()
+
+    @subscriptions.add atom.config.onDidChange 'tabs.showIcons', => @loadTabSettings()
+
+    @subscriptions.add atom.config.onDidChange 'tree-view.hideVcsIgnoredFiles', => @loadTreeViewSettings()
+    @subscriptions.add atom.config.onDidChange 'tree-view.hideIgnoredNames', => @loadTreeViewSettings()
+    @subscriptions.add atom.config.onDidChange 'tree-view.expand-directory', => @loadTreeViewSettings()
+
+    @subscriptions.add atom.workspace.onDidChangeActivePaneItem,
+      => @addTabClass()
+
+    atom.project.getPaths().forEach (projectPath) =>
+      path = new Directory(projectPath)
+      path.onDidChange => @addTreeViewClass()
+
+    $('.tree-view-resizer').on 'click', '.directory.entry', (e) =>
+      e.stopPropagation()
+      @loadTreeViewSettings()
 
   destroy: -> @detach()
 
   addTabClass: ->
-    target = atom.workspaceView.find 'ul.tab-bar li.tab .title:not(.hide-icon)'
-    target.addClass 'fis fis-tab'
+    $('ul.tab-bar li.tab .title:not(.hide-icon)').addClass 'fis fis-tab'
     @reloadStyleSheets()
 
   removeTabClass: ->
-    target = atom.workspaceView.find '.fis.fis-tab'
-    target.removeClass 'fis fis-tab'
+    $('.fis.fis-tab').removeClass 'fis fis-tab'
 
   loadTabSettings: ->
     if atom.config.get 'file-icon-supplement.tabIcons'
@@ -101,13 +84,11 @@ class FileIconSupplementView extends View
       @removeTabClass()
 
   addTreeViewClass: ->
-    target = atom.workspaceView.find 'ol.tree-view span.name.icon'
-    target.addClass 'fis fis-tree'
+    $('ol.tree-view span.name.icon').addClass 'fis fis-tree'
     @reloadStyleSheets()
 
   removeTreeViewClass: ->
-    target = atom.workspaceView.find '.fis.fis-tree'
-    target.removeClass 'fis fis-tree'
+    $('.fis.fis-tree').removeClass 'fis fis-tree'
 
   loadTreeViewSettings: ->
     if atom.config.get 'file-icon-supplement.treeViewIcons'
@@ -116,13 +97,11 @@ class FileIconSupplementView extends View
       @removeTreeViewClass()
 
   addFuzzyFinderClass: ->
-    target = atom.workspaceView.find '.fuzzy-finder .file.icon'
-    target.addClass 'fis fis-fuzzy'
+    $('.fuzzy-finder .file.icon').addClass 'fis fis-fuzzy'
     @reloadStyleSheets()
 
   removeFuzzyFinderClass: ->
-    target = atom.workspaceView.find '.fis.fis-fuzzy'
-    target.removeClass 'fis fis-fuzzy'
+    $('.fis.fis-fuzzy').removeClass 'fis fis-fuzzy'
 
   toggleFuzzyFinderClass: ->
     current = atom.config.get 'file-icon-supplement.FuzzyFinderIcons'
@@ -135,14 +114,11 @@ class FileIconSupplementView extends View
       @removeFuzzyFinderClass()
 
   addFindAndReplaceClass: ->
-    target = atom.workspaceView.find '.results-view span.icon'
-    target.addClass 'fis fis-find'
+    $('.results-view span.icon').addClass 'fis fis-find'
     @reloadStyleSheets()
 
   removeFindAndReplaceClass: ->
-    atom.workspace.eachEditor ->
-      target = atom.workspaceView.find '.fis.fis-find'
-      target.removeClass 'fis fis-find'
+    $('.fis.fis-find').removeClass 'fis fis-find'
 
   loadFindAndReplaceSettings: ->
     if atom.config.get 'file-icon-supplement.findAndReplaceIcons'
@@ -151,27 +127,26 @@ class FileIconSupplementView extends View
       @removeFindAndReplaceClass()
       @removeFindAndReplaceEvent()
 
+  subscriptions = {}
+
   addFindAndReplaceEvent: ->
     if atom.packages.loadedPackages['find-and-replace'] and
     atom.config.get 'file-icon-supplement.findAndReplaceIcons'
-      @subscribe atom.packages.loadedPackages['find-and-replace'].
-        mainModule.resultsModel.emitter, 'did-finish-searching', =>
-          @addFindAndReplaceClass()
+      subscriptions.findAndReplace = atom.packages
+        .loadedPackages['find-and-replace'].mainModule.resultsModel
+        .onDidFinishSearching => @addFindAndReplaceClass()
+      atom.commands.add 'atom-workspace', 'core:cancel',
+        => @removeFindAndReplaceEvent()
 
   removeFindAndReplaceEvent: ->
-    if atom.packages.loadedPackages['find-and-replace']
-      @unsubscribe atom.packages.loadedPackages['find-and-replace'].
-        mainModule.resultsModel.emitter, 'did-finish-searching', =>
-          @addFindAndReplaceClass()
+    subscriptions.findAndReplace?.dispose()
 
   addGrammarStatusClass: ->
-    target = atom.workspaceView.find '.grammar-status a'
-    target.addClass 'fis fis-grammar-status'
+    $('.grammar-status a').addClass 'fis fis-grammar-status'
     @reloadStyleSheets()
 
   removeGrammarStatusClass: ->
-    target = atom.workspaceView.find '.fis.fis-grammar-status'
-    target.removeClass 'fis fis-grammar-status'
+    $('.fis.fis-grammar-status').removeClass 'fis fis-grammar-status'
 
   loadGrammarStatusSettings: ->
     if atom.config.get 'file-icon-supplement.grammarStatusIcons'
@@ -180,13 +155,11 @@ class FileIconSupplementView extends View
       @removeGrammarStatusClass()
 
   addGrammarSelectorClass: ->
-    target = atom.workspaceView.find '.grammar-selector li'
-    target.addClass 'fis fis-grammar-selector'
+    $('.grammar-selector li').addClass 'fis fis-grammar-selector'
     @reloadStyleSheets()
 
   removeGrammarSelectorClass: ->
-    target = atom.workspaceView.find '.fis.fis-grammar-selector'
-    target.removeClass 'fis fis-grammar-selector'
+    $('.fis.fis-grammar-selector').removeClass 'fis fis-grammar-selector'
 
   loadGrammarSelectorSettings: ->
     if atom.config.get 'file-icon-supplement.grammarSelectorIcons'
@@ -195,8 +168,7 @@ class FileIconSupplementView extends View
       @removeGrammarSelectorClass()
 
   removeAllClass: ->
-    target = atom.workspaceView.find '.fis'
-    target.removeClass 'fis fis-tree fis-tab fis-fuzzy fis-find fis-grammar-status fis-grammar-selector'
+    $('.fis').removeClass 'fis fis-tree fis-tab fis-fuzzy fis-find fis-grammar-status fis-grammar-selector'
 
   loadAllSettings: ->
     @loadTabSettings()

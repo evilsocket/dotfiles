@@ -10,10 +10,10 @@
 #   editor.onDidSave ->
 #     console.log "Saved! #{editor.getPath()}"
 
-atom.workspaceView.eachEditorView (editorView)->
-      editorView.on 'mousedown', (event) ->
-        return unless event.altKey
-        if event.which is 1
-            atom.workspaceView.trigger 'atom-ctags:go-to-declaration'
-        else
-            atom.workspaceView.trigger 'atom-ctags:return-from-declaration'
+# atom.workspaceView.eachEditorView (editorView)->
+#      editorView.on 'mousedown', (event) ->
+#        return unless event.altKey
+#        if event.which is 1
+#            atom.workspaceView.trigger 'atom-ctags:go-to-declaration'
+#        else
+#            atom.workspaceView.trigger 'atom-ctags:return-from-declaration'

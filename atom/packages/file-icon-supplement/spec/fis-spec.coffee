@@ -14,25 +14,12 @@ describe 'activation', ->
   activationPromise = null
 
   beforeEach ->
-    atom.workspaceView = new WorkspaceView
     waitsForPromise ->
-      atom.packages.activatePackage 'status-bar'
-
-    runs ->
       activationPromise = atom.packages.activatePackage 'file-icon-supplement'
 
-  it 'it is disabled by default', ->
-    expect(activationPromise.isFulfilled()).not.toBeTruthy()
-    expect(atom.packages.isPackageActive 'file-icon-supplement').toBe false
-
-  it 'it enables with event', ->
-    atom.workspaceView.trigger 'editor:display-updated'
-
-    waitsForPromise ->
-      activationPromise
-
-    runs ->
-      expect(atom.packages.isPackageActive 'file-icon-supplement').toBe true
+  it 'it is enabled by default', ->
+    expect(activationPromise.isFulfilled()).toBeTruthy()
+    expect(atom.packages.isPackageActive 'file-icon-supplement').toBe true
 
 describe 'file-icon-supplement base-ui', ->
 

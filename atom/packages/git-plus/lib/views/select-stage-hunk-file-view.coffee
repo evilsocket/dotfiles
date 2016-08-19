@@ -1,19 +1,28 @@
-{$$, BufferedProcess, SelectListView} = require 'atom'
+{BufferedProcess} = require 'atom'
+{$$, SelectListView} = require 'atom-space-pen-views'
 SelectStageHunks = require './select-stage-hunks-view'
 git = require '../git'
 
 module.exports =
 class SelectStageHunkFile extends SelectListView
 
-  initialize: (items) ->
+  initialize: (@repo, items) ->
     super
-    @addClass 'overlay from-top'
-
+    @show()
     @setItems items
-    atom.workspaceView.append this
     @focusFilterEditor()
 
   getFilterKey: -> 'path'
+
+  show: ->
+    @panel ?= atom.workspace.addModalPanel(item: this)
+    @panel.show()
+    @storeFocusedElement()
+
+  cancelled: -> @hide()
+
+  hide: ->
+    @panel?.destroy()
 
   viewForItem: (item) ->
     $$ ->
@@ -24,7 +33,5 @@ class SelectStageHunkFile extends SelectListView
 
   confirmed: ({path}) ->
     @cancel()
-    git.diff(
-      (data) -> new SelectStageHunks(data),
-      path
-    )
+    git.diff(@repo, path)
+    .then (data) => new SelectStageHunks(@repo, data)

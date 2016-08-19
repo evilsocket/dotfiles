@@ -10,13 +10,17 @@ clangSourceScopeDictionary = {
 }
 
 module.exports =
-  getFirstCursorSourceScopeLang: (editor, scopeDictionary=clangSourceScopeDictionary) ->
+  getFirstCursorSourceScopeLang: (editor) ->
     scopes = @getFirstCursorScopes editor
     return @getSourceScopeLang scopes
 
   getFirstCursorScopes: (editor) ->
-    firstCursorPosition = editor.getCursors()[0].getBufferPosition()
-    scopes = editor.scopesForBufferPosition firstCursorPosition
+    if editor.getCursors
+      firstPosition = editor.getCursors()[0].getBufferPosition()
+      scopeDescriptor = editor.scopeDescriptorForBufferPosition(firstPosition)
+      scopes = scopeDescriptor.getScopesArray()
+    else
+      scopes = []
 
   getSourceScopeLang: (scopes, scopeDictionary=clangSourceScopeDictionary) ->
     lang = null

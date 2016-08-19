@@ -1,38 +1,49 @@
-{$, EditorView, View} = require 'atom'
+{CompositeDisposable} = require 'atom'
+{$, TextEditorView, View} = require 'atom-space-pen-views'
 
 git = require '../git'
-StatusView = require '../views/status-view'
+notifier = require '../notifier'
 BranchListView = require '../views/branch-list-view'
-
-module.exports.gitBranches = ->
-  git.cmd
-    args: ['branch'],
-    stdout: (data) ->
-      new BranchListView(data)
+RemoteBranchListView = require '../views/remote-branch-list-view'
 
 class InputView extends View
   @content: ->
-    @div class: 'overlay from-top', =>
-      @subview 'branchEditor', new EditorView(mini: true, placeholderText: 'New branch name')
+    @div =>
+      @subview 'branchEditor', new TextEditorView(mini: true, placeholderText: 'New branch name')
 
-  initialize: ->
+  initialize: (@repo) ->
+    @disposables = new CompositeDisposable
     @currentPane = atom.workspace.getActivePane()
-    atom.workspaceView.append this
+    @panel = atom.workspace.addModalPanel(item: this)
+    @panel.show()
+
     @branchEditor.focus()
-    @on 'core:cancel', => @detach()
-    @branchEditor.on 'core:confirm', =>
-      text = $(this).text().split(' ')
-      name = if text.length is 2 then text[1] else text[0]
-      @createBranch name
-      @detach()
+    @disposables.add atom.commands.add 'atom-text-editor', 'core:cancel': (event) => @destroy()
+    @disposables.add atom.commands.add 'atom-text-editor', 'core:confirm': (event) => @createBranch()
 
-  createBranch: (name) ->
-    git.cmd
-      args: ['checkout', '-b', name],
-      stdout: (data) =>
-        new StatusView(type: 'success', message: data.toString())
-        atom.project.getRepo()?.refreshStatus()
-        @currentPane.activate()
+  destroy: ->
+    @panel.destroy()
+    @disposables.dispose()
+    @currentPane.activate()
 
-module.exports.newBranch = ->
-  new InputView()
+  createBranch: ->
+    @destroy()
+    name = @branchEditor.getModel().getText()
+    if name.length > 0
+      git.cmd(['checkout', '-b', name], cwd: @repo.getWorkingDirectory())
+      .then (message) ->
+        notifier.addSuccess message
+        git.refresh()
+      .catch (err) =>
+        notifier.addError err
+
+module.exports.newBranch = (repo) ->
+  new InputView(repo)
+
+module.exports.gitBranches = (repo) ->
+  git.cmd(['branch'], cwd: repo.getWorkingDirectory())
+  .then (data) -> new BranchListView(repo, data)
+
+module.exports.gitRemoteBranches = (repo) ->
+  git.cmd(['branch', '-r'], cwd: repo.getWorkingDirectory())
+  .then (data) -> new RemoteBranchListView(repo, data)

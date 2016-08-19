@@ -1,27 +1,21 @@
 fs = require 'fs-plus'
-{$, $$, EditorView} = require 'atom'
+{$, $$} = require 'atom-space-pen-views'
 
 git = require '../git'
-OutputView = require './output-view'
-StatusView = require './status-view'
+notifier = require '../notifier'
 SelectListMultipleView = require './select-list-multiple-view'
 
 module.exports =
 class SelectStageHunks extends SelectListMultipleView
-
-  initialize: (data) ->
+  initialize: (@repo, data) ->
     super
     @patch_header = data[0]
     return @completed @_generateObjects(data[1..]) if data.length is 2
-
-    @addClass('overlay from-top')
+    @show()
     @setItems @_generateObjects(data[1..])
-
-    atom.workspaceView.append(this)
     @focusFilterEditor()
 
-  getFilterKey: ->
-    'pos'
+  getFilterKey: -> 'pos'
 
   addButtons: ->
     viewButton = $$ ->
@@ -36,6 +30,15 @@ class SelectStageHunks extends SelectListMultipleView
       @complete() if $(target).hasClass('btn-stage-button')
       @cancel() if $(target).hasClass('btn-cancel-button')
 
+  show: ->
+    @panel ?= atom.workspace.addModalPanel(item: this)
+    @panel.show()
+    @storeFocusedElement()
+
+  cancelled: -> @hide()
+
+  hide: -> @panel?.destroy()
+
   viewForItem: (item, matchedStr) ->
     viewItem = $$ ->
       @li =>
@@ -45,20 +48,22 @@ class SelectStageHunks extends SelectListMultipleView
 
   completed: (items) ->
     @cancel()
-    return if items.length<1
+    return if items.length < 1
 
     patch_full = @patch_header
-    patch_full += patch for {patch} in items
+    items.forEach (item) ->
+      patch_full += (item?.patch)
 
-    patchPath = atom.project.getRepo().getWorkingDirectory() + '/.git/GITPLUS_PATCH'
-    fs.writeFileSync patchPath, patch_full, flag: 'w+'
-
-    git.cmd
-      args: ['apply', '--cached', '--', patchPath],
-      stdout: (data) ->
-        data = if data? and data isnt '' then data else 'Hunk has been staged!'
-        new StatusView(type: 'success', message: data)
-        try fs.unlink patchPath
+    patchPath = @repo.getWorkingDirectory() + '/GITPLUS_PATCH'
+    fs.writeFile patchPath, patch_full, flag: 'w+', (err) =>
+      unless err
+        git.cmd(['apply', '--cached', '--', patchPath], cwd: @repo.getWorkingDirectory())
+        .then (data) =>
+          data = if data? and data isnt '' then data else 'Hunk has been staged!'
+          notifier.addSuccess(data)
+          try fs.unlink patchPath
+      else
+        notifier.addError err
 
   _generateObjects: (data) ->
     for hunk in data when hunk isnt ''

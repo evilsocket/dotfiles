@@ -1,4 +1,5 @@
-{$$, BufferedProcess, SelectListView} = require 'atom'
+{BufferedProcess} = require 'atom'
+{$$, SelectListView} = require 'atom-space-pen-views'
 
 TagView = require './tag-view'
 TagCreateView = require './tag-create-view'
@@ -6,9 +7,9 @@ TagCreateView = require './tag-create-view'
 module.exports =
 class TagListView extends SelectListView
 
-  initialize: (@data) ->
+  initialize: (@repo, @data='') ->
     super
-    @addClass 'overlay from-top'
+    @show()
     @parseData()
 
   parseData: ->
@@ -23,12 +24,19 @@ class TagListView extends SelectListView
       items = []
 
     items.push {tag: '+ Add Tag', annotation: 'Add a tag referencing the current commit.'}
-
     @setItems items
-    atom.workspaceView.append this
     @focusFilterEditor()
 
   getFilterKey: -> 'tag'
+
+  show: ->
+    @panel ?= atom.workspace.addModalPanel(item: this)
+    @panel.show()
+    @storeFocusedElement()
+
+  cancelled: -> @hide()
+
+  hide: -> @panel?.destroy()
 
   viewForItem: ({tag, annotation}) ->
     $$ ->
@@ -39,6 +47,6 @@ class TagListView extends SelectListView
   confirmed: ({tag}) ->
     @cancel()
     if tag is '+ Add Tag'
-      new TagCreateView()
+      new TagCreateView(@repo)
     else
-      new TagView(tag)
+      new TagView(@repo, tag)
