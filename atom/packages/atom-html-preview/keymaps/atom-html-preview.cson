@@ -1,2 +1,0 @@
-'atom-text-editor[data-grammar~=html]':
-  'ctrl-shift-h': 'atom-html-preview:toggle'

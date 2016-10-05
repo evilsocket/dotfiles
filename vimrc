@@ -56,6 +56,9 @@ Bundle 'vim-ruby/vim-ruby'
 " Autocomplete
 " Bundle "Valloric/YouCompleteMe"
 
+" Theme
+Bundle "rakr/vim-one"
+
 " Use F9 to fold/unfold
 inoremap <F9> <C-O>za
 nnoremap <F9> za
@@ -110,6 +113,27 @@ set tags=tags;
 autocmd Filetype html setlocal ts=2 sts=2 sw=2
 autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
 autocmd Filetype eruby setlocal ts=2 sts=2 sw=2
+autocmd Filetype c setlocal ts=2 sts=2 sw=2
+autocmd Filetype cpp setlocal ts=2 sts=2 sw=2
 " autocmd Filetype python setlocal ts=2 sts=2 sw=2
 
-" :cd $HOME/Desktop/Work
+autocmd WinEnter * call s:CloseIfOnlyNerdTreeLeft()
+
+" Close all open buffers on entering a window if the only
+" buffer that's left is the NERDTree buffer
+function! s:CloseIfOnlyNerdTreeLeft()
+  if exists("t:NERDTreeBufName")
+    if bufwinnr(t:NERDTreeBufName) != -1
+      if winnr("$") == 1
+        q
+      endif
+    endif
+  endif
+endfunction
+
+let g:airline_theme='one'
+set background=dark " for the dark version
+colorscheme one
+let g:one_allow_italics = 1
+hi CursorLine   cterm=NONE ctermbg=234 ctermfg=NONE
+
