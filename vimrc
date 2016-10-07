@@ -134,7 +134,9 @@ endfunction
 
 let g:airline_theme='one'
 set background=dark " for the dark version
-colorscheme one
+color one
 let g:one_allow_italics = 1
+" do not show underline on current line
 hi CursorLine   cterm=NONE ctermbg=234 ctermfg=NONE
+
 
