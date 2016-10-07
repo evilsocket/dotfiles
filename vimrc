@@ -37,6 +37,9 @@ Bundle 'scrooloose/nerdtree'
     " Set current dir to vim cwd
     set autochdir
     let NERDTreeChDirMode=2
+    " Single click to open files and expand folders.
+    let g:NERDTreeMouseMode = 3
+    
     " Ctrl+d to toggle NerdTree
     nmap <silent> <C-D> :NERDTreeToggle<CR>
     " Close nerdtree when it's the only buffer left open
