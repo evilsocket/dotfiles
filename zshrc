@@ -49,6 +49,7 @@ export ANDROID_SDK=$HOME/Library/Android/sdk
 export ANDROID_NDK=$HOME/Library/Android/ndk
 export ANDROID_SDK_ROOT=$ANDROID_SDK
 
+export PATH="$PATH:$HOME/bin"
 export PATH="$PATH:$ANDROID_SDK/tools:$ANDROID_SDK/platform-tools:$ANDROID_NDK:$ANDROID_NDK/toolchains/arm-linux-androideabi-4.9/prebuilt/darwin-x86_64/bin"
 export PATH="$PATH:$ANDROID_NDK/toolchains/aarch64-linux-android-4.9/prebuilt/darwin-x86_64/bin"
 

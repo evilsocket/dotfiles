@@ -1,0 +1,37 @@
+Signature-Version: 1.0
+Created-By: 1.0 (Android SignApk)
+SHA1-Digest-Manifest: PoArAoDdOKlymiHBr70AU5pzcfc=
+
+Name: AndroidManifest.xml
+SHA1-Digest: zjqnCc0YMRAZYHc16szcT2fFuVw=
+
+Name: res/layout/stk_input.xml
+SHA1-Digest: ti2+7CULsgqhERRnXfQRKp2wpFw=
+
+Name: res/layout/stk_tone_dialog.xml
+SHA1-Digest: P1r1LPjADqi5Cn9eM36khFENvYE=
+
+Name: res/drawable-hdpi-v4/ic_launcher_sim_toolkit.png
+SHA1-Digest: eDunR95NuXqmIDBMepAzyMB+53M=
+
+Name: res/layout/stk_event_msg.xml
+SHA1-Digest: +eA06vNRQW8ZiF6yRPwJ+TnI27s=
+
+Name: res/layout/stk_menu_list.xml
+SHA1-Digest: 5FbVJPLDaoKz+VjwnxL6acrXjM4=
+
+Name: resources.arsc
+SHA1-Digest: Pfxx0ljLi1v/3iVx/dcebSNGYKY=
+
+Name: res/layout/stk_menu_item.xml
+SHA1-Digest: Bej+31EIFBvtA6yi00a2+abf1Ng=
+
+Name: res/layout/stk_msg_dialog.xml
+SHA1-Digest: 3mJdwe4eG51nElwQ0z5IvpeoxiQ=
+
+Name: res/layout/stk_title.xml
+SHA1-Digest: BKkRlfdop9qncF5dOk2VH70PU7A=
+
+Name: res/xml/stk_settings.xml
+SHA1-Digest: +MbFWyK3IqAbktR/zEDh9ADOhog=
+

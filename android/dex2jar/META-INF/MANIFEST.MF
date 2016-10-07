@@ -1,0 +1,36 @@
+Manifest-Version: 1.0
+Created-By: 1.7.0_65 (Oracle Corporation)
+
+Name: AndroidManifest.xml
+SHA1-Digest: 3qAvWZdwMwJeRyq849xaoN9k4zc=
+
+Name: res/layout/stk_input.xml
+SHA1-Digest: ygW2kFMhP8fqqH4vAt1O7wFcTwU=
+
+Name: res/layout/stk_tone_dialog.xml
+SHA1-Digest: wBxhZofWfyngLwHQKdYWmsW/HzY=
+
+Name: res/layout/stk_event_msg.xml
+SHA1-Digest: yeoR0ztRIYjHGFDT2gjLy16B25E=
+
+Name: res/drawable-hdpi-v4/ic_launcher_sim_toolkit.png
+SHA1-Digest: LUQibAYuVqorhsDnxLTQFDTegbI=
+
+Name: res/layout/stk_menu_list.xml
+SHA1-Digest: YDZ5kskaE5KE+nqJaEXVVqj/QWI=
+
+Name: resources.arsc
+SHA1-Digest: VJbqxIcZxMAy/6c04CF1hwCqNV4=
+
+Name: res/layout/stk_menu_item.xml
+SHA1-Digest: CHju01p8FJZmiK9X5qV0MVma/AI=
+
+Name: res/layout/stk_title.xml
+SHA1-Digest: VpNkiBFcBv58eq909oBg3DLhm8g=
+
+Name: res/layout/stk_msg_dialog.xml
+SHA1-Digest: q4QsK0Km4ICaTq7ZMSBF4/3SKuQ=
+
+Name: res/xml/stk_settings.xml
+SHA1-Digest: fzoB7O679AZ4hI3RFxxDWgZu9qU=
+
