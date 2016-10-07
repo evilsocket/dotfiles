@@ -63,3 +63,6 @@ export ANDROID_DIETLIBC=" "
 export GOPATH=$HOME/Desktop/Lab/gohome
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+
+
+alias ccat='pygmentize -g -O style=colorful,linenos=1'
