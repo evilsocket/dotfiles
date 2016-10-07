@@ -108,7 +108,6 @@ if has("gui_running")
     endif
 endif
 
-set tabline=%!tabber#TabLine()
 set tags=tags;
 
 " force two spaces indentation for html, ruby and python files
