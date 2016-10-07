@@ -82,7 +82,6 @@ syntax on
 set mouse=a
 " Force terminal to 256 colors
 set t_Co=256
-color codeschool
 " Use tabs with Ctrl and arrow keys, Ctrl+n to open a new tab, and Ctrl+w to
 " close it
 map <C-up> :tabr<cr>
