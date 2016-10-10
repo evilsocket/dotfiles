@@ -68,6 +68,8 @@ Bundle "Valloric/YouCompleteMe"
 " Sublime/Atom multi cursor selection ( CTRL+n ).
 Bundle "terryma/vim-multiple-cursors"
 
+Bundle 'kien/ctrlp.vim'
+
 " Theme
 Bundle "rakr/vim-one"
 
