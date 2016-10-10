@@ -65,14 +65,11 @@ Bundle 'vim-ruby/vim-ruby'
 " Autocomplete
 Bundle "Valloric/YouCompleteMe"
 
+" Sublime/Atom multi cursor selection ( CTRL+n ).
+Bundle "terryma/vim-multiple-cursors"
+
 " Theme
 Bundle "rakr/vim-one"
-
-" Use F9 to fold/unfold
-inoremap <F9> <C-O>za
-nnoremap <F9> za
-onoremap <F9> <C-C>za
-vnoremap <F9> zf
 
 " By pressing Ctrl + R in the visual mode you will be prompted to enter text to replace with.
 " Press enter and then confirm each change you agree with 'y' or decline with 'n'.
@@ -94,7 +91,7 @@ map <C-up> :tabr<cr>
 map <C-down> :tabl<cr>
 map <C-left> :tabp<cr>
 map <C-right> :tabn<cr>
-map <C-n> :tabnew<cr>
+" map <C-n> :tabnew<cr>
 map <C-w> :tabclose<cr>
 
 " setup for gui
@@ -122,7 +119,6 @@ autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
 autocmd Filetype eruby setlocal ts=2 sts=2 sw=2
 autocmd Filetype c setlocal ts=2 sts=2 sw=2
 autocmd Filetype cpp setlocal ts=2 sts=2 sw=2
-" autocmd Filetype python setlocal ts=2 sts=2 sw=2
 
 autocmd WinEnter * call s:CloseIfOnlyNerdTreeLeft()
 
