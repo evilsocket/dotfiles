@@ -57,7 +57,7 @@ Bundle 'Lokaltog/vim-powerline'
 Bundle 'vim-ruby/vim-ruby'
 
 " Autocomplete
-" Bundle "Valloric/YouCompleteMe"
+Bundle "Valloric/YouCompleteMe"
 
 " Theme
 Bundle "rakr/vim-one"
