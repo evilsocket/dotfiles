@@ -38,14 +38,20 @@ Bundle 'scrooloose/nerdtree'
     set autochdir
     let NERDTreeChDirMode=2
     " Single click to open files and expand folders.
-    let g:NERDTreeMouseMode = 3
-    
+    let NERDTreeMouseMode = 3
+    " Display hidden files
+    let NERDTreeShowHidden=1
+    " Do not display these files
+    let NERDTreeIgnore=['\.DS_Store', '\~$', '\.swp']
     " Ctrl+d to toggle NerdTree
     nmap <silent> <C-D> :NERDTreeToggle<CR>
     " Close nerdtree when it's the only buffer left open
     autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
     " Go to previous (last accessed) window ( move focus to file buffer
     " instead of the tree itself).
+    autocmd VimEnter * wincmd p
+    " Always open the tree when booting Vim, but don’t focus it.
+    autocmd VimEnter * NERDTree
     autocmd VimEnter * wincmd p
 
 " A much better statusline
