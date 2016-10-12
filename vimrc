@@ -72,19 +72,11 @@ Bundle 'Lokaltog/vim-powerline'
     " Use unicode symbols in powerline
     let g:Powerline_symbols = 'fancy'
 
-" Great configs for Ruby
-Bundle 'vim-ruby/vim-ruby'
-
-" Autocomplete
-" Bundle "Valloric/YouCompleteMe"
-
 " Sublime/Atom multi cursor selection ( CTRL+n ).
 Bundle "terryma/vim-multiple-cursors"
 
+" C+p fuzzy search
 Bundle 'kien/ctrlp.vim'
-
-" Theme
-Bundle "rakr/vim-one"
 
 " By pressing Ctrl + R in the visual mode you will be prompted to enter text to replace with.
 " Press enter and then confirm each change you agree with 'y' or decline with 'n'.
