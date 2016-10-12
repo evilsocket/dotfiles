@@ -13,6 +13,3 @@ do
 done
 
 vim +BundleInstall +qa
-
-cd ~/.vim/bundle/YouCompleteMe
-./install.py --clang-completer
