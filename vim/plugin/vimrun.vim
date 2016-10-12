@@ -13,14 +13,36 @@
 "              See http://sam.zoy.org/wtfpl/COPYING for more details.
 " ============================================================================
 
+if exists('g:loaded_vimrun')
+    finish
+endif
+let g:loaded_vimrun = 1
+
 " If python is available, execute vimrun.py on current folder,
 " the command will search for a .vimrun file and execute it as
 " a command if 'r' is pressend in normal mode.
 if has('python')
+
+python << EOF
+def py_vimrun():
+    import vim
+    import os
+    
+    cwd = vim.eval("getcwd()")
+    fname = os.path.join( cwd, '.vimrun' )
+
+    if os.path.isfile(fname):
+        data = open( fname, 'rt' ).read()
+        vim.command( "!%s" % data)
+    else:
+        print "No .vimrun file found in current directory."
+EOF
+
     function! VimRun()
-        pyfile ~/.vim/plugin/vimrun.py
+        python py_vimrun()
     endfunction
 
     nmap r :call VimRun()<CR>
+
 endif
 
