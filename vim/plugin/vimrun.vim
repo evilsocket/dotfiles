@@ -18,9 +18,6 @@ if exists('g:loaded_vimrun')
 endif
 let g:loaded_vimrun = 1
 
-" If python is available, execute vimrun.py on current folder,
-" the command will search for a .vimrun file and execute it as
-" a command if 'r' is pressend in normal mode.
 if has('python')
 
 python << EOF
