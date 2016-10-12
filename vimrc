@@ -53,6 +53,19 @@ Bundle 'scrooloose/nerdtree'
     " Always open the tree when booting Vim, but don’t focus it.
     autocmd VimEnter * NERDTree
     autocmd VimEnter * wincmd p
+" GIT support for NERDTree
+Bundle 'Xuyuanp/nerdtree-git-plugin'
+    let g:NERDTreeIndicatorMapCustom = {
+        \ "Modified"  : "✹",
+        \ "Staged"    : "✚",
+        \ "Untracked" : "✭",
+        \ "Renamed"   : "➜",
+        \ "Unmerged"  : "═",
+        \ "Deleted"   : "✖",
+        \ "Dirty"     : "✗",
+        \ "Clean"     : "✔︎",
+        \ "Unknown"   : "?"
+        \ }
 
 " A much better statusline
 Bundle 'Lokaltog/vim-powerline'
