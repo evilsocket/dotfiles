@@ -40,9 +40,9 @@ Bundle 'scrooloose/nerdtree'
     " Single click to open files and expand folders.
     let NERDTreeMouseMode = 3
     " Display hidden files
-    let NERDTreeShowHidden=1
+    " let NERDTreeShowHidden=1
     " Do not display these files
-    let NERDTreeIgnore=['\.DS_Store', '\~$', '\.swp']
+    " let NERDTreeIgnore=['\.DS_Store', '\~$', '\.swp']
     " Ctrl+d to toggle NerdTree
     nmap <silent> <C-D> :NERDTreeToggle<CR>
     " Close nerdtree when it's the only buffer left open
@@ -63,7 +63,7 @@ Bundle 'Lokaltog/vim-powerline'
 Bundle 'vim-ruby/vim-ruby'
 
 " Autocomplete
-Bundle "Valloric/YouCompleteMe"
+" Bundle "Valloric/YouCompleteMe"
 
 " Sublime/Atom multi cursor selection ( CTRL+n ).
 Bundle "terryma/vim-multiple-cursors"
