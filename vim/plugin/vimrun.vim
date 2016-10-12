@@ -18,13 +18,17 @@ if exists('g:loaded_vimrun')
 endif
 let g:loaded_vimrun = 1
 
-if has('python')
+if !has('python')
+    echo "Error: Required vim compiled with +python"
+    finish
+endif
 
 python << EOF
 def py_vimrun():
     import vim
     import os
-    
+    import sys
+
     cwd = vim.eval("getcwd()")
     fname = os.path.join( cwd, '.vimrun' )
 
@@ -35,11 +39,9 @@ def py_vimrun():
         print "No .vimrun file found in current directory."
 EOF
 
-    function! VimRun()
-        python py_vimrun()
-    endfunction
+function! VimRun()
+    python py_vimrun()
+endfunction
 
-    nmap r :call VimRun()<CR>
-
-endif
+nmap r :call VimRun()<CR>
 

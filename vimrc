@@ -34,8 +34,6 @@ Bundle 'scrooloose/nerdtree'
     autocmd VimEnter * NERDTree
     " Mirror tree position for every buffer
     autocmd BufEnter * NERDTreeMirror
-    " Set current dir to vim cwd
-    set autochdir
     let NERDTreeChDirMode=2
     " Single click to open files and expand folders.
     let NERDTreeMouseMode = 3
