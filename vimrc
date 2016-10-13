@@ -21,6 +21,11 @@ set fileformats=unix,dos,mac   " support all three, in this order
 set foldmethod=syntax
 set foldlevel=7
 
+" gui colors if running iTerm
+if $TERM_PROGRAM =~ "iTerm"
+    set termguicolors
+endif
+
 " Initialize vundle runtime
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
