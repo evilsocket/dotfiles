@@ -43,5 +43,5 @@ function! VimRun()
     python py_vimrun()
 endfunction
 
-nmap r :call VimRun()<CR>
+nmap <C-r> :call VimRun()<CR>
 
