@@ -1,3 +1,9 @@
 .DS_*
 *.swp
 vim/bundle/*
+android/adbkey
+android/adbkey.pub
+android/analytics.settings
+android/cache/
+android/metrics/
+android/uid.txt

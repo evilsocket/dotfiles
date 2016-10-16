@@ -4,6 +4,7 @@ filetype plugin on
 
 set hidden
 set history=10000
+set cryptmethod=blowfish2
 set expandtab
 set tabstop=4
 set shiftwidth=4
