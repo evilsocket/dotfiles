@@ -32,7 +32,7 @@ set mouse=a
 set t_Co=256
 " http://vim.wikia.com/wiki/VimTip102
 set omnifunc=syntaxcomplete#Complete
-inoremap <tab> <c-r>=Smart_TabComplete()<CR>
+" inoremap <tab> <c-r>=Smart_TabComplete()<CR>
 
 " gui colors if running iTerm
 if $TERM_PROGRAM =~ "iTerm"
