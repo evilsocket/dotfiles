@@ -1,7 +1,7 @@
 " ============================================================================
 " File:        vimrun.vim
 " Description: plugin which executes .vimrun file (if exists in current
-" folder) when 'r' is pressed in normal mode.
+" folder) when 'F5' is pressed in normal mode.
 " Maintainer:  Simone Margaritelli <evilsocket at gmail dot com>
 " Last Change: 12 October 2016
 " License:     This program is free software. It comes without any warranty,
@@ -43,5 +43,5 @@ function! VimRun()
     python py_vimrun()
 endfunction
 
-nmap <C-r> :call VimRun()<CR>
+nmap <F5> :call VimRun()<CR>
 
