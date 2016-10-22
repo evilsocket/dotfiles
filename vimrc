@@ -48,6 +48,9 @@ map <C-right> :tabn<cr>
 " map <C-n> :tabnew<cr>
 map <C-w> :tabclose<cr>
 
+" Ctrl-D opens a shell.
+nmap <silent> <C-D> :shell<CR>
+
 if has("gui_running")
     " setup for gui
     set guioptions-=r  " no scrollbar on the right
@@ -93,10 +96,11 @@ call vundle#rc()
 " Vundle package
 Bundle 'gmarik/vundle'
 
+
 " A file tree explorer
 Bundle 'scrooloose/nerdtree'
     " Ctrl+d to toggle NerdTree
-    nmap <silent> <C-D> :NERDTreeToggle<CR>
+    " nmap <silent> <C-D> :NERDTreeToggle<CR>
     " Open it on vim startup
     autocmd VimEnter * NERDTree
     " Mirror tree position for every buffer
