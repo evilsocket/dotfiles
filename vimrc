@@ -32,7 +32,7 @@ set mouse=a
 set t_Co=256
 " http://vim.wikia.com/wiki/VimTip102
 set omnifunc=syntaxcomplete#Complete
-" inoremap <tab> <c-r>=Smart_TabComplete()<CR>
+inoremap <tab> <c-r>=Smart_TabComplete()<CR>
 
 " gui colors if running iTerm
 if $TERM_PROGRAM =~ "iTerm"
@@ -153,9 +153,9 @@ Bundle 'kien/ctrlp.vim'
 function! Smart_TabComplete()
   let line = getline('.')                         " current line
 
-  let substr = strpart(line, -1, col('.')+1)      " from the start of the current
-                                                  " line to one character right
-                                                  " of the cursor
+  let substr = strpart(line, -1, col('.'))        " from the start of the current
+                                                  " line to one character on
+                                                  " the cursor
   let substr = matchstr(substr, "[^ \t]*$")       " word till cursor
   if (strlen(substr)==0)                          " nothing to match on empty string
     return "\<tab>"
