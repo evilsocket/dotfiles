@@ -59,13 +59,13 @@ if has("gui_running")
     set guioptions-=T  " no toolbar
     set guioptions-=L
 
-    if has("gui_gtk2")
-        set guifont=Inconsolata\ 9
-    elseif has("gui_win32")
-        set guifont=Consolas:h11:cANSI
-    else
-        set guifont=Monaco_for_Powerline\ 9
-    endif
+    "if has("gui_gtk2")
+    "    set guifont=Inconsolata\ 9
+    "elseif has("gui_win32")
+    "    set guifont=Consolas:h11:cANSI
+    "else
+    "    set guifont=Monaco_for_Powerline\ 9
+    "endif
 endif
 
 " set theme
@@ -78,6 +78,14 @@ autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
 autocmd Filetype eruby setlocal ts=2 sts=2 sw=2
 autocmd Filetype c setlocal ts=2 sts=2 sw=2
 autocmd Filetype cpp setlocal ts=2 sts=2 sw=2
+
+augroup vimrc_autocmds
+    autocmd!
+    " highlight characters past column 120
+    autocmd FileType python highlight Excess ctermbg=DarkGrey guibg=Black
+    autocmd FileType python match Excess /\%120v.*/
+    autocmd FileType python set nowrap
+augroup END
 
 " By pressing Ctrl + R in the visual mode you will be prompted to enter text to replace with.
 " Press enter and then confirm each change you agree with 'y' or decline with 'n'.
