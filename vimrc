@@ -28,13 +28,16 @@ set foldmethod=syntax
 set foldlevel=7
 set tags=tags;
 set mouse=a
-set nohlsearch " disable search hilighting
 
 " Force terminal to 256 colors
 set t_Co=256
 " http://vim.wikia.com/wiki/VimTip102
 set omnifunc=syntaxcomplete#Complete
 inoremap <tab> <c-r>=Smart_TabComplete()<CR>
+
+" Clear highlighting on escape in normal mode
+nnoremap <esc> :noh<return><esc>
+nnoremap <esc>^[ <esc>^[
 
 " gui colors if running iTerm
 if $TERM_PROGRAM =~ "iTerm"
