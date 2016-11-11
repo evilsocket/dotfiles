@@ -28,6 +28,8 @@ set foldmethod=syntax
 set foldlevel=7
 set tags=tags;
 set mouse=a
+set nohlsearch " disable search hilighting
+
 " Force terminal to 256 colors
 set t_Co=256
 " http://vim.wikia.com/wiki/VimTip102
