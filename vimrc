@@ -134,6 +134,7 @@ Bundle 'scrooloose/nerdtree'
 
 Bundle 'octref/RootIgnore'
 
+let loaded_netrwPlugin=1 
 let NERDTreeRespectWildIgnore=1
 
 
