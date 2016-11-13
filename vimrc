@@ -132,6 +132,11 @@ Bundle 'scrooloose/nerdtree'
     " Do not display these files
     " let NERDTreeIgnore=['\.DS_Store', '\~$', '\.swp']
 
+Bundle 'octref/RootIgnore'
+
+let NERDTreeRespectWildIgnore=1
+
+
 " GIT support for NERDTree
 Bundle 'Xuyuanp/nerdtree-git-plugin'
     let g:NERDTreeIndicatorMapCustom = {
