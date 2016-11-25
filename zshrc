@@ -17,13 +17,11 @@ export PATH="$PATH:$ANDROID_NDK/toolchains/aarch64-linux-android-4.9/prebuilt/da
 
 export PATH="$PATH:$HOME/clang-static-analyzer/bin"
 export PATH="$PATH:/opt/metasploit-framework/bin"
-export PATH="$PATH:$HOME/android/jadx-0.6.0/bin"
+export PATH="$PATH:$HOME/.android/jadx-0.6.0/bin"
 
 export ANDROID_SYSROOT=$ANDROID_NDK/platforms/android-18/arch-arm/
 export ANDROID_SYSROOT64=$ANDROID_NDK/platforms/android-21/arch-arm64/
 export ANDROID_DIETLIBC=" "
-
-export GOPATH=$HOME/Desktop/Lab/gohome
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
