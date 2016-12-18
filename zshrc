@@ -6,8 +6,10 @@ plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
-export ANDROID_SDK=/opt/google/android/sdk
-export ANDROID_NDK=/opt/google/android/ndk
+export ANDROID_BASE=/opt/google/android
+
+export ANDROID_SDK=$ANDROID_BASE/sdk
+export ANDROID_NDK=$ANDROID_BASE/ndk
 export ANDROID_SDK_ROOT=$ANDROID_SDK
 
 export PATH="/opt/local/bin:$PATH"
@@ -16,7 +18,7 @@ export PATH="$PATH:$ANDROID_SDK/tools:$ANDROID_SDK/platform-tools:$ANDROID_NDK:$
 export PATH="$PATH:$ANDROID_NDK/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin"
 
 export PATH="$PATH:$HOME/clang-static-analyzer/bin"
-export PATH="$PATH:/opt/google/android/jadx-0.6.0/bin"
+export PATH="$PATH:$ANDROID_BASE/jadx/bin"
 
 export ANDROID_SYSROOT=$ANDROID_NDK/platforms/android-18/arch-arm/
 export ANDROID_SYSROOT64=$ANDROID_NDK/platforms/android-21/arch-arm64/
