@@ -24,6 +24,11 @@ export ANDROID_SYSROOT=$ANDROID_NDK/platforms/android-18/arch-arm/
 export ANDROID_SYSROOT64=$ANDROID_NDK/platforms/android-21/arch-arm64/
 export ANDROID_DIETLIBC=" "
 
+export CUDA_HOME=/usr/local/cuda
+
+export PATH="$PATH:$CUDA_HOME/bin"
+export LD_LIBRARY_PATH=${CUDA_HOME}/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 alias ccat='pygmentize -g -O style=colorful,linenos=1'
