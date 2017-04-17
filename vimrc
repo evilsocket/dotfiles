@@ -92,6 +92,12 @@ augroup vimrc_autocmds
     autocmd FileType python set nowrap
 augroup END
 
+augroup filetypedetect
+    au BufRead,BufNewFile *.zr set filetype=c
+    au BufRead,BufNewFile *.yy set filetype=cpp
+    au BufRead,BufNewFile *.rl set filetype=cpp
+augroup END
+
 " By pressing Ctrl + R in the visual mode you will be prompted to enter text to replace with.
 " Press enter and then confirm each change you agree with 'y' or decline with 'n'.
 " This command will override your register 'h' so you can choose other one
