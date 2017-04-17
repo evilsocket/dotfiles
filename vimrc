@@ -39,6 +39,9 @@ inoremap <tab> <c-r>=Smart_TabComplete()<CR>
 nnoremap <esc> :noh<return><esc>
 nnoremap <esc>^[ <esc>^[
 
+" Ctrl+H opens hex edit mode
+nnoremap <c-h> :%!xxd<cr>
+
 " gui colors if running iTerm
 if $TERM_PROGRAM =~ "iTerm"
     set termguicolors
