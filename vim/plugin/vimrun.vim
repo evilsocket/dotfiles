@@ -18,12 +18,12 @@ if exists('g:loaded_vimrun')
 endif
 let g:loaded_vimrun = 1
 
-if !has('python')
-    echo "Error: Required vim compiled with +python"
+if !has('python3')
+    echo "Error: Required vim compiled with +python3"
     finish
 endif
 
-python << EOF
+python3 << EOF
 def py_vimrun():
     import vim
     import os
@@ -36,7 +36,7 @@ def py_vimrun():
         data = open( fname, 'rt' ).read()
         vim.command( "!%s" % data)
     else:
-        print "No .vimrun file found in current directory."
+        print("No .vimrun file found in current directory.")
 EOF
 
 function! VimRun()
