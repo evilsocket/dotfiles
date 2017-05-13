@@ -179,6 +179,8 @@ Bundle 'fatih/vim-go'
 Bundle 'majutsushi/tagbar'
 
 autocmd FileType go nested :TagbarOpen
+autocmd FileType go nmap <F5> :GoBuild<CR>
+autocmd FileType go nmap <F6> :GoTest<CR>
 
 " Proper autocomplete
 Bundle 'Shougo/neocomplete.vim'
