@@ -175,6 +175,8 @@ Bundle 'kien/ctrlp.vim'
 " Vim for Go
 Bundle 'fatih/vim-go'
 
+let g:go_fmt_autosave = 0
+
 " TagBar
 Bundle 'majutsushi/tagbar'
 
