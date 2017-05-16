@@ -26,9 +26,15 @@ export ANDROID_DIETLIBC=" "
 
 export CUDA_HOME=/usr/local/cuda
 
+export GOPATH="$HOME/gocode"
+
 export PATH="$PATH:$CUDA_HOME/bin"
 export LD_LIBRARY_PATH=${CUDA_HOME}/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
+export PATH="$PATH:$GOPATH/bin" 
+
+
 alias ccat='pygmentize -g -O style=colorful,linenos=1'
+alias exodus='/home/evilsocket/exodus-1.24.0/Exodus'
