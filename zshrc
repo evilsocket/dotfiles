@@ -38,3 +38,6 @@ export PATH="$PATH:$GOPATH/bin"
 
 alias ccat='pygmentize -g -O style=colorful,linenos=1'
 alias exodus='/home/evilsocket/exodus-1.24.0/Exodus'
+
+export LC_ALL=en_US.utf-8
+export LANG="$LC_ALL"
