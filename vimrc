@@ -43,9 +43,9 @@ nnoremap <esc>^[ <esc>^[
 nnoremap <c-h> :%!xxd<cr>
 
 " gui colors if running iTerm
-if $TERM_PROGRAM =~ "iTerm"
-    set termguicolors
-endif
+"if $TERM_PROGRAM =~ "iTerm"
+"    set termguicolors
+"endif
 
 " Use tabs with Ctrl and arrow keys, Ctrl+n to open a new tab, and Ctrl+w to
 " close it

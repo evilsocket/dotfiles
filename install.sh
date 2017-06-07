@@ -12,4 +12,4 @@ do
     ln -s $(pwd)/$file ~/.$file
 done
 
-vim +BundleInstall +qa
+vim +BundleInstall +GoInstallBinaries +qa
