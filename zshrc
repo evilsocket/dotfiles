@@ -8,6 +8,7 @@ source $ZSH/oh-my-zsh.sh
 
 local return_code="%(?..%{$fg[red]%}%? ↵%{$reset_color%})"
 
+HOST=$(hostname -s)
 PROMPT='$(virtualenv_prompt_info)%{[03m%}%{$fg[blue]%}%M %{$fg[green]%}%c \
 $(git_prompt_info)\
 \
