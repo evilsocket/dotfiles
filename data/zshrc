@@ -52,6 +52,7 @@ export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 export PATH="$PATH:$GOPATH/bin" 
 
+export PATH="$PATH:$HOME/dotfiles/bin"
 
 alias ccat='pygmentize -g -O style=colorful,linenos=1'
 alias exodus='/home/evilsocket/exodus-1.24.0/Exodus'

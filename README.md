@@ -1,1 +1,1 @@
-My dot files ^_^
+My dot files and scripts ^_^
