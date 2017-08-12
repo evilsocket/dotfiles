@@ -58,3 +58,5 @@ alias exodus='/home/evilsocket/exodus-1.24.0/Exodus'
 
 export LC_ALL=en_US.utf-8
 export LANG="$LC_ALL"
+
+source ~/.rvm/scripts/rvm
