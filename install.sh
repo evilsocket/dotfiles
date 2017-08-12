@@ -1,6 +1,6 @@
 #!/bin/bash
 
-files=( 'oh-my-zsh' 'vim' 'vimrc' 'zshrc' 'tmux.conf' )
+files=( 'oh-my-zsh' 'vim' 'vimrc' 'zshrc' 'screenrc' 'tmux.conf' )
 
 git clone http://github.com/gmarik/vundle.git ./vim/bundle/vundle
 
@@ -13,3 +13,5 @@ do
 done
 
 vim +BundleInstall +GoInstallBinaries +qa
+
+sudo cp {cputemp,cpuusage,memusage} /usr/bin/
