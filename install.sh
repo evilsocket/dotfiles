@@ -1,17 +1,32 @@
 #!/bin/bash
+bold=$(tput bold)
+norm=$(tput sgr0)
 
-git clone http://github.com/gmarik/vundle.git ./data/vim/bundle/vundle
+PACKAGES=( 
+  git
+  vim-nox
+  lm-sensors 
+  gawk 
+  zsh
+  screen
+  tmux
+  golang
+)
 
+clear 
+
+echo "Make sure to install ${bold}${PACKAGES[*]}${norm}, then ${bold}chsh -s $(which zsh)${norm} and press ENTER when done."
+read
+ 
 for file in data/*
 do
-    echo "Installing $file ..."
-    
+    echo "Linking $file to ${bold}~/.$(basename $file)${norm} ..."
     rm -rf ~/.$(basename $file)
     ln -s $(pwd)/$file ~/.$(basename $file)
 done
 
-vim +BundleInstall +GoInstallBinaries +qa
+if [ ! -d ./data/vim/bundle/vundle ]; then
+    git clone http://github.com/gmarik/vundle.git ./data/vim/bundle/vundle
+fi
 
-echo 
-echo "Make sure to install lm-sensors and gawk before executing screen."
-echo
+vim +BundleInstall +GoInstallBinaries +qa
