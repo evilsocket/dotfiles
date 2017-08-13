@@ -18,6 +18,9 @@ PACKAGES=(
   zsh
   screen
   tmux
+  build-essential 
+  ruby-dev
+  libpcap-dev
   golang
   unity-tweak-tool
   arc-theme
