@@ -31,4 +31,6 @@ if [ ! -d ./data/vim/bundle/vundle ]; then
     git clone http://github.com/gmarik/vundle.git ./data/vim/bundle/vundle
 fi
 
+# needed to intall golang tools for vim
+mkdir ~/gocode/
 vim +BundleInstall +GoInstallBinaries +qa
