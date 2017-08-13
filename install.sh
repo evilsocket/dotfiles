@@ -2,6 +2,12 @@
 bold=$(tput bold)
 norm=$(tput sgr0)
 
+PPAS=(
+   noobslab/themes 
+   noobslab/icons
+   nilarimogard/webupd8
+)
+
 PACKAGES=( 
   htop
   ack
@@ -13,11 +19,34 @@ PACKAGES=(
   screen
   tmux
   golang
+  unity-tweak-tool
+  arc-theme
+  arc-icons
+  grive
+)
+
+COMMANDS=(
+    'chsh -s /usr/bin/zsh'
 )
 
 clear 
 
-echo "Make sure to install ${bold}${PACKAGES[*]}${norm}, then ${bold}chsh -s /usr/bin/zsh${norm} and press ENTER when done."
+echo "Suggested commands before you continue:"
+echo
+for ppa in "${PPAS[@]}"
+do
+    echo "  sudo add-apt-repository ${bold}ppa:$ppa${norm}"
+done
+echo "  sudo apt-get update"
+echo 
+echo "  sudo apt-get install ${bold}${PACKAGES[*]}${norm} -y"
+echo 
+for cmd in "${COMMANDS[@]}"
+do
+    echo "  ${bold}$cmd${norm}"
+done
+echo
+
 read
  
 for file in data/*
@@ -32,5 +61,5 @@ if [ ! -d ./data/vim/bundle/vundle ]; then
 fi
 
 # needed to intall golang tools for vim
-mkdir ~/gocode/
+mkdir -p ~/gocode/
 vim +BundleInstall +GoInstallBinaries +qa
