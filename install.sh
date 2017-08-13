@@ -17,7 +17,7 @@ PACKAGES=(
 
 clear 
 
-echo "Make sure to install ${bold}${PACKAGES[*]}${norm}, then ${bold}chsh -s $(which zsh)${norm} and press ENTER when done."
+echo "Make sure to install ${bold}${PACKAGES[*]}${norm}, then ${bold}chsh -s /usr/bin/zsh${norm} and press ENTER when done."
 read
  
 for file in data/*
