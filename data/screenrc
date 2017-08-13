@@ -43,9 +43,9 @@ screen -t shell
 screen -t system htop
 select shell
 
-backtick 1 0 0 /usr/bin/cpuusage
-backtick 1 0 0 /usr/bin/cputemp
-backtick 2 5 5 /usr/bin/memusage
+backtick 1 0 0 cpuusage
+backtick 1 0 0 cputemp
+backtick 2 5 5 memusage
 
 hardstatus alwayslastline
 hardstatus string '%{= kG}[ %{G}%H %{g}][%= %{= kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][cpu %1`][mem %2`][%{B} %m-%d %{W}%c %{g}]'
