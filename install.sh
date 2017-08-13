@@ -3,6 +3,8 @@ bold=$(tput bold)
 norm=$(tput sgr0)
 
 PACKAGES=( 
+  htop
+  ack
   git
   vim-nox
   lm-sensors 
