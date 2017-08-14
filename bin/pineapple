@@ -279,8 +279,9 @@ function connectsaved {
     printf "    $(tput setaf 6) (_  _(_ ,)$(tput sgr0)       $(tput setaf 7)\___\\$(tput sgr0)        $(tput setaf 3)'<><>'$(tput sgr0)\n"
     ifconfig $spineapplelan $spineapplehostip netmask $spineapplenmask up #Bring up Ethernet Interface directly connected to Pineapple
     echo '1' > /proc/sys/net/ipv4/ip_forward # Enable IP Forwarding
-    iptables -X #clear chains and rules
-    iptables -F
+
+    #iptables -X #clear chains and rules
+    #iptables -F
     iptables -A FORWARD -i $spineapplewan -o $spineapplelan -s $spineapplenet -m state --state NEW -j ACCEPT #setup IP forwarding
     iptables -A FORWARD -m state --state ESTABLISHED,RELATED -j ACCEPT
     iptables -A POSTROUTING -t nat -j MASQUERADE
