@@ -6,10 +6,12 @@ PPAS=(
    noobslab/themes 
    noobslab/icons
    nilarimogard/webupd8
+   webupd8team/java 
 )
 
 PACKAGES=( 
-  htop
+  htop 
+  oracle-java8-installer
   ack
   git
   vim-nox
