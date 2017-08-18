@@ -1,0 +1,410 @@
+#  ___ ___ ___  ___ ___ ___ 
+# |   \_ _| _ \/ __/ __|_ _|
+# | |) | ||   /\__ \__ \| | 
+# |___/___|_|_\|___/___/___|
+# 
+# Theme: dirssi                   
+# Author: Mauro Crociara (realnot)
+# Version: dirsi-0.150710-r1
+# Last update: Jul 10 2015
+# Description: a full customizable dark irssi theme. This version use the 
+# hex format for the colors. To display it in a properly way, you need to set
+# colors_ansi_24bit on. Take a look here:
+# https://github.com/shabble/irssi-docs/wiki/Irssi-0.8.17#Testing_true_colours
+#
+# If you can't use true colours for some reason, there are two other version
+# of this theme: dirssi16 and dirssi256 that provide the support rispectively 
+# for 16 and 256 colors.
+#
+# Feel free to modify everything and enjoy the theme :)
+
+#############################################################################
+
+# default foreground color (%N) - -1 is the "default terminal color"
+default_color = "7";
+
+# print timestamp/servertag at the end of line, not at beginning
+info_eol = "false";
+
+abstracts = {
+
+  #   ____      _                  ____       _      _   _       
+  #  / ___|___ | | ___  _ __ ___  |  _ \ __ _| | ___| |_| |_ ___ 
+  # | |   / _ \| |/ _ \| '__/ __| | |_) / _` | |/ _ \ __| __/ _ \
+  # | |__| (_) | | (_) | |  \__ \ |  __/ (_| | |  __/ |_| ||  __/
+  #  \____\___/|_|\___/|_|  |___/ |_|   \__,_|_|\___|\__|\__\___| 
+
+
+  # color scheme ("d" mean a dark color, "l" mean a light color. As explained
+  # in doc/formats the HEX rappresentation is %Z followed by the HEX value).
+  dk = "%Z2E3436$*%n";
+  dr = "%ZA62A3E$*%n";
+  dg = "%Z38912B$*%n";
+  dy = "%ZB27D12$*%n";
+  db = "%Z355C9A$*%n";
+  dm = "%Z7C4F9F$*%n";
+  dc = "%Z258F8F$*%n";
+  dw = "%Z77858C$*%n";
+  lk = "%Z454545$*%n";
+  lr = "%ZF04758$*%n";
+  lg = "%Z93C724$*%n";
+  ly = "%ZDDB62B$*%n";
+  lb = "%Z45A3E6$*%n";
+  lm = "%ZC953EF$*%n";
+  lc = "%Z60C6C8$*%n";
+  lw = "%ZC0C0C0$*%n";
+
+  # add more colors here...
+  ww = "%ZFFFFFF$*%n";
+  bb = "%Z000000$*%n";
+
+  # statusbar background a foreground
+  sb_bg = "%z2E3436";
+  sb_fg = "%ZFFFFFF";
+
+  # dirssi background
+  d_bg = "%z192033$*%n";
+
+  #  ____                  _           _     
+  # / ___| _   _ _ __ ___ | |__   ___ | |___ 
+  # \___ \| | | | '_ ` _ \| '_ \ / _ \| / __|
+  #  ___) | |_| | | | | | | |_) | (_) | \__ \
+  # |____/ \__, |_| |_| |_|_.__/ \___/|_|___/
+  #        |___/                             
+
+  s_es = "{lk =}";
+  s_rp = "{lk )}";
+  s_lp = "{lk (}";
+  s_vl = "{dw │}";
+  s_rb = "{lg ❱}";
+  s_lb = "{lr ❰}";
+  s_cm = "{lb ✔}";
+  s_bs = "{lm ★}";
+  s_mx = "{dr ✖}";
+  s_bb = "{ly •}";
+  s_ca = "{dy @}";
+  s_ps = "{dy %%}";
+  s_gc = "{dy ✚}";
+  s_em = "{lm {bt !}}";
+
+  # add more symbols here...
+
+  #   ____                      _      
+  #  / ___| ___ _ __   ___ _ __(_) ___ 
+  # | |  _ / _ \ '_ \ / _ \ '__| |/ __|
+  # | |_| |  __/ | | |  __/ |  | | (__ 
+  #  \____|\___|_| |_|\___|_|  |_|\___|
+
+  #bold text
+  bt = "%_$*%_";
+
+  #underline text
+  ut = "%U$*%U";
+
+  # indent (How many columns to indent subsequent lines of a wrapped message).
+  indent = "-9";
+  # in query the nick mode is not present, so we use an empty space for
+  # replacing it. (all right aligned, always)
+  gap = " ";
+
+  # text to insert at the beginning of each non-message line
+  line_start = "";
+  line_start_irssi = "";
+
+  # timestamp styling (alternating dark/light white)
+  timestamp = "{s_lp}{dw %%H}{lk :}{dw %%M}{lk :}{dw %%S}{s_rp}";
+
+  # any kind of text that needs hilighting, default is to bold
+  hilight = "{bt $*}";
+
+  # any kind of error message, default is bright red
+  error = "{lr $*}";
+
+  # channel name is printed
+  channel = "{bt $*}";
+  regular_channel = "$*";
+
+  # nick is printed
+  nick = "{ly {bt $*}}";
+
+  # nick host is printed
+  nickhost = "{s_lp}{dy $*}{s_rp}";
+
+  # server name is printed
+  server = "{bt $*}";
+
+  # some kind of comment is printed
+  comment = "{s_lp}{dw $*}{s_rp}";
+
+  # reason for something is printed (part, quit, kick, ..)
+  reason = "{s_lp}{dw $*}{s_rp}";
+
+  # mode change is printed ([{s_gc}o nick])
+  mode = "{comment $*}";
+
+  #   ____ _                                                                 
+  #  / ___| |__   __ _ _ __    _ __ ___   ___  ___ ___  __ _  __ _  ___  ___ 
+  # | |   | '_ \ / _` | '_ \  | '_ ` _ \ / _ \/ __/ __|/ _` |/ _` |/ _ \/ __| 
+  # | |___| | | | (_| | | | | | | | | | |  __/\__ \__ \ (_| | (_| |  __/\__ \
+  #  \____|_| |_|\__,_|_| |_| |_| |_| |_|\___||___/___/\__,_|\__, |\___||___/
+  #                                                          |___/           
+
+  # highlighted nick/host is printed (joins)
+  c_nick_hilight = "{dw $*}";
+  c_mode_hilight = "{ww $*}";
+  c_host_hilight = "{ly {nickhost $*}}";
+
+  # nick/host is printed (parts, quits, etc.)
+  c_nick = "{dw $*}";
+  c_nick_changed = "{ly $*}";
+  c_host = "{s_lp}{dw $*}{s_rp}";
+
+  # highlighted channel name is printed
+  c_hilight = "{ly {bt $*}}";
+
+  # ban/ban exception/invite list mask is printed
+  ban = "{dr $*}";
+
+  #  __  __                                     
+  # |  \/  | ___  ___ ___  __ _  __ _  ___  ___ 
+  # | |\/| |/ _ \/ __/ __|/ _` |/ _` |/ _ \/ __|
+  # | |  | |  __/\__ \__ \ (_| | (_| |  __/\__ \
+  # |_|  |_|\___||___/___/\__,_|\__, |\___||___/
+  #                             |___/           
+
+  # the basic styling of how to print message, $0 = nick mode, $1 = nick
+  msgnick = "{ww $0}$1 {s_vl} %|";
+
+  # $0 = nick mode, $1 = nick
+  ownmsgnick = "{msgnick $0 {ww $1}}";
+  ownnick = "{bt $*}";
+
+  # public message in channel, $0 = nick mode, $1 = nick
+  pubmsgnick = "{c_mode_hilight $0}{lw $1} {s_vl} %|";
+  pubnick = "{lw $*}";
+
+  # public message in channel meant for me, $0 = nick mode, $1 = nick
+  pubmsgmenick = "%n{c_mode_hilight $0}$1 {s_bb} %|";
+  menick = "{ly {bt $*}}";
+
+  # public highlighted message in channel
+  # $0 = highlight color, $1 = nick mode, $2 = nick
+  pubmsghinick = "{msgnick {ly $1} $0{bt $2}}";
+
+  # channel name is printed with message
+  msgchannel = ":{ly $*}";
+
+  # private message, $0 = nick, $1 = host
+  privmsg = "[$0{s_lp}$1{s_rp}] ";
+
+  # private message from you, $0 = "msg", $1 = target nick
+  ownprivmsg = "[$0{s_lp}$1{s_rp}] ";
+
+  # own private message in query
+  ownprivmsgnick = "{msgnick  $*}";
+  ownprivnick = "{lw $*}";
+
+  # private message in query
+  privmsgnick = "{msgnick  {lr $*}}";
+
+  #     _        _   _                 
+  #    / \   ___| |_(_) ___  _ __  ___ 
+  #   / _ \ / __| __| |/ _ \| '_ \/ __|
+  #  / ___ \ (__| |_| | (_) | | | \__ \
+  # /_/   \_\___|\__|_|\___/|_| |_|___/
+
+
+  # used internally by this theme
+  action_core = "{bt $*}";
+
+  # generic one that's used by most actions
+  action = "{ww {action_core $*}}";
+
+  # own action, both private/public
+  ownaction = "{action $*}";
+
+  # own action with target, both private/public
+  ownaction_target = "{action_core $0}: {ww {bt $1}}";
+
+  # private action sent by others
+  pvtaction = "{s_bs} {bt $*} ";
+  pvtaction_query = "{action $*} {s_bs} ";
+
+  # public action sent by others
+  pubaction = "{action $*}";
+
+  #   ___  _   _                 _                                 _       
+  #  / _ \| |_| |__   ___ _ __  (_)_ __ ___    _____   _____ _ __ | |_ ___ 
+  # | | | | __| '_ \ / _ \ '__| | | '__/ __|  / _ \ \ / / _ \ '_ \| __/ __|
+  # | |_| | |_| | | |  __/ |    | | | | (__  |  __/\ V /  __/ | | | |_\__ \
+  #  \___/ \__|_| |_|\___|_|    |_|_|  \___|  \___| \_/ \___|_| |_|\__|___/
+
+
+  # whois
+  whois = "%# $[8]0 : $1-";
+
+  # notices
+  ownnotice = "[{dr}$0{s_lp}{lr}$1-{s_rp}] ";
+  notice = "{s_bs} {lm $*} {s_bs} %n";
+  pubnotice_channel = ":{dm $*}";
+  pvtnotice_host = "{s_lp}{dm $*}{s_rp}";
+  servernotice = "{s_em} $* ";
+
+  # CTCPs
+  ownctcp = "[%r$0%K{s_lp}%R$1-%K{s_rp}] ";
+  ctcp = "{dg $*}";
+
+  # wallops
+  wallop = "%_$*%n: ";
+  wallop_nick = "%n$*";
+  wallop_action = "{s_bs} {bt $*}";
+
+  # netsplits
+  netsplit = "{lr $*}";
+  netjoin = "{lg $*}";
+
+  # /names list
+  names_prefix = "";
+  names_nick = "{lw ❬}{bt $0}$1{lw ❭} ";
+  names_nick_op = "{names_nick $*}";
+  names_nick_halfop = "{names_nick $*}";
+  names_nick_voice = "{names_nick $*}";
+  names_users = "❬{ly $*}❭";
+  names_channel = "{ly $*}";
+
+  # DCC
+  dcc = "{dg $*}";
+  dccfile = "%_$*%_";
+
+  # DCC chat, own msg/action
+  dccownmsg = "[%r$0%K{s_lp}$1-%K{s_rp}%n] ";
+  dccownnick = "{lr $*}";
+  dccownquerynick = "%_$*%n";
+  dccownaction = "{action $*}";
+  dccownaction_target = "{action_core $0}%K:%c$1%n ";
+
+  # DCC chat, others
+  dccmsg = "[%G$1-%K{s_lp}%g$0%K{s_rp}%n] ";
+  dccquerynick = "{lg $*}";
+  dccaction = "%_ {s_lp}*dcc*{s_rp} $*%n %|";
+
+  #  ____  _        _             _                
+  # / ___|| |_ __ _| |_ _   _ ___| |__   __ _ _ __ 
+  # \___ \| __/ _` | __| | | / __| '_ \ / _` | '__|
+  #  ___) | || (_| | |_| |_| \__ \ |_) | (_| | |   
+  # |____/ \__\__,_|\__|\__,_|___/_.__/ \__,_|_|   
+
+
+  # default background for all statusbars. You can also give
+  # the default foreround color for statusbar items.
+  sb_background = "{sb_bg}{sb_fg}";
+
+  # default backround for "default" statusbar group
+  sb_default_bg = "{sb_bg}";
+  # background for prompt / input line
+  sb_prompt_bg = "{d_bg}";
+  # background for info statusbar
+  sb_info_bg = "{sb_bg}";
+  #background for topicbar (same default)
+  sb_topic_bg = "{sb_bg}";
+
+  # text at the beginning of statusbars. sb-item already puts
+  # space there,so we don't use anything by default.
+  sbstart = "";
+  # text at the end of statusbars. Use space so that it's never
+  # used for anything.
+  sbend = " ";
+
+  topicsbstart = "{sbstart $*}";
+  topicsbend = "{sbend $*}";
+
+  prompt = "{dw [}{ly $*}{dw ]} %N";
+  sb = "{dy ❬}{lw $*}{dy ❭} ";
+  sbmode = "{s_lp}{ly {s_gc}}{lw $*}{s_rp}";
+  sbaway = " {s_lp}{dy zZzZ{s_rp}";
+  sbservertag = "{lw :$0 {s_lp}change with ^X{s_rp}}";
+  sbnickmode = "{lw $0}";
+
+  # activity in statusbar
+
+  # ',' separator
+  sb_act_sep = "{ww $*}";
+  # normal text
+  sb_act_text = "{ly $*}";
+  # public message
+  sb_act_msg = "{ww $*}";
+  # hilight
+  sb_act_hilight = "{lm $*}";
+  # hilight with specified color, $0 = color, $1 = text
+  sb_act_hilight_color = "{lm $0$1}";
+
+  #  ____            _       _       
+  # / ___|  ___ _ __(_)_ __ | |_ ___ 
+  # \___ \ / __| '__| | '_ \| __/ __|
+  #  ___) | (__| |  | | |_) | |_\__ \
+  # |____/ \___|_|  |_| .__/ \__|___/
+  #                   |_|            
+
+  # usercount.pl customization
+  sb_usercount = "{sb {bt $0} nicks {s_lp}{dw $1-}{s_rp}}";
+  sb_uc_ircops = "{s_bs}$*";
+  sb_uc_ops = "{s_ca}$*";
+  sb_uc_halfops = "{s_ps}$*";
+  sb_uc_voices = "{s_gc}$*";
+  sb_uc_normal = "$*";
+  sb_uc_space = " ";
+
+};
+
+formats = {
+  "fe-common/core" = {
+    line_start_irssi = "{line_start_irssi}";
+    timestamp = "{timestamp %%H:%%M:%%S} ";
+
+    #core/channels
+    join = "{gap}{c_nick $[{indent}]0} {s_rb} {c_host $1} {lw has joined} {dw {channel $2}}";
+    part = "{gap}{c_nick $[{indent}]0} {s_lb} {c_host $1} {lw has left} {dw channel $2} {reason $3}";
+    kick = "{gap}{c_nick $[{indent}]0} {s_hx} {lw was kicked from} {channel $1} {lw by} {nick $2} {reason $3}";
+    quit = "{gap}{c_nick $[{indent}]0} {s_lb} {c_host $1} {lw has quit} {reason $2}";
+    quit_once = "{channel $3} {c_nick $0} {c_host $1} {lw has quit} {reason $2}";
+    nick_changed = "{gap}{lw $[{indent}]0} {s_cm} {lw is now known as} {lb {bt $1}}";
+    your_nick_changed = "{gap}{lw $[{indent}]0} {s_cm} {lw You're now known as} {lb {bt $1}}";
+    endofnames = "{channel $0}: Total of {ly $1} nicks {comment {ly $2} ops, {ly $3} halfops, {ly $4} voices,  {ly $5} normal}";
+
+    #core/messages
+    own_msg = "{ownmsgnick $2 {ownnick $[{indent}]0}}{ww $1}";
+    own_msg_channel = "{ownmsgnick $3 {ownnick $[{indent}]0}{msgchannel $1}}{ww $2}";
+    pubmsg_me = "{pubmsgmenick $2 {menick $[{indent}]0}}{ww $1}";
+    pubmsg_me_channel = "{pubmsgmenick $3 {menick $[{indent}]0}{msgchannel $1}}{ww $2}";
+    pubmsg_hilight = "{pubmsghinick $0 $3 $[{indent}]1}{ww $2}";
+    pubmsg_hilight_channel = "{pubmsghinick $0 $4 $[{indent}]1{msgchannel $2}}{ww $3}";
+    pubmsg = "{pubmsgnick $2 {pubnick $[{indent}]0}}{lw $1}";
+    pubmsg_channel = "{pubmsgnick $3 {pubnick $[{indent}]0}{msgchannel $1}}{ww $2}";
+    msg_private_query = "{gap}{privmsgnick $[{indent}]0}{lw $2}";
+    own_msg_private_query = "{gap}{ownprivmsgnick {ownprivnick $[{indent}]2}}{lw $1}";
+  };
+
+
+  "fe-common/irc" = {
+    #irc/message
+    own_action = "{gap}{ownaction $[{indent}]0} {s_bs} {ww {bt $1}}";
+    own_action_target = "{ownaction_target $0 $2}{ww {bt $1}}";
+    action_public = "{gap}{pubaction $[{indent}]0} {s_bs} {ww {bt $1}}";
+    action_public_channel = "{pubaction $0{msgchannel $1}}{ww {bt $2}}";
+    action_private = "{pvtaction $0}{ww {bt $2}}";
+    action_private_query = "{gap}{pvtaction_query $[{indent}]0}{ww {bt $2}}";
+
+    #irc/channels
+    channel_created = "{ww Channel} {c_hilight $0} {ww created $1}";
+    topic = "{ww Topic for} {c_hilight $0}{ww :} {ww $1}";
+    topic_info = "{ww Topic set by} {nick $0} {nickhost $2} {comment $1}";
+    url = "{ww Home page for} {c_hilight $0}: {ww $1}";
+    channel_synced = "{ww Join to} {ww {channel $0}} {ww was synced in} {ww {bt $1}} {ww secs}";
+    channel_mode = "{ww mode/}{c_hilight $0} {mode $1}";
+    chanmode_change = "{ww mode/}{c_hilight $0} {mode $1} {ww by} {nick $2}";
+
+    #irc/nick
+    usermode_change = "{lw Mode change} {mode $0} {lw for user} {nick $1}";
+    user_mode = "{lw Your user mode is} {mode $0}";
+  };
+};
