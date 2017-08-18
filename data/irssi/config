@@ -396,7 +396,12 @@ settings = {
     real_name = "evilsocket";
     user_name = "evilsocket";
     nick = "evilsocket";
+    timestamp_format = "%H:%M";
   };
   "fe-text" = { actlist_sort = "refnum"; };
-  "fe-common/core" = { theme = "dirssi"; };
+  "fe-common/core" = {
+    theme = "dirssi";
+    timestamps = "yes";
+    timestamp_level = "ALL";
+  };
 };
