@@ -1,131 +1,25 @@
 servers = (
   {
-    address = "irc.ubuntu.com";
-    chatnet = "Ubuntu";
-    port = "6697";
-    use_ssl = "yes";
-  },
-  { address = "irc.dal.net"; chatnet = "DALnet"; port = "6667"; },
-  { address = "irc.servercentral.net"; chatnet = "EFNet"; port = "9999"; use_ssl = "yes"; },
-  { address = "irc.esper.net"; chatnet = "EsperNet"; port = "6667"; },
-  { 
-    address = "chat.freenode.net";
-    chatnet = "Freenode";
-    port = "6667";
-  },
-  {
-    address = "irc.gamesurge.net";
-    chatnet = "GameSurge";
-    port = "6667";
-  },
-  { address = "eu.irc6.net"; chatnet = "IRCnet"; port = "6667"; },
-  { address = "open.ircnet.net"; chatnet = "IRCnet"; port = "6667"; },
-  {
-    address = "irc.ircsource.net";
-    chatnet = "IRCSource";
-    port = "6667";
-  },
-  { address = "irc.netfuze.net"; chatnet = "NetFuze"; port = "6667"; },
-  { address = "irc.oftc.net"; chatnet = "OFTC"; port = "6667"; },
-  { 
-    address = "irc.quakenet.org";
-    chatnet = "QuakeNet";
-    port = "6667";
-  },
-  { address = "irc.rizon.net"; chatnet = "Rizon"; port = "6667"; },
-  { address = "silc.silcnet.org"; chatnet = "SILC"; port = "706"; },
-  { 
-    address = "irc.undernet.org";
-    chatnet = "Undernet";
-    port = "6667";
-  },
-  {
     address = "irc.2600.net";
     chatnet = "2600IRC";
     port = "6697";
     use_ssl = "yes";
     ssl_verify = "no";
-    autoconnect = "yes";
-  }
+    autoconnect = "no";
+  },
+
+  {
+    address = "breaking.technology";
+    chatnet = "reddit";
+    port = "6697";
+    use_ssl = "yes";
+    ssl_verify = "no";
+    autoconnect = "no";
+  },
+
 );
 
-chatnets = {
-  Ubuntu = { 
-    type = "IRC";
-    max_kicks = "1";
-    max_msgs = "4";
-    max_whois = "1";
-  };
-  DALnet = {
-    type = "IRC";
-    max_kicks = "4";
-    max_msgs = "20";
-    max_whois = "30";
-  };
-  EFNet = { 
-    type = "IRC";
-    max_kicks = "1";
-    max_msgs = "4";
-    max_whois = "1";
-  };
-  EsperNet = {
-    type = "IRC";
-    max_kicks = "1";
-    max_msgs = "4";
-    max_whois = "1";
-  };
-  Freenode = {
-    type = "IRC";
-    max_kicks = "1";
-    max_msgs = "4";
-    max_whois = "1";
-  };
-  GameSurge = {
-    type = "IRC";
-    max_kicks = "1";
-    max_msgs = "1";
-    max_whois = "1";
-  };
-  IRCnet = { 
-    type = "IRC";
-    max_kicks = "1";
-    max_msgs = "1";
-    max_whois = "1";
-  };
-  IRCSource = {
-    type = "IRC";
-    max_kicks = "1";
-    max_msgs = "4";
-    max_whois = "1";
-  };
-  NetFuze = {
-    type = "IRC";
-    max_kicks = "1";
-    max_msgs = "1";
-    max_whois = "1";
-  };
-  OFTC = { type = "IRC"; max_kicks = "1"; max_msgs = "1"; max_whois = "1"; };
-  QuakeNet = {
-    type = "IRC";
-    max_kicks = "1";
-    max_msgs = "1";
-    max_whois = "1";
-  };
-  Rizon = { 
-    type = "IRC";
-    max_kicks = "1";
-    max_msgs = "1";
-    max_whois = "1";
-  };
-  SILC = { type = "SILC"; };
-  Undernet = {
-    type = "IRC";
-    max_kicks = "1";
-    max_msgs = "1";
-    max_whois = "1";
-  };
-  2600IRC = { type = "IRC"; };
-};
+chatnets = { 2600IRC = { type = "IRC"; }; reddit = { type = "IRC"; }; };
 
 channels = (
   { name = "#lobby"; chatnet = "EsperNet"; autojoin = "No"; },
@@ -293,45 +187,64 @@ aliases = {
   97 = "WINDOW GOTO 97";
   98 = "WINDOW GOTO 98";
   99 = "WINDOW GOTO 99";
+  usercount = "/sbar awl_0 add -before awl_0 -alignment";
 };
 
 statusbar = {
+  # formats:
+  # when using {templates}, the template is shown only if it's argument isn't
+  # empty unless no argument is given. for example {sb} is printed always,
+  # but {sb $T} is printed only if $T isn't empty.
 
   items = {
-
+    # start/end text in statusbars
     barstart = "{sbstart}";
     barend = "{sbend}";
 
     topicbarstart = "{topicsbstart}";
     topicbarend = "{topicsbend}";
 
-    time = "{sb $Z}";
-    user = "{sb {sbnickmode $cumode}$N{sbmode $usermode}{sbaway $A}}";
+    # treated "normally", you could change the time/user name to whatever
+    time = "%K {sb %G$Z}%K {sbaway $A} %g$topic%K";
+    user = "{sb {sbnickmode $cumode}{sbmode $usermode}}";
 
-    window = "{sb $winref:$tag/$itemname{sbmode $M}}";
-    window_empty = "{sb $winref{sbservertag $tag}}";
+    # treated specially .. window is printed with non-empty windows,
+    # window_empty is printed with empty windows
 
-    prompt = "{prompt $[.15]itemname}";
+    window = "";
+    #window_empty = "{sb %C{sbservertag $tag}}%n";   
+    window_empty = "{sb $winref/{sbservertag $tag}}";
+    #prompt = "$winref%K/{prompt $[.15]itemname}";
+    prompt = "";
     prompt_empty = "{prompt $winname}";
-
     topic = " $topic";
-    topic_empty = " Irssi v$J - http://www.irssi.org";
+    topic_empty = " Irssi v$J - http://irssi.org/help/";
 
+    # all of these treated specially, they're only displayed when needed
     lag = "{sb Lag: $0-}";
-    act = "{sb Act: $0-}";
-    more = "-- more --";
+    act = "{sb $0-}";
+    more = "-- %Ymore below%n --";
   };
 
+  # there's two type of statusbars. root statusbars are either at the top
+  # of the screen or at the bottom of the screen. window statusbars are at
+  # the top/bottom of each split window in screen.
   default = {
-
+    # the "default statusbar" to be displayed at the bottom of the window.
+    # contains all the normal items.
     window = {
-
       disabled = "no";
+
+      # window, root
       type = "window";
-      placement = "bottom";
+      # top, bottom
+      placement = "top";
+      # number
       position = "1";
+      # active, inactive, always
       visible = "active";
 
+      # list of items in statusbar in the display order
       items = {
         barstart = { priority = "100"; };
         time = { };
@@ -339,19 +252,17 @@ statusbar = {
         window = { };
         window_empty = { };
         lag = { priority = "-1"; };
-        act = { priority = "10"; };
         more = { priority = "-1"; alignment = "right"; };
         barend = { priority = "100"; alignment = "right"; };
       };
     };
 
+    # statusbar to use in inactive split windows
     window_inact = {
-
       type = "window";
       placement = "bottom";
       position = "1";
       visible = "inactive";
-
       items = {
         barstart = { priority = "100"; };
         window = { };
@@ -359,38 +270,81 @@ statusbar = {
         more = { priority = "-1"; alignment = "right"; };
         barend = { priority = "100"; alignment = "right"; };
       };
+      disabled = "yes";
     };
 
+    # we treat input line as yet another statusbar :) It's possible to
+    # add other items before or after the input line item.
     prompt = {
-
       type = "root";
       placement = "bottom";
-      position = "100";
-      visible = "always";
-
-      items = {
-        prompt = { priority = "-1"; };
-        prompt_empty = { priority = "-1"; };
-        input = { priority = "10"; };
-      };
+      # we want to be at the bottom always
+      position = "1";
+      visible = "active";
+      items = { input = { }; };
     };
 
+    # topicbar
     topic = {
-
       type = "root";
       placement = "top";
-      position = "1";
+      position = "2";
       visible = "always";
-
       items = {
         topicbarstart = { priority = "100"; };
         topic = { };
         topic_empty = { };
         topicbarend = { priority = "100"; alignment = "right"; };
       };
+      disabled = "yes";
+    };
+    window_add = { items = { }; disabled = "yes"; };
+    add = { disabled = "yes"; };
+    delete = { disabled = "yes"; };
+    prompt_empty = { position = "0"; disabled = "yes"; };
+    #   rollestatus = { items = {  = { }; }; disabled = "yes"; };
+    #   status = { items = { }; disabled = "yes"; };
+    #   rollstatus = { disabled = "yes"; };
+    asd = {
+      position = "0";
+      placement = "bottom";
+      items = { };
+      disabled = "yes";
+    };
+    topic_empty = { disabled = "yes"; };
+    remove = { items = { }; disabled = "yes"; };
+    channels = { items = { chanact = { }; }; disabled = "yes"; };
+    statusbar = {
+
+      #rollen statusbar:
+
+      items = {
+        #           barstart = "--------------";
+        erotin = {
+          items = { barstart = "asdasd--------------"; };
+          priority = "100";
+          alignment = "left";
+          disabled = "no";
+          placement = "bottom";
+          position = "0";
+        };
+      };
+    };
+
+
+    "-before" = { disabled = "yes"; };
+    aw1_0 = { position = "0"; disabled = "yes"; };
+    empty = { placement = "bottom"; position = "0"; disabled = "yes"; };
+    awl_0 = {
+      items = {
+        barstart = { priority = "100"; };
+        awl_0 = { };
+        barend = { priority = "100"; alignment = "right"; };
+      };
     };
   };
 };
+
 settings = {
   core = {
     real_name = "evilsocket";
@@ -398,10 +352,27 @@ settings = {
     nick = "evilsocket";
     timestamp_format = "%H:%M";
   };
+
   "fe-text" = { actlist_sort = "refnum"; };
-  "fe-common/core" = {
-    theme = "dirssi";
-    timestamps = "yes";
-    timestamp_level = "ALL";
+  "fe-common/core" = { theme = "weed"; };
+  "perl/core/scripts" = {
+    awl_all_disable = "no";
+    awl_automode = "sbar";
+    awl_block = "20";
+    awl_columns = "1";
+    awl_display_key = "%K%0$H $N %N";
+    awl_display_key_active = "%1 %W$C %N";
+    awl_display_nokey = "%K%0$H $N %N";
+    awl_display_nokey_active = "%1 %W$C %N";
+    awl_height_adjust = "1";
+    awl_hide_data = "0";
+    awl_maxlines = "9";
+    awl_placement = "bottom";
+    awl_position = "0";
+    awl_prefer_name = "yes";
+    awl_sbar_maxlength = "yes";
+    awl_separator = "%N %N";
+    awl_sort = "refnum";
   };
 };
+
