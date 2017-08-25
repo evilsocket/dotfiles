@@ -6,7 +6,7 @@ servers = (
     use_ssl = "yes";
   },
   { address = "irc.dal.net"; chatnet = "DALnet"; port = "6667"; },
-  { address = "irc.efnet.org"; chatnet = "EFNet"; port = "6667"; },
+  { address = "irc.servercentral.net"; chatnet = "EFNet"; port = "9999"; use_ssl = "yes"; },
   { address = "irc.esper.net"; chatnet = "EsperNet"; port = "6667"; },
   { 
     address = "chat.freenode.net";

@@ -102,7 +102,7 @@ abstracts = {
   ut = "%U$*%U";
 
   # indent (How many columns to indent subsequent lines of a wrapped message).
-  indent = "-9";
+  indent = "-10";
   # in query the nick mode is not present, so we use an empty space for
   # replacing it. (all right aligned, always)
   gap = " ";
