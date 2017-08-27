@@ -41,6 +41,7 @@ bindkey -k F2 quit
 
 screen -t shell
 screen -t system htop
+screen -t irc torify irssi
 select shell
 
 backtick 1 0 0 cpuusage
