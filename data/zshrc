@@ -52,6 +52,8 @@ export PATH="/opt/local/bin:$PATH"
 # Basically an ugly read only vim ...
 alias ccat='pygmentize -g -O style=colorful,linenos=1'
 
+alias balls='git add . && git commit -m "balls" && git push'
+
 export LC_ALL=en_US.utf-8
 export LANG="$LC_ALL"
 
