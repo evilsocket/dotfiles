@@ -102,6 +102,8 @@ autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
 autocmd Filetype eruby setlocal ts=2 sts=2 sw=2
 autocmd Filetype c setlocal ts=2 sts=2 sw=2
 autocmd Filetype cpp setlocal ts=2 sts=2 sw=2
+" use indent as folding method for python
+autocmd Filetype python setlocal foldmethod=indent
 
 augroup vimrc_autocmds
     autocmd!
