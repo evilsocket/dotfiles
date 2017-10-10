@@ -28,6 +28,7 @@ set foldmethod=syntax
 set foldlevel=7
 set tags=tags;
 set mouse=a
+set clipboard=unnamedplus
 
 " Force terminal to 256 colors
 set t_Co=256
