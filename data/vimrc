@@ -30,6 +30,11 @@ set tags=tags;
 set mouse=a
 set clipboard=unnamedplus
 
+" use separate folders for swap files
+set backupdir=~/.vim/backup/
+set directory=~/.vim/swap/
+set undodir=~/.vim/undo/
+
 " Force terminal to 256 colors
 set t_Co=256
 " http://vim.wikia.com/wiki/VimTip102
