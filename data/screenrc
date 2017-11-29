@@ -41,11 +41,9 @@ bindkey -k F2 quit
 
 screen -t shell
 screen -t system htop
-screen -t irc irssi
 select shell
 
 backtick 1 0 0 cpuusage
-backtick 1 0 0 cputemp
 backtick 2 5 5 memusage
 
 hardstatus alwayslastline
