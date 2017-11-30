@@ -13,18 +13,16 @@ vbell           on
 vbell_msg       "WTF DUDE ??!!"
 vbellwait       1
 
-# Make the output buffer large for (fast) xterms.
-#termcapinfo xterm* OL=10000
-termcapinfo xterm* ti@:te@
-# allow bold colors
-attrcolor b ".I"
-# tell screen how to set colors
-termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
-# erase background with current bg color
-defbce "on"
-
 # set terminal emulator to xterm mode
 term xterm
+# Make the output buffer large for (fast) xterms.
+termcapinfo xterm* ti@:te@
+# tell screen how to set colors
+termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
+# allow bold colors
+attrcolor b ".I"
+# erase background with current bg color
+defbce "on"
 
 # ctrl + { left, right }
 bindkey ^[[1;5D prev
@@ -35,9 +33,6 @@ bindkey ^[b prev
 bindkey ^[f next
 bindkey ^[[D prev
 bindkey ^[[C next
-
-# F12 -> quit
-bindkey -k F2 quit
 
 screen -t shell
 screen -t system htop
