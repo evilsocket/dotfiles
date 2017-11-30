@@ -1,1 +1,1 @@
-sensors | grep Package  | cut -d ':' -f 2 | cut -d '(' -f 1 | tr -d '[:space:}'
+sensors | grep Package  | cut -d ':' -f 2 | cut -d '(' -f 1 | tr -d '[:space:]'
