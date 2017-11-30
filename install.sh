@@ -11,6 +11,7 @@ PPAS=(
 
 PACKAGES=( 
   htop 
+  cryptsetup
   oracle-java8-installer
   ack
   git
