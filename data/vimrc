@@ -125,7 +125,9 @@ augroup filetypedetect
     au BufRead,BufNewFile *.rl set filetype=cpp
 augroup END
 
-" By pressing Ctrl + R in the visual mode you will be prompted to enter text to replace with.
+" Ctrl + a selects all.
+noremap <C-a> ggVG<CR>
+" By pressing Ctrl + r in the visual mode you will be prompted to enter text to replace with.
 " Press enter and then confirm each change you agree with 'y' or decline with 'n'.
 " This command will override your register 'h' so you can choose other one
 " ( by changing 'h' in the command above to other lower case letter ) that you don't use.
