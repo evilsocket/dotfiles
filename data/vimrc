@@ -129,7 +129,7 @@ augroup END
 " Press enter and then confirm each change you agree with 'y' or decline with 'n'.
 " This command will override your register 'h' so you can choose other one
 " ( by changing 'h' in the command above to other lower case letter ) that you don't use.
-vnoremap <C-r> "hy:%s/<C-r>h//g<left><left><left>
+vnoremap <C-r> "hy:%s/<C-r>h//g<left><left>
 
 " Initialize vundle runtime
 set rtp+=~/.vim/bundle/vundle/
