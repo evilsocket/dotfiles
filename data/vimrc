@@ -326,4 +326,5 @@ function! XTermPasteBegin()
   return ""
 endfunction
 
+" https://coderwall.com/p/if9mda/automatically-set-paste-mode-in-vim-when-pasting-in-insert-mode
 inoremap <special> <expr> <Esc>[200~ XTermPasteBegin()
