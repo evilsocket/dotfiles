@@ -182,9 +182,6 @@ Bundle 'Lokaltog/vim-powerline'
 " Sublime/Atom multi cursor selection ( CTRL+n ).
 Bundle "terryma/vim-multiple-cursors"
 
-" C+p fuzzy search
-Bundle 'kien/ctrlp.vim'
-
 " Vim for Go
 Bundle 'fatih/vim-go'
 
