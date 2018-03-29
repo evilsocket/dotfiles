@@ -37,6 +37,10 @@ set undodir=~/.vim/undo/
 
 " Force terminal to 256 colors
 set t_Co=256
+" set theme
+set background=dark 
+colorscheme hybrid
+
 " http://vim.wikia.com/wiki/VimTip102
 set omnifunc=syntaxcomplete#Complete
 inoremap <tab> <c-r>=Smart_TabComplete()<CR>
@@ -49,22 +53,10 @@ nnoremap <esc>^[ <esc>^[
 nnoremap <c-h> :%!xxd<cr>
 
 " gui colors if running iTerm
-"if $TERM_PROGRAM =~ "iTerm"
-"    set termguicolors
-"endif
-
-" Use tabs with Ctrl and arrow keys, Ctrl+n to open a new tab, and Ctrl+w to
-" close it
-map <C-up> :tabr<cr>
-map <C-down> :tabl<cr>
-map <C-left> :tabp<cr>
-map <C-right> :tabn<cr>
-" map <C-n> :tabnew<cr>
-map <C-w> :tabclose<cr>
-
-" Ctrl-D opens a shell.
-nmap <silent> <C-D> :shell<CR>
-
+if $TERM_PROGRAM =~ "iTerm"
+    set termguicolors
+endif
+ 
 if has("gui_running")
     " setup for gui
     set guioptions-=r  " no scrollbar on the right
@@ -72,15 +64,24 @@ if has("gui_running")
     set guioptions-=m  " no menu
     set guioptions-=T  " no toolbar
     set guioptions-=L
-
-    "if has("gui_gtk2")
-    "    set guifont=Inconsolata\ 9
-    "elseif has("gui_win32")
-    "    set guifont=Consolas:h11:cANSI
-    "else
-    "    set guifont=Monaco_for_Powerline\ 9
-    "endif
 endif
+
+" ctrl+t create a new tab
+" ctrl+w close current tab
+" ctrl+arrows navigate tabs
+map <C-t> :tabnew<cr>
+map <C-w> :tabclose<cr>
+map <C-left> :tabp<cr>
+map <C-right> :tabn<cr>
+" ctrl+d open a shell.
+nmap <silent> <C-D> :shell<CR>
+" ctrl+a selects all.
+noremap <C-a> ggVG<CR>
+" By pressing ctrl+r in the visual mode you will be prompted to enter text to replace with.
+" Press enter and then confirm each change you agree with 'y' or decline with 'n'.
+" This command will override your register 'h' so you can choose other one
+" ( by changing 'h' in the command above to other lower case letter ) that you don't use.
+vnoremap <C-r> "hy:%s/<C-r>h//g<left><left>
 
 " reload files as they change
 set autoread
@@ -97,10 +98,6 @@ augroup checktime
         autocmd CursorMovedI    * silent! checktime
     endif
 augroup END
-
-" set theme
-set background=dark 
-colorscheme hybrid
 
 " force two spaces indentation for html, ruby and python files
 autocmd Filetype html setlocal ts=2 sts=2 sw=2
@@ -125,14 +122,6 @@ augroup filetypedetect
     au BufRead,BufNewFile *.rl set filetype=cpp
 augroup END
 
-" Ctrl + a selects all.
-noremap <C-a> ggVG<CR>
-" By pressing Ctrl + r in the visual mode you will be prompted to enter text to replace with.
-" Press enter and then confirm each change you agree with 'y' or decline with 'n'.
-" This command will override your register 'h' so you can choose other one
-" ( by changing 'h' in the command above to other lower case letter ) that you don't use.
-vnoremap <C-r> "hy:%s/<C-r>h//g<left><left>
-
 " Initialize vundle runtime
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
@@ -143,7 +132,6 @@ call vundle#rc()
 
 " Vundle package
 Bundle 'gmarik/vundle'
-
 
 " A file tree explorer
 Bundle 'scrooloose/nerdtree'
@@ -171,7 +159,6 @@ Bundle 'octref/RootIgnore'
 
 let loaded_netrwPlugin=1 
 let NERDTreeRespectWildIgnore=1
-
 
 " GIT support for NERDTree
 Bundle 'Xuyuanp/nerdtree-git-plugin'
