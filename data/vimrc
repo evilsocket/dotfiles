@@ -184,6 +184,8 @@ Bundle 'ryanoasis/vim-devicons'
 Bundle 'Lokaltog/vim-powerline'
     " Use unicode symbols in powerline
     let g:Powerline_symbols = 'fancy'
+    " For devicons
+    let g:airline_powerline_fonts = 1
 
 " Sublime/Atom multi cursor selection ( CTRL+n ).
 Bundle "terryma/vim-multiple-cursors"
