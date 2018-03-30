@@ -29,6 +29,7 @@ set foldlevel=7
 set tags=tags;
 set mouse=a
 set clipboard=unnamedplus
+set encoding=UTF-8
 
 " use separate folders for swap files
 set backupdir=~/.vim/backup/
@@ -173,6 +174,11 @@ Bundle 'Xuyuanp/nerdtree-git-plugin'
         \ "Clean"     : "✔︎",
         \ "Unknown"   : "?"
         \ }
+
+" Icons!
+" Install this and then set a terminal font
+" https://github.com/ryanoasis/nerd-fonts#font-installation
+Bundle 'ryanoasis/vim-devicons'
 
 " A much better statusline
 Bundle 'Lokaltog/vim-powerline'
