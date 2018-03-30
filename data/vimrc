@@ -179,6 +179,12 @@ Bundle 'Xuyuanp/nerdtree-git-plugin'
 " Install this and then set a terminal font
 " https://github.com/ryanoasis/nerd-fonts#font-installation
 Bundle 'ryanoasis/vim-devicons'
+    let g:webdevicons_enable_nerdtree = 1
+    let g:WebDevIconsUnicodeDecorateFolderNodes = 1
+    let g:DevIconsEnableFoldersOpenClose = 1
+    let g:WebDevIconsUnicodeGlyphDoubleWidth = 0
+    " since we disabled double width, add a space to the folder icon
+    let g:WebDevIconsUnicodeDecorateFolderNodesDefaultSymbol = ' '
 
 " A much better statusline
 Bundle 'Lokaltog/vim-powerline'
