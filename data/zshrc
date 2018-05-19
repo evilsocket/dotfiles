@@ -33,6 +33,6 @@ source ~/.android.zshrc
 # source ~/.cuda.zshrc
 # source ~/.ruby.zshrc
 source ~/.go.zshrc
-
+source ~/.priv.env
 
 export GPG_TTY=$(tty)
