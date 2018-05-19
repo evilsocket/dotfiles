@@ -1,0 +1,1 @@
+ssh -vo ProxyCommand='nc -x localhost:9050 %h %p' -L 8443:arc.local:443 pi@${ARC_ONION_ADDRESS} -fN
