@@ -1,3 +1,4 @@
 .DS_*
 *.swp
 data/vim/bundle/*
+data/vim/swap/*
