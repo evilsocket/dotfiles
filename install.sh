@@ -2,13 +2,19 @@
 bold=$(tput bold)
 norm=$(tput sgr0)
 
+
+#noobslab/themes 
+#noobslab/icons
 PPAS=(
-   noobslab/themes 
-   noobslab/icons
    nilarimogard/webupd8
    webupd8team/java 
 )
 
+
+#unity-tweak-tool
+#arc-theme
+#arc-icons
+#grive
 PACKAGES=( 
   htop 
   cryptsetup
@@ -25,10 +31,6 @@ PACKAGES=(
   build-essential 
   libpcap-dev
   libnetfilter-queue-dev
-  unity-tweak-tool
-  arc-theme
-  arc-icons
-  grive
 )
 
 COMMANDS=(
