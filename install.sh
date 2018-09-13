@@ -62,6 +62,8 @@ do
     ln -s $(pwd)/$file ~/.$(basename $file)
 done
 
+touch ~/.priv.env
+
 if [ ! -d ./data/vim/bundle/vundle ]; then
     git clone http://github.com/gmarik/vundle.git ./data/vim/bundle/vundle
 fi
