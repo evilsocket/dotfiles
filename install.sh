@@ -21,9 +21,10 @@ PACKAGES=(
   zsh
   screen
   tmux
+  golang
   build-essential 
   libpcap-dev
-  golang
+  libnetfilter-queue-dev
   unity-tweak-tool
   arc-theme
   arc-icons
