@@ -197,6 +197,7 @@ Bundle "terryma/vim-multiple-cursors"
 Bundle 'fatih/vim-go'
 
 let g:go_fmt_autosave = 1
+let g:go_version_warning = 0
 
 " TagBar
 Bundle 'majutsushi/tagbar'
